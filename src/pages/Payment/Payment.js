@@ -1,8 +1,8 @@
-import React from "react";
-import "./Payment.scss";
+import React from 'react';
+import './Payment.scss';
 
-const Payment = () =>{
-    return()
-}
+const Payment = () => {
+  return '결제';
+};
 
 export default Payment;

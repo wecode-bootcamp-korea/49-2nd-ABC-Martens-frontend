@@ -1,8 +1,8 @@
-import React from "react";
-import "./Users.scss";
+import React from 'react';
+import './Users.scss';
 
-const Users = () =>{
-    return()
-}
+const Users = () => {
+  return '회원가입';
+};
 
 export default Users;

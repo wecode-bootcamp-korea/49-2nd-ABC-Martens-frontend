@@ -1,10 +1,8 @@
-import React from "react";
-import "./Cart.scss";
+import React from 'react';
+import './Cart.scss';
 
-const Cart = () =>{
-    return(
-
-    )
-}
+const Cart = () => {
+  return '장바구니';
+};
 
 export default Cart;

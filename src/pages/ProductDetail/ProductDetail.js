@@ -11,7 +11,9 @@ const ProductDetail = () => {
         <div className="productsDiv">
           <div className="productDetailContent">
             <ProductImagesContent />
-            <div className="productDes">상품설명칸</div>
+            <div className="productDes">
+              <div />
+            </div>
           </div>
           <div className="reviewContent" />
         </div>

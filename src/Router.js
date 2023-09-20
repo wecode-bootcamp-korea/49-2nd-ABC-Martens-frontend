@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
+import Footer from './components/Footer/Footer';
 import Login from './pages/Login/Login';
 import Users from './pages/Users/Users';
-import Nav from './components/Nav/Nav';
 import ProductList from './pages/ProductList/ProductList';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Cart from './pages/Cart/Cart';
@@ -17,11 +17,13 @@ import RightImages from './components/ProductImagesContent/ImagesContent/RightIm
 const Router = () => {
   return (
     <BrowserRouter>
+      <Nav />
       <Routes>
         <Route path="/" element={<ProductList />} />
         <Route path="/users" element={<Users />} />
         <Route path="/login" element={<Login />} />
         <Route path="/nav" element={<Nav />} />
+        <Route path="/footer" element={<Footer />} />
         <Route path="/productdetail" element={<ProductDetail />} />
         <Route path="/productdetailhome" element={<ProductDetailHome />} />
         <Route path="/leftImages" element={<LeftImages />} />
@@ -35,6 +37,7 @@ const Router = () => {
         <Route path="/payment" element={<Payment />} />
         <Route path="/nav" element={<Nav />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

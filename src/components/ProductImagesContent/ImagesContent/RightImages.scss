@@ -1,51 +1,56 @@
 .rightImages {
-  width: 560px;
+  height: 700px;
   margin-left: 0;
-  display: flex;
+  overflow: hidden;
 
   .swiperSlide {
-    width: 100%;
+    display: flex;
+    position: relative;
     height: 100%;
 
-    img {
+    .swiperSlider {
+      height: 100%;
+
+      img {
+        width: 560px;
+        height: 100%;
+        object-fit: cover;
+        vertical-align: middle;
+      }
+    }
+
+    .prev,
+    .next {
+      position: absolute;
+      top: 350px;
+      width: 30px;
+      height: 30px;
+      border: none;
+      background-color: transparent;
+      font-size: 30px;
+      color: white;
+    }
+    .prev {
+      left: 15px;
+    }
+    .next {
+      right: 15px;
+    }
+
+    .chapter {
       display: flex;
-      max-width: 100%;
-      object-fit: cover;
-      vertical-align: middle;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      width: 70px;
+      height: 35px;
+      border-radius: 30px;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
     }
   }
 }
-
-// .rightImages {
-//   width: 560px;
-//   margin-left: 0;
-//   display: flex;
-
-//   .swiper {
-//     display: flex;
-//     margin-left: auto;
-//     margin-right: auto;
-//     overflow: hidden;
-//     padding: 0;
-
-//     .swiperWrapper {
-//       width: 100%;
-//       height: 100%;
-//       display: flex;
-//       box-sizing: content-box;
-
-//       .swiperSlide {
-//         flex-shrink: 0;
-//         width: 100%;
-//         height: 100%;
-
-//         img {
-//           display: flex;
-//           max-width: 100%;
-//           object-fit: cover;
-//           vertical-align: middle;
-//         }
-//       }
-//     }
-//   }
-// }

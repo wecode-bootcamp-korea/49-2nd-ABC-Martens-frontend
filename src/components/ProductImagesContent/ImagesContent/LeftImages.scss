@@ -1,30 +1,22 @@
 .leftImages {
   width: 80px;
   margin-right: 20px;
-  height: 100%;
   top: 0;
   left: 0;
 
   div {
     display: flex;
     flex-direction: column;
-    height: 100%;
 
     .swiper {
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
+      display: flex;
       overflow: hidden;
       list-style: none;
       padding: 0;
-      z-index: 1;
-      display: block;
 
       .swiperWrapper {
-        position: relative;
         width: 100%;
         height: 100%;
-        z-index: 1;
         display: flex;
         transition: left 0.5s ease-out;
         box-sizing: content-box;
@@ -33,7 +25,6 @@
           flex-shrink: 0;
           width: 100%;
           height: 100%;
-          position: relative;
 
           img {
             width: 80px;
@@ -41,8 +32,6 @@
             vertical-align: middle;
             border: none;
             outline: none;
-            overflow-clip-margin: content-box;
-            overflow: clip;
           }
         }
       }

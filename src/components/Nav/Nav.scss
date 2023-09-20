@@ -1,0 +1,234 @@
+* {
+  box-sizing: border-box;
+}
+#HeadContainer {
+  width: 100%;
+  height: 135px;
+  background-color: #000;
+
+  .FirstHeader {
+    display: flex;
+    justify-content: space-between;
+    background-color: #1a1a1a;
+    width: 100%;
+    height: 35px;
+    padding-left: 40px;
+    color: yellow;
+  }
+  .TextBox {
+    display: flex;
+    flex-direction: row;
+
+    label {
+      display: flex;
+      align-items: center;
+      position: relative;
+      height: 100%;
+      transition-property: transform;
+      margin-right: 25px;
+      font-size: 13px;
+    }
+    .Text2 {
+      display: flex;
+      align-items: center;
+      position: relative;
+      transition-property: transform;
+      margin-right: 25px;
+      font-size: 13px;
+      height: 100%;
+    }
+  }
+  span {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    width: 335px;
+    height: 100%;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    .UserInfo {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      height: 100%;
+      transition-property: transform;
+      padding: 0 20px;
+      text-decoration: none;
+      border: none;
+      outline: none;
+      color: white;
+    }
+    .FindStore {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      position: relative;
+      transition-property: transform;
+      padding: 0 20px;
+    }
+    .TheNews {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      position: relative;
+      transition-property: transform;
+      padding: 0 20px;
+    }
+  }
+  .TwoHeader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    height: 100px;
+    padding: 0 40px;
+
+    .LogoNav {
+      display: block;
+      width: 106px;
+      height: 60px;
+      margin-right: 20px;
+      border: none;
+      outline: none;
+    }
+    .CategoriList {
+      display: flex;
+      align-self: flex-end;
+      padding-top: 0;
+      width: 774px;
+      height: 40px;
+    }
+    .List {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      color: white;
+      width: 774px;
+      height: 40px;
+    }
+    Li {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: bold;
+    }
+    .List1,
+    .List2,
+    .List3 {
+      width: 48px;
+      height: 40px;
+      font-size: 13px;
+    }
+    .List4 {
+      width: 75px;
+      height: 40px;
+      font-size: 13px;
+    }
+    .List5 {
+      width: 51px;
+      height: 40px;
+      font-size: 13px;
+    }
+    .List6 {
+      width: 140px;
+      height: 40px;
+      font-size: 13px;
+    }
+    .List7 {
+      width: 100px;
+      height: 40px;
+      font-size: 13px;
+    }
+    .List8 {
+      width: 70px;
+      height: 40px;
+      font-size: 13px;
+    }
+    .List9 {
+      width: 87px;
+      height: 40px;
+      font-size: 13px;
+    }
+    .List10 {
+      width: 52px;
+      height: 40px;
+      font-size: 13px;
+    }
+    .List11 {
+      width: 60px;
+      height: 40px;
+      font-size: 13px;
+    }
+    .CenterBar {
+      display: flex;
+      position: absolute;
+      top: 0;
+      right: 40px;
+      width: 455px;
+      height: 50px;
+    }
+    .search-mode {
+      padding-top: 16px;
+      padding-bottom: 0;
+      width: 275px;
+      height: 34px;
+
+      .SearchBar_input {
+        position: relative;
+        width: 275px;
+        height: 34px;
+        padding: 0 34px 0 44px;
+        background: #fff
+          url(https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/Icons_Nav.svg)
+          no-repeat;
+        background-size: auto 100%;
+        background-position: left center;
+      }
+    }
+    .IconOption {
+      display: flex;
+      padding: 25px 0 5px 0;
+
+      margin-left: 40px;
+      width: 140px;
+      height: 50px;
+    }
+    a {
+      width: 40px;
+      height: 34px;
+      flex-direction: row;
+    }
+    .Basket {
+      width: 40px;
+      height: 30px;
+      max-width: 100%;
+      vertical-align: middle;
+      border: none;
+      outline: none;
+    }
+    .EyesProduct {
+      width: 40px;
+      height: 30px;
+      max-width: 100%;
+      vertical-align: middle;
+      border: none;
+      outline: none;
+      margin-left: 10px;
+    }
+    .pageback {
+      width: 40px;
+      height: 30px;
+      max-width: 100%;
+      vertical-align: middle;
+      border: none;
+      outline: none;
+      margin-left: 30px;
+    }
+  }
+}

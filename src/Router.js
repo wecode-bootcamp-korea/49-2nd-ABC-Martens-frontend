@@ -13,6 +13,7 @@ import ProductDetailHome from './components/ProductDetailHome/ProductDetailHome'
 import ProductImagesContent from './components/ProductImagesContent/ProductImagesContent';
 import LeftImages from './components/ProductImagesContent/ImagesContent/LeftImages';
 import RightImages from './components/ProductImagesContent/ImagesContent/RightImages';
+import Checkbox from './components/CheckBox/Checkbox';
 
 const Router = () => {
   return (
@@ -36,6 +37,7 @@ const Router = () => {
         <Route path="/order" element={<Order />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/nav" element={<Nav />} />
+        <Route path="/checkbox" element={<Checkbox />} />
       </Routes>
       <Footer />
     </BrowserRouter>

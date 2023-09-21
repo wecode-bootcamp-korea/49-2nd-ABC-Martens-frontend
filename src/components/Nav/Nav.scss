@@ -1,12 +1,12 @@
 * {
   box-sizing: border-box;
 }
-#HeadContainer {
+#headContainer {
   width: 100%;
   height: 135px;
   background-color: #000;
 
-  .FirstHeader {
+  .firstHeader {
     display: flex;
     justify-content: space-between;
     background-color: #1a1a1a;
@@ -15,7 +15,7 @@
     padding-left: 40px;
     color: yellow;
   }
-  .TextBox {
+  .textBox {
     display: flex;
     flex-direction: row;
 
@@ -28,7 +28,7 @@
       margin-right: 25px;
       font-size: 13px;
     }
-    .Text2 {
+    .text2 {
       display: flex;
       align-items: center;
       position: relative;
@@ -47,7 +47,8 @@
     font-size: 13px;
     font-weight: bold;
     color: white;
-    .UserInfo {
+
+    .userInfo {
       display: flex;
       align-items: center;
       text-align: center;
@@ -60,7 +61,7 @@
       outline: none;
       color: white;
     }
-    .FindStore {
+    .findStore {
       display: flex;
       align-items: center;
       text-align: center;
@@ -69,7 +70,7 @@
       transition-property: transform;
       padding: 0 20px;
     }
-    .TheNews {
+    .theNews {
       display: flex;
       align-items: center;
       text-align: center;
@@ -79,7 +80,7 @@
       padding: 0 20px;
     }
   }
-  .TwoHeader {
+  .twoHeader {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -87,7 +88,7 @@
     height: 100px;
     padding: 0 40px;
 
-    .LogoNav {
+    .logoNav {
       display: block;
       width: 106px;
       height: 60px;
@@ -95,7 +96,7 @@
       border: none;
       outline: none;
     }
-    .CategoriList {
+    .categoriList {
       display: flex;
       align-self: flex-end;
       padding-top: 0;
@@ -165,7 +166,7 @@
       height: 40px;
       font-size: 13px;
     }
-    .CenterBar {
+    .centerBar {
       display: flex;
       position: absolute;
       top: 0;
@@ -179,7 +180,7 @@
       width: 275px;
       height: 34px;
 
-      .SearchBar_input {
+      .searchBar_input {
         position: relative;
         width: 275px;
         height: 34px;
@@ -191,7 +192,7 @@
         background-position: left center;
       }
     }
-    .IconOption {
+    .iconOption {
       display: flex;
       padding: 25px 0 5px 0;
 
@@ -212,7 +213,7 @@
       border: none;
       outline: none;
     }
-    .EyesProduct {
+    .eyesProduct {
       width: 40px;
       height: 30px;
       max-width: 100%;

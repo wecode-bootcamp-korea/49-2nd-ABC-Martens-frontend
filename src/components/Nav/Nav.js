@@ -3,24 +3,24 @@ import './Nav.scss';
 
 const Nav = () => {
   return (
-    <div id="HeadContainer">
-      <div className="FirstHeader">
-        <div className="TextBox">
-          <label htmlFor="Text">전 상품 무료배송</label>
-          <div className="Text2">신규가입 10%혜택</div>
+    <div id="headContainer">
+      <div className="firstHeader">
+        <div className="textBox">
+          <label htmlFor="text">전 상품 무료배송</label>
+          <div className="text2">신규가입 10%혜택</div>
         </div>
         <span>
-          <a className="UserInfo" href="/login">
+          <a className="userInfo" href="/login">
             로그인/회원가입
           </a>
-          <div className="FindStore">매장찾기</div>
-          <div className="TheNews">공지사항</div>
+          <div className="findStore">매장찾기</div>
+          <div className="theNews">공지사항</div>
         </span>
       </div>
-      <div className="TwoHeader">
-        <img className="LogoNav" src="/images/DrMartens.png" alt="닥터마틴" />
+      <div className="twoHeader">
+        <img className="logoNav" src="/images/DrMartens.png" alt="닥터마틴" />
 
-        <nav className="CategoriList">
+        <nav className="categoriList">
           <ul className="List">
             <li className="List1">여성</li>
             <li className="List2">남성</li>
@@ -35,11 +35,11 @@ const Nav = () => {
             <li className="List11">EVENT</li>
           </ul>
         </nav>
-        <div className="CenterBar">
+        <div className="centerBar">
           <div className="search-mode">
-            <input className="SearchBar_input" type="search" />
+            <input className="searchBar_input" type="search" />
           </div>
-          <div className="IconOption">
+          <div className="iconOption">
             <a href="/Cart">
               <img
                 className="Basket"
@@ -49,7 +49,7 @@ const Nav = () => {
             </a>
             <a>
               <img
-                className="EyesProduct"
+                className="eyesProduct"
                 src="https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/Icons_recently.svg"
                 alt="눈"
               />

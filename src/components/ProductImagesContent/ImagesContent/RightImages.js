@@ -27,10 +27,10 @@ const RightImages = () => {
           return (
             <div
               className="swiperSlider"
-              key={list.alt}
+              key={list.id}
               style={{ transform: `translateX(${count * -560}px)` }}
             >
-              <img src={list.src} alt={list.alt} index={index} />
+              <img src={list.url} alt={list.alt} index={index} />
             </div>
           );
         })}

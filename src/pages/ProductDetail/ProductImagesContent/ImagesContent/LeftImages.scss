@@ -1,8 +1,10 @@
 .leftImages {
   width: 80px;
+  height: 100%;
   margin-right: 20px;
   top: 0;
   left: 0;
+  overflow: hidden;
 
   div {
     display: flex;
@@ -18,13 +20,11 @@
         width: 100%;
         height: 100%;
         display: flex;
-        transition: left 0.5s ease-out;
+        // transition: left 0.5s ease-out;
         box-sizing: content-box;
 
         .swiperSlide {
           flex-shrink: 0;
-          width: 100%;
-          height: 100%;
 
           img {
             width: 80px;

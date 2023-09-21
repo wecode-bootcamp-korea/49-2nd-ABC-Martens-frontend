@@ -2,15 +2,11 @@ import React from 'react';
 import './Checkbox.scss';
 
 const Checkbox = props => {
-  const { checked, onChange, children } = props;
+  const { id, checked, onChange, children } = props;
 
   return (
-    <label>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={({ target: { checked } }) => onChange(checked)}
-      />
+    <label htmlFor={id}>
+      <input type="checkbox" id={id} checked={checked} onChange={onChange} />
       <span>{children}</span>
     </label>
   );

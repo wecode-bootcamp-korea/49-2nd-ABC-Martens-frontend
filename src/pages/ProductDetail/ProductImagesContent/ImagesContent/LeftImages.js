@@ -18,8 +18,8 @@ const LeftImages = () => {
             <div className="swiperSlide">
               {imageData?.map(list => {
                 return (
-                  <div className="swiperSlide" key={list.alt}>
-                    <img src={list.src} alt={list.alt} />
+                  <div className="swiperSlide" key={list.id}>
+                    <img src={list.url} alt={list.alt} />
                   </div>
                 );
               })}

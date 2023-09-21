@@ -1,7 +1,8 @@
 import React from 'react';
+import ProductDetailHome from './ProductDetailHome/ProductDetailHome';
+import ProductImagesContent from './ProductImagesContent/ProductImagesContent';
+import ProductOrder from './ProductOrder/ProductOrder';
 import './ProductDetail.scss';
-import ProductDetailHome from '../../components/ProductDetailHome/ProductDetailHome';
-import ProductImagesContent from '../../components/ProductImagesContent/ProductImagesContent';
 
 const ProductDetail = () => {
   return (
@@ -11,10 +12,9 @@ const ProductDetail = () => {
         <div className="productsDiv">
           <div className="productDetailContent">
             <ProductImagesContent />
-            <div className="productDes">
-              <div />
-            </div>
+            <ProductOrder />
           </div>
+
           <div className="reviewContent" />
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import './CartRight.scss';
+import Button from '../../../components/Button/Button';
 
 const CartRight = () => {
   return (
@@ -46,9 +47,15 @@ const CartRight = () => {
             </div>
           </div>
         </div>
-        <button type="button" className="selectItemOrder">
+        <Button
+          type="button"
+          className="selectItemOrder"
+          fontScale="large"
+          scale="large"
+          color="blackToYellow"
+        >
           구매하기
-        </button>
+        </Button>
       </div>
     </li>
   );

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './CartLeft.scss';
 import Checkbox from '../../../components/CheckBox/Checkbox';
+import Button from '../../../components/Button/Button';
+// import CartPopUp from '../../../components/CartPopUp/CartPopUp';
 
 const CartLeft = () => {
   const [selectAll, setSelectAll] = useState(false);
@@ -13,9 +15,6 @@ const CartLeft = () => {
     item4: false,
     item5: false,
   });
-
-  const testList = useState([false, false, false, false, false]);
-  console.log(itemCheckboxes);
 
   // 체크박스 전체 선택/ 취소
   const handleCheckAll = () => {
@@ -42,6 +41,18 @@ const CartLeft = () => {
     setSelectAll(allItemsSelected);
   };
 
+  const handleCheckItemDelete = () => {
+    const updatedItemCheckboxes = { ...itemCheckboxes };
+
+    for (const key in updatedItemCheckboxes) {
+      if (updatedItemCheckboxes[key]) {
+        delete updatedItemCheckboxes[key];
+      }
+    }
+
+    setItemCheckboxes(updatedItemCheckboxes);
+  };
+
   return (
     <li className="cartLeft">
       <div className="cartContents">
@@ -57,9 +68,16 @@ const CartLeft = () => {
               전체선택
             </Checkbox>
           </span>
-          <button type="button" className="btnDeleteAll">
+          <Button
+            type="button"
+            className="btnDeleteAll"
+            fontScale="small"
+            scale="middle"
+            color="whiteAndBlack"
+            onClick={handleCheckItemDelete}
+          >
             선택 삭제
-          </button>
+          </Button>
         </div>
       </div>
       <div className="cartList">
@@ -69,8 +87,8 @@ const CartLeft = () => {
               <span className="itemCheck">
                 <Checkbox
                   type="checkbox"
-                  id="btnSelectItem"
-                  className="btnSelectItem"
+                  id="btnSelectItem1"
+                  className="btnSelectItem1"
                   checked={itemCheckboxes.item1}
                   onChange={() => handleItemCheckboxChange('item1')}
                 >
@@ -129,17 +147,17 @@ const CartLeft = () => {
                   </li>
                 </ul>
               </div>
-              <div />
+              {/* <CartPopUp /> */}
             </div>
           </li>
-          <li className="shoppingItemList">
+          {/* <li className="shoppingItemList">
             <div className="shoppingItemContent">
               <span className="itemCheck">
                 <Checkbox
                   type="checkbox"
-                  id="btnSelectItem"
-                  className="btnSelectItem"
-                  checked={itemCheckboxes.item1}
+                  id="btnSelectItem2"
+                  className="btnSelectItem2"
+                  checked={itemCheckboxes.item2}
                   onChange={() => handleItemCheckboxChange('item2')}
                 >
                   선택
@@ -205,9 +223,9 @@ const CartLeft = () => {
               <span className="itemCheck">
                 <Checkbox
                   type="checkbox"
-                  id="btnSelectItem"
-                  className="btnSelectItem"
-                  checked={itemCheckboxes.item1}
+                  id="btnSelectItem3"
+                  className="btnSelectItem3"
+                  checked={itemCheckboxes.item3}
                   onChange={() => handleItemCheckboxChange('item3')}
                 >
                   선택
@@ -273,9 +291,9 @@ const CartLeft = () => {
               <span className="itemCheck">
                 <Checkbox
                   type="checkbox"
-                  id="btnSelectItem"
-                  className="btnSelectItem"
-                  checked={itemCheckboxes.item1}
+                  id="btnSelectItem4"
+                  className="btnSelectItem4"
+                  checked={itemCheckboxes.item4}
                   onChange={() => handleItemCheckboxChange('item4')}
                 >
                   선택
@@ -341,9 +359,9 @@ const CartLeft = () => {
               <span className="itemCheck">
                 <Checkbox
                   type="checkbox"
-                  id="btnSelectItem"
-                  className="btnSelectItem"
-                  checked={itemCheckboxes.item1}
+                  id="btnSelectItem5"
+                  className="btnSelectItem5"
+                  checked={itemCheckboxes.item5}
                   onChange={() => handleItemCheckboxChange('item5')}
                 >
                   선택
@@ -403,7 +421,7 @@ const CartLeft = () => {
               </div>
               <div />
             </div>
-          </li>
+          </li> */}
         </ul>
       </div>
     </li>

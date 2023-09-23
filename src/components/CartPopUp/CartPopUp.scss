@@ -1,0 +1,264 @@
+.cartPopUp {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100%;
+  max-width: 600px;
+  max-height: 700px;
+  z-index: 10500;
+  margin: 0 !important;
+  padding: 10px;
+  background-color: #fff;
+
+  .popUpTitle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px #e1e1e1 solid;
+
+    strong {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      padding: 5px 10px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 30px;
+      text-transform: uppercase;
+      color: #000000;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+
+      img {
+        max-width: 100%;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .popUpCnt {
+    padding: 20px;
+
+    .cartItemDiv {
+      border: 1px solid #e1e1e1;
+
+      .cartItemBox {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 15px;
+
+        .cartItemCnt {
+          display: flex;
+          align-items: center;
+
+          div {
+            margin-right: 15px;
+
+            a {
+              img {
+                display: block;
+                width: 80px;
+                height: 100px;
+                object-fit: cover;
+                object-position: center center;
+              }
+            }
+          }
+
+          ul {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: auto;
+
+            li {
+              width: 100%;
+
+              strong {
+                display: flex;
+                align-items: center;
+                padding-bottom: 2px;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 26px;
+                color: #000000;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .cartItemOptionDiv {
+      margin-top: 20px;
+      max-height: 306px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding-right: 10px;
+      margin-right: -10px;
+      margin-bottom: 30px;
+
+      .cartItemSizeText {
+        display: flex;
+        margin-top: 30px;
+        padding-bottom: 8px;
+
+        strong {
+          font-style: normal;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 30px;
+          color: #000000;
+        }
+      }
+      .cartItemSizeOption {
+        margin-top: 8px;
+
+        .selectOptionLayout {
+          margin-bottom: 0px;
+
+          .itemOptionArea {
+            .itemOptionTable {
+              margin-bottom: 30px;
+
+              .optionWrap {
+                row-gap: 8px;
+                column-gap: 8px;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+              }
+            }
+
+            .itemQuantityTableContainer {
+              margin-top: 30px;
+
+              .itemQuantityTable {
+                width: 100%;
+
+                tbody {
+                  display: table-row-group;
+                  vertical-align: middle;
+
+                  tr {
+                    display: table-row;
+                    vertical-align: inherit;
+
+                    td {
+                      .optionDiv {
+                        margin-bottom: 0;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        padding-bottom: 30px;
+                        border-bottom: 1px rgba(225, 225, 225, 0.5) solid;
+
+                        span {
+                          display: flex;
+                          justify-content: space-between;
+                          align-items: center;
+                          padding-bottom: 10px;
+
+                          b {
+                            font-style: normal;
+                            font-weight: bold;
+                            font-size: 16px;
+                            line-height: 30px;
+                            color: #000000;
+                          }
+
+                          a {
+                            display: inline-flex;
+                            justify-content: center;
+                            align-items: center;
+                            border: 2px #ffffff solid;
+                            padding: 0;
+                            width: 30px;
+                            height: 30px;
+                            background: #ffffff;
+
+                            s {
+                              width: 30px;
+                              height: 30px;
+                              background: url('https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/close_black.svg')
+                                no-repeat;
+                              background-position: center center;
+                            }
+                          }
+                        }
+
+                        div {
+                          display: flex;
+                          justify-content: flex-start;
+
+                          strong {
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 16px;
+                            line-height: 30px;
+                            color: #000000;
+                          }
+
+                          .amtBtnDiv {
+                            display: flex;
+                            align-items: center;
+
+                            .amtNum {
+                              width: 30px;
+                              height: 30px;
+                              padding: 0;
+                              border: 0;
+                              font-style: normal;
+                              font-weight: 400;
+                              font-size: 16px;
+                              text-align: center;
+                              color: #000000;
+                            }
+                          }
+
+                          .amtPriceContainer {
+                            margin-left: auto;
+                            display: flex;
+                            align-items: center;
+
+                            .amtPrice {
+                              margin-left: 10px;
+                              font-style: normal;
+                              font-weight: 500;
+                              font-size: 20px;
+                              line-height: 30px;
+                              color: #000000;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .btnWrap {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}

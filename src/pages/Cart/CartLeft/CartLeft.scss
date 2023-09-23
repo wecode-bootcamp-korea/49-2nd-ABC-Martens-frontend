@@ -6,39 +6,17 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 10px;
-
-      .btnDeleteAll {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 9px 30px;
-        height: 40px;
-        min-width: 120px;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 30px;
-        text-align: center;
-        text-transform: uppercase;
-        color: #000000;
-        background: #ffffff;
-        border: 1px #000000 solid;
-        cursor: pointer;
-
-        &:hover {
-          color: #ffffff;
-          background: #000000;
-        }
-      }
     }
   }
 
   .cartList {
     .shoppingList {
+      .shoppingItemList:not(:first-child) {
+        margin-top: 15px;
+      }
+
       .shoppingItemList {
         border: 1px solid #e1e1e1;
-        margin-top: 15px;
 
         .shoppingItemContent {
           padding: 10px 0;
@@ -85,6 +63,8 @@
         }
 
         .itemDetail {
+          position: relative;
+
           .itemInfo {
             display: flex;
             align-items: flex-start;

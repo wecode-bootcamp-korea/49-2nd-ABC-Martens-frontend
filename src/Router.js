@@ -9,6 +9,7 @@ import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Cart from './pages/Cart/Cart';
 import Order from './pages/Order/Order';
 import Payment from './pages/Payment/Payment';
+import CartPopUp from './components/CartPopUp/CartPopUp';
 
 const Router = () => {
   return (
@@ -22,6 +23,7 @@ const Router = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/cartpopup" element={<CartPopUp />} />
       </Routes>
       <Footer />
     </BrowserRouter>

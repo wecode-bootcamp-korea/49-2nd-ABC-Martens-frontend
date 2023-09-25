@@ -48,7 +48,7 @@ const CartPopUp = () => {
                       <Button
                         type="button"
                         className="itemSize"
-                        fontScale="small"
+                        fontscale="small"
                         scale="small"
                         color="whiteToBlack"
                       >
@@ -57,7 +57,7 @@ const CartPopUp = () => {
                       <Button
                         type="button"
                         className="itemSize"
-                        fontScale="small"
+                        fontscale="small"
                         scale="small"
                         color="whiteToBlack"
                       >
@@ -66,7 +66,7 @@ const CartPopUp = () => {
                       <Button
                         type="button"
                         className="itemSize"
-                        fontScale="small"
+                        fontscale="small"
                         scale="small"
                         color="whiteToBlack"
                       >
@@ -75,7 +75,7 @@ const CartPopUp = () => {
                       <Button
                         type="button"
                         className="itemSize"
-                        fontScale="small"
+                        fontscale="small"
                         scale="small"
                         color="whiteToBlack"
                       >
@@ -84,7 +84,7 @@ const CartPopUp = () => {
                       <Button
                         type="button"
                         className="itemSize"
-                        fontScale="small"
+                        fontscale="small"
                         scale="small"
                         color="whiteToBlack"
                       >
@@ -93,7 +93,7 @@ const CartPopUp = () => {
                       <Button
                         type="button"
                         className="itemSize"
-                        fontScale="small"
+                        fontscale="small"
                         scale="small"
                         color="whiteToBlack"
                       >
@@ -102,7 +102,7 @@ const CartPopUp = () => {
                       <Button
                         type="button"
                         className="itemSize"
-                        fontScale="small"
+                        fontscale="small"
                         scale="small"
                         color="whiteToBlack"
                       >
@@ -170,7 +170,7 @@ const CartPopUp = () => {
           <div className="btnWrap">
             <Button
               className="cancelBtn"
-              fontScale="large"
+              fontscale="large"
               color="whiteAndBlack"
               scale="cartBtn"
             >
@@ -179,7 +179,7 @@ const CartPopUp = () => {
             <Button
               type="button"
               className="changeCartBtn"
-              fontScale="large"
+              fontscale="large"
               color="blackToYellow"
               scale="cartBtn"
             >

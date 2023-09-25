@@ -50,7 +50,7 @@ const CartRight = () => {
         <Button
           type="button"
           className="selectItemOrder"
-          fontScale="large"
+          fontscale="large"
           scale="large"
           color="blackToYellow"
         >

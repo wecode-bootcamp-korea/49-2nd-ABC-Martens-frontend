@@ -2,14 +2,14 @@ import React from 'react';
 import './Button.scss';
 
 const Button = props => {
-  const { children, sort, fontScale, scale, color, disabled, handleClick } =
+  const { children, sort, fontscale, scale, color, disabled, handleClick } =
     props;
 
   return (
     <button
       type="button"
       sort={sort}
-      fontScale={fontScale}
+      fontscale={fontscale}
       scale={scale}
       color={color}
       disabled={disabled}

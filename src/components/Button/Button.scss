@@ -23,12 +23,12 @@ button {
     }
   }
 
-  &[fontScale='small'] {
+  &[fontscale='small'] {
     font-weight: bold;
     font-size: 16px;
   }
 
-  &[fontScale='large'] {
+  &[fontscale='large'] {
     font-weight: bold;
     font-size: 20px;
   }

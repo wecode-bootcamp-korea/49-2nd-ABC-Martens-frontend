@@ -7,15 +7,17 @@ const RightImages = () => {
   const [count, setCount] = useState(0);
 
   const prevBtn = () => {
-    setCount(count => (count > 0 ? count - 1 : null));
+    const minusCount = count => (count > 0 ? count - 1 : null);
+    setCount(minusCount);
   };
 
   const nextBtn = () => {
-    setCount(count => (count < 10 ? count + 1 : (count = 0)));
+    const plusCount = count => (count < 10 ? count + 1 : (count = 0));
+    setCount(plusCount);
   };
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/imageData.json')
+    fetch('/data/imageData.json')
       .then(Response => Response.json())
       .then(result => setImageData(result));
   }, []);

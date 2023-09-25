@@ -30,9 +30,6 @@ const CartLeft = () => {
       })
       .catch(error => console.log(error))
       .then(data => {
-        // console.log(data);
-        // console.log(data[0].productId);
-        // console.log(data[0].productName);
         setCartList(data);
       });
   }, []);
@@ -79,122 +76,121 @@ const CartLeft = () => {
   };
 
   return (
-    // <li className="cartLeft">
-    //   <div className="cartContents">
-    //     <div className="cartCheckDiv">
-    //       <span className="cartCheck">
-    //         <Checkbox
-    //           type="checkbox"
-    //           id="btnSelectAll"
-    //           className="btnSelectAll"
-    //           checked={selectAll}
-    //           onChange={handleCheckAll}
-    //         >
-    //           전체선택
-    //         </Checkbox>
-    //       </span>
-    //       <Button
-    //         type="button"
-    //         className="btnDeleteAll"
-    //         fontscale="small"
-    //         scale="middle"
-    //         color="whiteAndBlack"
-    //         onClick={handleCheckItemDelete}
-    //       >
-    //         선택 삭제
-    //       </Button>
-    //     </div>
-    //   </div>
-    //   <div className="cartList">
-    //     <ul className="shoppingList">
-    //       {cartList.data &&
-    //         cartList.data.map(cartItem => (
-    //           <li className="shoppingItemList" key={cartItem.productId}>
-    //             <div className="shoppingItemContent">
-    //               <span className="itemCheck">
-    //                 <Checkbox
-    //                   type="checkbox"
-    //                   id={`btnSelect${cartItem.productId}`}
-    //                   className={`btnSelect${cartItem.productId}`}
-    //                   checked={itemCheckboxes.cartItem.productId}
-    //                   onChange={() =>
-    //                     handleItemCheckboxChange(cartItem.productId)
-    //                   }
-    //                 >
-    //                   선택
-    //                 </Checkbox>
-    //               </span>
-    //               <div>
-    //                 <button
-    //                   type="button"
-    //                   className="btnOption"
-    //                   id={cartItem.productId}
-    //                 >
-    //                   옵션/수량변경
-    //                 </button>
-    //                 <button
-    //                   type="button"
-    //                   className="btnDelete"
-    //                   value={cartItem.productId}
-    //                   title="상품삭제"
-    //                 >
-    //                   삭제
-    //                 </button>
-    //               </div>
-    //             </div>
-    //             <div className="itemDetail">
-    //               <div className="itemInfo">
-    //                 <div className="itemInfoDiv">
-    //                   <div>
-    //                     <a href="#!">
-    //                       <img
-    //                         src={cartItem.productThumbnailImage}
-    //                         alt="제품사진"
-    //                         className="itemImg"
-    //                       />
-    //                     </a>
-    //                   </div>
-    //                   <ul>
-    //                     <li>
-    //                       <strong>{cartItem.productName}</strong>
-    //                     </li>
-    //                     <li className="optionArea">
-    //                       <ul className="optionSize">
-    //                         <li>
-    //                           <span className="itemSizeText">사이즈(mm) :</span>
-    //                           <span className="itemSizeMm">
-    //                             {cartItem.size}
-    //                           </span>
-    //                         </li>
-    //                       </ul>
-    //                       <div className="optionQuantity">
-    //                         <div>
-    //                           <span className="itemQuantityText">수량 :</span>
-    //                           <span className="itemQuantity">
-    //                             {cartItem.quantity}개
-    //                           </span>
-    //                         </div>
-    //                       </div>
-    //                     </li>
-    //                   </ul>
-    //                 </div>
-    //                 <ul className="itemPriceBox">
-    //                   <li className="itemPrice">
-    //                     ￦
-    //                     <span className="totalPrice">
-    //                       {cartItem.totalPrice}
-    //                     </span>
-    //                   </li>
-    //                 </ul>
-    //               </div>
-    //               {/* <CartPopUp /> */}
-    //             </div>
-    //           </li>
-    //         ))}
-    //     </ul>
-    //   </div>
-    // </li>
-    <div />
+    <li className="cartLeft">
+      <div className="cartContents">
+        <div className="cartCheckDiv">
+          <span className="cartCheck">
+            <Checkbox
+              type="checkbox"
+              id="btnSelectAll"
+              className="btnSelectAll"
+              checked={selectAll}
+              onChange={handleCheckAll}
+            >
+              전체선택
+            </Checkbox>
+          </span>
+          <Button
+            type="button"
+            className="btnDeleteAll"
+            fontscale="small"
+            scale="middle"
+            color="whiteAndBlack"
+            onClick={handleCheckItemDelete}
+          >
+            선택 삭제
+          </Button>
+        </div>
+      </div>
+      <div className="cartList">
+        <ul className="shoppingList">
+          {cartList.length > 0 &&
+            cartList.map(cartItem => (
+              <li className="shoppingItemList" key={cartItem.productId}>
+                <div className="shoppingItemContent">
+                  <span className="itemCheck">
+                    <Checkbox
+                      type="checkbox"
+                      id={`btnSelect${cartItem.productId}`}
+                      className={`btnSelect${cartItem.productId}`}
+                      checked={itemCheckboxes.cartItem.productId}
+                      onChange={() =>
+                        handleItemCheckboxChange(cartItem.productId)
+                      }
+                    >
+                      선택
+                    </Checkbox>
+                  </span>
+                  <div>
+                    <button
+                      type="button"
+                      className="btnOption"
+                      id={cartItem.productId}
+                    >
+                      옵션/수량변경
+                    </button>
+                    <button
+                      type="button"
+                      className="btnDelete"
+                      value={cartItem.productId}
+                      title="상품삭제"
+                    >
+                      삭제
+                    </button>
+                  </div>
+                </div>
+                <div className="itemDetail">
+                  <div className="itemInfo">
+                    <div className="itemInfoDiv">
+                      <div>
+                        <a href="#!">
+                          <img
+                            src={cartItem.productThumbnailImage}
+                            alt="제품사진"
+                            className="itemImg"
+                          />
+                        </a>
+                      </div>
+                      <ul>
+                        <li>
+                          <strong>{cartItem.productName}</strong>
+                        </li>
+                        <li className="optionArea">
+                          <ul className="optionSize">
+                            <li>
+                              <span className="itemSizeText">사이즈(mm) :</span>
+                              <span className="itemSizeMm">
+                                {cartItem.size}
+                              </span>
+                            </li>
+                          </ul>
+                          <div className="optionQuantity">
+                            <div>
+                              <span className="itemQuantityText">수량 :</span>
+                              <span className="itemQuantity">
+                                {cartItem.quantity}개
+                              </span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <ul className="itemPriceBox">
+                      <li className="itemPrice">
+                        ￦
+                        <span className="totalPrice">
+                          {cartItem.totalPrice}
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  {/* <CartPopUp /> */}
+                </div>
+              </li>
+            ))}
+        </ul>
+      </div>
+    </li>
   );
 };
 

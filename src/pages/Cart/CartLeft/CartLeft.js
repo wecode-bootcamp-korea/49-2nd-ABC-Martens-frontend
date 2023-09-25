@@ -9,10 +9,7 @@ const CartLeft = () => {
 
   const [selectAll, setSelectAll] = useState(false);
 
-  const [itemCheckboxes, setItemCheckboxes] = useState({
-    //mockdata 받으면 코드 수정하기
-    productId: false,
-  });
+  const [itemCheckboxes, setItemCheckboxes] = useState({});
 
   useEffect(() => {
     fetch('/data/cartList.json', {
@@ -34,10 +31,6 @@ const CartLeft = () => {
       });
   }, []);
 
-  console.log(cartList);
-  console.log(cartList[0]);
-  console.log(cartList[1]);
-
   // 체크박스 전체 선택/ 취소
   const handleCheckAll = () => {
     setSelectAll(!selectAll);
@@ -49,10 +42,10 @@ const CartLeft = () => {
   };
 
   // 체크박스 개별 선택/ 취소
-  const handleItemCheckboxChange = itemName => {
+  const handleItemCheckboxChange = productId => {
     const updatedItemCheckboxes = {
       ...itemCheckboxes,
-      [itemName]: !itemCheckboxes[itemName],
+      [productId]: !itemCheckboxes[productId],
     };
     setItemCheckboxes(updatedItemCheckboxes);
 
@@ -113,7 +106,7 @@ const CartLeft = () => {
                       type="checkbox"
                       id={`btnSelect${cartItem.productId}`}
                       className={`btnSelect${cartItem.productId}`}
-                      checked={itemCheckboxes.cartItem.productId}
+                      checked={itemCheckboxes[cartItem.productId] || false}
                       onChange={() =>
                         handleItemCheckboxChange(cartItem.productId)
                       }
@@ -179,7 +172,7 @@ const CartLeft = () => {
                       <li className="itemPrice">
                         ￦
                         <span className="totalPrice">
-                          {cartItem.totalPrice}
+                          {cartItem.price.toLocaleString('ko-KR')}
                         </span>
                       </li>
                     </ul>

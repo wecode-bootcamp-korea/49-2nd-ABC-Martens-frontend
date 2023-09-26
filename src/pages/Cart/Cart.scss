@@ -1,8 +1,21 @@
 .cart {
+  position: relative;
+  z-index: 1000;
   width: calc(100vw - 80px);
   padding-left: 146px;
   padding-right: 146px;
   margin: 0 auto;
+  &.openModal::before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 
   .titleContainer {
     padding: 80px 0 0;

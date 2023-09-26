@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './CartLeft.scss';
 import Checkbox from '../../../components/CheckBox/Checkbox';
 import Button from '../../../components/Button/Button';
-// import CartPopUp from '../../../components/CartPopUp/CartPopUp';
+import CartPopUp from '../../../components/CartPopUp/CartPopUp';
 
 const CartLeft = () => {
   const [cartList, setCartList] = useState([]);
-
   const [selectAll, setSelectAll] = useState(false);
-
   const [itemCheckboxes, setItemCheckboxes] = useState({});
+  const [isPopUp, setIsPopUp] = useState(false);
 
   useEffect(() => {
     fetch('/data/cartList.json', {
@@ -119,6 +118,7 @@ const CartLeft = () => {
                       type="button"
                       className="btnOption"
                       id={cartItem.productId}
+                      onClick={setIsPopUp.bind(this, true)}
                     >
                       옵션/수량변경
                     </button>
@@ -177,8 +177,8 @@ const CartLeft = () => {
                       </li>
                     </ul>
                   </div>
-                  {/* <CartPopUp /> */}
                 </div>
+                {isPopUp && <CartPopUp setIsPopUp={setIsPopUp} />}
               </li>
             ))}
         </ul>

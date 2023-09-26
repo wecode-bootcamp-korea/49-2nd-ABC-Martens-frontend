@@ -2,20 +2,21 @@ import React from 'react';
 import './CartPopUp.scss';
 import Button from '../Button/Button';
 
-const CartPopUp = () => {
+const CartPopUp = ({ setIsPopUp }) => {
   return (
     <div className="cartPopUp">
       <div className="popUpTitle">
         <strong>옵션/수량 변경</strong>
-        <a href="#!">
+        <div onClick={setIsPopUp.bind(this, false)}>
           <img
             src="https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/close_black.svg"
             alt="닫기"
           />
-        </a>
+        </div>
       </div>
       <div className="popUpCnt">
-        <form name="optionChangeForm" id="optionChangeForm">
+        {/*아래 div -> 기존 form이었다가 react error로 form 태그 중복떠서 div로 변경함 */}
+        <div name="optionChangeForm" id="optionChangeForm">
           <div className="cartItemDiv">
             <div className="cartItemBox">
               <div className="cartItemCnt">
@@ -138,7 +139,7 @@ const CartPopUp = () => {
                                   <input
                                     type="text"
                                     className="amtNum"
-                                    value="1"
+                                    defaultValue="1"
                                   />
                                   <Button
                                     type="button"
@@ -186,7 +187,7 @@ const CartPopUp = () => {
               변경하기
             </Button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

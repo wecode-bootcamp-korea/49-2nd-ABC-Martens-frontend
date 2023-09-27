@@ -1,0 +1,111 @@
+.cartRight {
+  display: block;
+  width: 430px;
+  padding-left: 20px;
+
+  .orderWrap {
+    position: sticky;
+    top: 145px;
+
+    .orderContainer {
+      margin-top: 50px;
+      border: 1px solid #e1e1e1;
+
+      .orderExAmount {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        border-bottom: 1px solid #e1e1e1;
+        padding: 15px 20px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 30px;
+        text-transform: uppercase;
+        color: #000000;
+        background-color: #f7f7f7;
+      }
+
+      .sumPriceContainer {
+        padding: 15px 20px;
+
+        div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          span {
+            display: flex;
+            align-items: center;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 26px;
+            color: #000000;
+          }
+
+          b {
+            display: flex;
+            align-items: center;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 28px;
+            color: #000000;
+
+            span {
+              font-style: normal;
+              font-weight: bold;
+              font-size: 18px;
+              line-height: 28px;
+            }
+          }
+
+          s {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 28px;
+            color: #bb172f;
+
+            span {
+              font-style: normal;
+              font-weight: bold;
+              font-size: 18px;
+              line-height: 28px;
+              color: #bb172f;
+            }
+          }
+
+          strong {
+            display: flex;
+            align-items: center;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 30px;
+            color: #000000;
+
+            span {
+              font-style: normal;
+              font-weight: bold;
+              font-size: 20px;
+              line-height: 28px;
+            }
+          }
+        }
+
+        div:last-child > span {
+          font-weight: 700;
+        }
+      }
+
+      .sumPriceContainer > div + div {
+        margin-top: 10px;
+      }
+    }
+  }
+}

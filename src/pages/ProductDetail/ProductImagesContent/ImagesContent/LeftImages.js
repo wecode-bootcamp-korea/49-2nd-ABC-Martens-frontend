@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import './LeftImages.scss';
 
-const LeftImages = () => {
+const LeftImages = ({ count, setCount }) => {
   const [imageData, setImageData] = useState([]);
 
   useEffect(() => {
@@ -16,10 +17,18 @@ const LeftImages = () => {
         <div className="swiper">
           <div className="swiperWrapper">
             <div className="swiperSlide">
-              {imageData?.map(list => {
+              {imageData?.map((list, index) => {
+                let indexCheck;
+                if (index === count) {
+                  indexCheck = 'realImageWrapper';
+                } else {
+                  indexCheck = 'imageWrapper';
+                }
                 return (
                   <div className="swiperSlide" key={list.id}>
-                    <img src={list.url} alt={list.alt} />
+                    <div className={indexCheck}>
+                      <img src={list.url} alt={list.alt} />
+                    </div>
                   </div>
                 );
               })}

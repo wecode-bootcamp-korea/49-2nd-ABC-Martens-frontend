@@ -76,6 +76,13 @@ button {
     }
   }
 
+  &[color='yellowToBlack'] {
+    border: 1px solid #e1e1e1;
+    color: #ffd343;
+    background: black;
+    text-align: left;
+  }
+
   &[color='whiteAndBlack'] {
     border: 1px solid #000000;
     color: #000000;
@@ -96,6 +103,11 @@ button {
       border: none;
       color: #000000;
       background: #ffd343;
+    }
+
+    &:focus {
+      color: #ffd343;
+      background: black;
     }
   }
 }

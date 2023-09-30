@@ -4,11 +4,12 @@ import Checkbox from '../../../components/CheckBox/Checkbox';
 import Button from '../../../components/Button/Button';
 import CartPopUp from '../../../components/CartPopUp/CartPopUp';
 
-const CartLeft = () => {
+const CartLeft = ({ isPopUp, setIsPopUp }) => {
   const [cartList, setCartList] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [itemCheckboxes, setItemCheckboxes] = useState({});
-  const [isPopUp, setIsPopUp] = useState(false);
+  // const [isPopUp, setIsPopUp] = useState(false);
+  const [selectCartItem, setSelectCartItem] = useState();
 
   useEffect(() => {
     fetch('/data/cartList.json', {
@@ -29,6 +30,8 @@ const CartLeft = () => {
         setCartList(data);
       });
   }, []);
+
+  console.log(cartList);
 
   // 체크박스 전체 선택/ 취소
   const handleCheckAll = () => {
@@ -118,7 +121,10 @@ const CartLeft = () => {
                       type="button"
                       className="btnOption"
                       id={cartItem.productId}
-                      onClick={setIsPopUp.bind(this, true)}
+                      onClick={() => {
+                        setIsPopUp(true);
+                        setSelectCartItem(cartItem);
+                      }}
                     >
                       옵션/수량변경
                     </button>
@@ -178,7 +184,12 @@ const CartLeft = () => {
                     </ul>
                   </div>
                 </div>
-                {isPopUp && <CartPopUp setIsPopUp={setIsPopUp} />}
+                {isPopUp && (
+                  <CartPopUp
+                    setIsPopUp={setIsPopUp}
+                    cartItem={selectCartItem}
+                  />
+                )}
               </li>
             ))}
         </ul>

@@ -9,8 +9,8 @@ const CartPopUp = ({ setIsPopUp }) => {
         <strong>옵션/수량 변경</strong>
         <div onClick={setIsPopUp.bind(this, false)}>
           <img
-            src="https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/close_black.svg"
-            alt="닫기"
+            src="https://i.postimg.cc/zXjzB3Xv/close-150192-1280.png"
+            alt="close"
           />
         </div>
       </div>
@@ -120,7 +120,10 @@ const CartPopUp = ({ setIsPopUp }) => {
                               <span>
                                 <b>사이즈(mm) : 260</b>
                                 <a href="#!">
-                                  <s />
+                                  <img
+                                    src="https://i.postimg.cc/zXjzB3Xv/close-150192-1280.png"
+                                    alt="close"
+                                  />
                                 </a>
                               </span>
                               <div>
@@ -132,7 +135,7 @@ const CartPopUp = ({ setIsPopUp }) => {
                                     sort="icon"
                                   >
                                     <img
-                                      src="https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/minus.svg"
+                                      src="https://i.postimg.cc/C1G1s7YH/minus.png"
                                       alt="minusImg"
                                     />
                                   </Button>
@@ -147,7 +150,7 @@ const CartPopUp = ({ setIsPopUp }) => {
                                     sort="icon"
                                   >
                                     <img
-                                      src="https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/plus.svg"
+                                      src="https://i.postimg.cc/PrtLKgCL/plus.png"
                                       alt="minusImg"
                                     />
                                   </Button>

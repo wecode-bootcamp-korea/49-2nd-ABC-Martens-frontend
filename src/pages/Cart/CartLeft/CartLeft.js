@@ -8,7 +8,6 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
   const [cartList, setCartList] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [itemCheckboxes, setItemCheckboxes] = useState({});
-  // const [isPopUp, setIsPopUp] = useState(false);
   const [selectCartItem, setSelectCartItem] = useState();
 
   useEffect(() => {
@@ -30,8 +29,6 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
         setCartList(data);
       });
   }, []);
-
-  console.log(cartList);
 
   // 체크박스 전체 선택/ 취소
   const handleCheckAll = () => {

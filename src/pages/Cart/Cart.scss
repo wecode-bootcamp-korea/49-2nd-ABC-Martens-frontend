@@ -1,10 +1,11 @@
 .cart {
   position: relative;
-  z-index: 1000;
+  z-index: 10;
   width: calc(100vw - 80px);
   padding-left: 146px;
   padding-right: 146px;
   margin: 0 auto;
+
   &.openModal::before {
     content: '';
     display: block;

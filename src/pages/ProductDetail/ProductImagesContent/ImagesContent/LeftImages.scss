@@ -1,5 +1,5 @@
 .leftImages {
-  width: 80px;
+  width: 84px;
   height: 100%;
   margin-right: 20px;
   top: 0;
@@ -20,7 +20,7 @@
         width: 100%;
         height: 100%;
         display: flex;
-        // transition: left 0.5s ease-out;
+        transition: left 0.5s ease-out;
         box-sizing: content-box;
 
         .swiperSlide {
@@ -37,10 +37,10 @@
           }
 
           .realImageWrapper {
-            border: 1px solid black;
+            border: 2px solid black;
 
             img {
-              width: 80px;
+              width: 84px;
               height: 100px;
               vertical-align: middle;
               border: none;

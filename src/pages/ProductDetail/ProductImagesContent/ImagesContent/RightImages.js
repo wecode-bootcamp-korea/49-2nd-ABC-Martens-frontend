@@ -1,15 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import React, { useState, useEffect } from 'react';
 import './RightImages.scss';
 
 const RightImages = ({ count, setCount }) => {
   const [imageData, setImageData] = useState([]);
-
-  // const [count, setCount] = useState(0);
 
   const prevBtn = () => {
     const minusCount = count => (count > 0 ? count - 1 : null);
@@ -27,35 +20,18 @@ const RightImages = ({ count, setCount }) => {
       .then(result => setImageData(result));
   }, []);
 
-  const swiperRef = useRef(null);
-
-  const handleSlideChange = () => {
-    if (swiperRef.current) {
-      // const currentIndex = swiperRef.current.swiper.activeIndex;
-      console.log('Current slide index:', swiperRef.current.activeIndex);
-      setCount(swiperRef.current.activeIndex);
-    }
-  };
-
   return (
     <div className="rightImages">
-      <Swiper
-        modules={[Navigation, Pagination]}
-        navigation
-        pagination={{ clickable: true }}
-        onSlideChange={handleSlideChange}
-        onSwiper={swiper => {
-          swiperRef.current = swiper;
-        }}
-      >
+      <div className="swiperSlide">
         {imageData?.map((list, index) => {
           return (
-            <SwiperSlide
+            <div
+              className="swiperSlider"
               key={list.id}
-              // style={{ transform: `translateX(${count * -560}px)` }}
+              style={{ transform: `translateX(${count * -560}px)` }}
             >
               <img src={list.url} alt={list.alt} index={index} />
-            </SwiperSlide>
+            </div>
           );
         })}
         <button className="prev" onClick={prevBtn}>
@@ -69,7 +45,7 @@ const RightImages = ({ count, setCount }) => {
             {count + 1} / {imageData.length}
           </p>
         </div>
-      </Swiper>
+      </div>
     </div>
   );
 };

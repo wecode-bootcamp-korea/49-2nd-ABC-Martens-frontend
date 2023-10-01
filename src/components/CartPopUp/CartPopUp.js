@@ -112,12 +112,7 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                                       alt="minusImg"
                                     />
                                   </Button>
-                                  {selectQuantity}
-                                  {/* <input
-                                    type="text"
-                                    className="amtNum"
-                                    defaultValue={selectQuantity}
-                                  /> */}
+                                  <div className="amtNum">{selectQuantity}</div>
                                   <Button
                                     type="button"
                                     className="amtPlusBtn"

@@ -88,11 +88,16 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                           <td>
                             <div className="optionDiv">
                               <span>
-                                <b>사이즈(mm) : {cartItem.size}</b>
-                                <a href="#!">
+                                <b>사이즈(mm) : {selectSize}</b>
+                                <a href="{() => false}">
                                   <img
                                     src="https://i.postimg.cc/zXjzB3Xv/close-150192-1280.png"
                                     alt="close"
+                                    onClick={() =>
+                                      alert(
+                                        '더이상 선택된 옵션을 삭제할 수 없습니다.',
+                                      )
+                                    }
                                   />
                                 </a>
                               </span>
@@ -130,9 +135,9 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                                 <div className="amtPriceContainer">
                                   <strong className="amtPrice">
                                     ￦
-                                    {cartItem.totalPrice.toLocaleString(
-                                      'ko-KR',
-                                    )}
+                                    {(
+                                      selectQuantity * cartItem.price
+                                    ).toLocaleString('ko-KR')}
                                   </strong>
                                 </div>
                               </div>

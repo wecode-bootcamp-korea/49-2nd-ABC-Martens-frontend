@@ -9,7 +9,7 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
   const [selectAll, setSelectAll] = useState(false);
   const [itemCheckboxes, setItemCheckboxes] = useState({});
   const [selectCartItem, setSelectCartItem] = useState();
-  // const [isDelete, setIsDelete] = useState('N');
+  const [isDelete, setIsDelete] = useState('N');
 
   useEffect(() => {
     fetch('/data/cartList.json', {
@@ -136,7 +136,7 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
                       className="btnDelete"
                       value={cartItem.productId}
                       title="상품삭제"
-                      // onClick={}
+                      onClick={handleCheckItemDelete}
                     >
                       삭제
                     </button>

@@ -9,7 +9,7 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
   const [selectAll, setSelectAll] = useState(false);
   const [itemCheckboxes, setItemCheckboxes] = useState({});
   const [selectCartItem, setSelectCartItem] = useState();
-  // const [isDeleted, setIsDeleted] = useState('N');
+  const [isDelete, setIsDelete] = useState('N');
 
   useEffect(() => {
     fetch('/data/cartList.json', {
@@ -70,7 +70,7 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
       }
     }
     setItemCheckboxes(updatedItemCheckboxes);
-    // setIsDeleted('Y');
+    setIsDelete('Y');
   };
 
   return (

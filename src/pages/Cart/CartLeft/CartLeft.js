@@ -4,11 +4,12 @@ import Checkbox from '../../../components/CheckBox/Checkbox';
 import Button from '../../../components/Button/Button';
 import CartPopUp from '../../../components/CartPopUp/CartPopUp';
 
-const CartLeft = () => {
+const CartLeft = ({ isPopUp, setIsPopUp }) => {
   const [cartList, setCartList] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
   const [itemCheckboxes, setItemCheckboxes] = useState({});
-  const [isPopUp, setIsPopUp] = useState(false);
+  const [selectCartItem, setSelectCartItem] = useState();
+  // const [isDeleted, setIsDeleted] = useState('N');
 
   useEffect(() => {
     fetch('/data/cartList.json', {
@@ -27,6 +28,11 @@ const CartLeft = () => {
       .catch(error => console.log(error))
       .then(data => {
         setCartList(data);
+        const updatedItemCheckboxes = {};
+        for (let i = 0; i < data.length; i++) {
+          updatedItemCheckboxes[data[i].productId] = false;
+        }
+        setItemCheckboxes(updatedItemCheckboxes);
       });
   }, []);
 
@@ -63,8 +69,8 @@ const CartLeft = () => {
         delete updatedItemCheckboxes[key];
       }
     }
-
     setItemCheckboxes(updatedItemCheckboxes);
+    // setIsDeleted('Y');
   };
 
   return (
@@ -88,7 +94,7 @@ const CartLeft = () => {
             fontscale="small"
             scale="middle"
             color="whiteAndBlack"
-            onClick={handleCheckItemDelete}
+            handleClick={handleCheckItemDelete}
           >
             선택 삭제
           </Button>
@@ -118,7 +124,10 @@ const CartLeft = () => {
                       type="button"
                       className="btnOption"
                       id={cartItem.productId}
-                      onClick={setIsPopUp.bind(this, true)}
+                      onClick={() => {
+                        setIsPopUp(true);
+                        setSelectCartItem(cartItem);
+                      }}
                     >
                       옵션/수량변경
                     </button>
@@ -127,6 +136,7 @@ const CartLeft = () => {
                       className="btnDelete"
                       value={cartItem.productId}
                       title="상품삭제"
+                      // onClick={}
                     >
                       삭제
                     </button>
@@ -172,13 +182,18 @@ const CartLeft = () => {
                       <li className="itemPrice">
                         ￦
                         <span className="totalPrice">
-                          {cartItem.price.toLocaleString('ko-KR')}
+                          {cartItem.totalPrice.toLocaleString('ko-KR')}
                         </span>
                       </li>
                     </ul>
                   </div>
                 </div>
-                {isPopUp && <CartPopUp setIsPopUp={setIsPopUp} />}
+                {isPopUp && (
+                  <CartPopUp
+                    setIsPopUp={setIsPopUp}
+                    cartItem={selectCartItem}
+                  />
+                )}
               </li>
             ))}
         </ul>

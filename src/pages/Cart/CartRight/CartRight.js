@@ -28,10 +28,26 @@ const CartRight = () => {
   let sum = cartList => {
     let sum = 0;
     for (let i of cartList) {
-      sum += i.price;
+      sum += i.totalPrice;
     }
 
     let cartTotalPrice = sum.toLocaleString('ko-KR');
+    return cartTotalPrice;
+  };
+
+  let cartDiscountPrice = cartList => {
+    let discountRate = 0.7;
+    let notDiscountPrice = 0;
+    let discountPrice = 0;
+    let cartDiscountTotalPrice = 0;
+
+    for (let i of cartList) {
+      notDiscountPrice += (i.price / discountRate) * i.quantity;
+      discountPrice += i.price * i.quantity;
+      cartDiscountTotalPrice = notDiscountPrice - discountPrice;
+    }
+
+    let cartTotalPrice = cartDiscountTotalPrice.toLocaleString('ko-KR');
     return cartTotalPrice;
   };
 
@@ -66,7 +82,7 @@ const CartRight = () => {
               <s>
                 ￦
                 <span className="sumPrice">
-                  <span>0</span>
+                  <span>{cartDiscountPrice(cartList)}</span>
                 </span>
               </s>
             </div>

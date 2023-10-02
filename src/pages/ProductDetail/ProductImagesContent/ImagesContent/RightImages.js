@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './RightImages.scss';
 
-const RightImages = () => {
+const RightImages = ({ count, setCount }) => {
   const [imageData, setImageData] = useState([]);
-
-  const [count, setCount] = useState(0);
 
   const prevBtn = () => {
     const minusCount = count => (count > 0 ? count - 1 : null);

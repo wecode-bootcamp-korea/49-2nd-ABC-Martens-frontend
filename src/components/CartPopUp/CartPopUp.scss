@@ -42,7 +42,8 @@
       cursor: pointer;
 
       img {
-        max-width: 100%;
+        width: 30px;
+        height: 30px;
         vertical-align: middle;
       }
     }
@@ -186,18 +187,14 @@
                             display: inline-flex;
                             justify-content: center;
                             align-items: center;
-                            border: 2px #ffffff solid;
                             padding: 0;
                             width: 30px;
                             height: 30px;
                             background: #ffffff;
 
-                            s {
+                            img {
                               width: 30px;
                               height: 30px;
-                              background: url('https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/close_black.svg')
-                                no-repeat;
-                              background-position: center center;
                             }
                           }
                         }
@@ -207,6 +204,7 @@
                           justify-content: flex-start;
 
                           strong {
+                            padding-right: 5px;
                             font-style: normal;
                             font-weight: 700;
                             font-size: 16px;
@@ -219,10 +217,11 @@
                             align-items: center;
 
                             .amtNum {
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
                               width: 30px;
                               height: 30px;
-                              padding: 0;
-                              border: 0;
                               font-style: normal;
                               font-weight: 400;
                               font-size: 16px;

@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CartPopUp.scss';
 import Button from '../Button/Button';
 
-const CartPopUp = ({ setIsPopUp }) => {
+const CartPopUp = ({ setIsPopUp, cartItem }) => {
+  // 백엔드에서 API호출로 사이즈 값 받아오기
+  const sizeList = [220, 230, 240, 250, 260, 270];
+
+  const [selectSize, setSelectSize] = useState(cartItem?.size);
+  const [selectQuantity, setSelectQuantity] = useState(cartItem?.quantity);
+
   return (
     <div className="cartPopUp">
       <div className="popUpTitle">
         <strong>옵션/수량 변경</strong>
-        <div onClick={setIsPopUp.bind(this, false)}>
+        <div
+          onClick={() => {
+            setIsPopUp(false);
+          }}
+        >
           <img
-            src="https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/close_black.svg"
-            alt="닫기"
+            src="https://i.postimg.cc/zXjzB3Xv/close-150192-1280.png"
+            alt="close"
           />
         </div>
       </div>
@@ -31,7 +41,7 @@ const CartPopUp = ({ setIsPopUp }) => {
                 </div>
                 <ul>
                   <li>
-                    <strong>1461 모노</strong>
+                    <strong>{cartItem.productName}</strong>
                   </li>
                 </ul>
               </div>
@@ -46,69 +56,29 @@ const CartPopUp = ({ setIsPopUp }) => {
                 <div className="itemOptionArea">
                   <div className="itemOptionTable">
                     <div className="optionWrap">
-                      <Button
-                        type="button"
-                        className="itemSize"
-                        fontscale="small"
-                        scale="small"
-                        color="whiteToBlack"
-                      >
-                        220
-                      </Button>
-                      <Button
-                        type="button"
-                        className="itemSize"
-                        fontscale="small"
-                        scale="small"
-                        color="whiteToBlack"
-                      >
-                        230
-                      </Button>
-                      <Button
-                        type="button"
-                        className="itemSize"
-                        fontscale="small"
-                        scale="small"
-                        color="whiteToBlack"
-                      >
-                        240
-                      </Button>
-                      <Button
-                        type="button"
-                        className="itemSize"
-                        fontscale="small"
-                        scale="small"
-                        color="whiteToBlack"
-                      >
-                        250
-                      </Button>
-                      <Button
-                        type="button"
-                        className="itemSize"
-                        fontscale="small"
-                        scale="small"
-                        color="whiteToBlack"
-                      >
-                        260
-                      </Button>
-                      <Button
-                        type="button"
-                        className="itemSize"
-                        fontscale="small"
-                        scale="small"
-                        color="whiteToBlack"
-                      >
-                        270
-                      </Button>
-                      <Button
-                        type="button"
-                        className="itemSize"
-                        fontscale="small"
-                        scale="small"
-                        color="whiteToBlack"
-                      >
-                        280
-                      </Button>
+                      {sizeList.map(size => {
+                        let color;
+                        if (size === selectSize) {
+                          color = 'yellowToBlack';
+                        } else {
+                          color = 'whiteToBlack';
+                        }
+                        return (
+                          <Button
+                            key={size}
+                            type="button"
+                            className="itemSize"
+                            fontscale="small"
+                            scale="small"
+                            color={color}
+                            handleClick={() => {
+                              setSelectSize(size);
+                            }}
+                          >
+                            {size}
+                          </Button>
+                        );
+                      })}
                     </div>
                   </div>
                   <div className="itemQuantityTableContainer">
@@ -118,9 +88,12 @@ const CartPopUp = ({ setIsPopUp }) => {
                           <td>
                             <div className="optionDiv">
                               <span>
-                                <b>사이즈(mm) : 260</b>
+                                <b>사이즈(mm) : {cartItem.size}</b>
                                 <a href="#!">
-                                  <s />
+                                  <img
+                                    src="https://i.postimg.cc/zXjzB3Xv/close-150192-1280.png"
+                                    alt="close"
+                                  />
                                 </a>
                               </span>
                               <div>
@@ -130,31 +103,36 @@ const CartPopUp = ({ setIsPopUp }) => {
                                     type="button"
                                     className="amtMinusBtn"
                                     sort="icon"
+                                    handleClick={() => {
+                                      setSelectQuantity(selectQuantity - 1);
+                                    }}
                                   >
                                     <img
-                                      src="https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/minus.svg"
+                                      src="https://i.postimg.cc/C1G1s7YH/minus.png"
                                       alt="minusImg"
                                     />
                                   </Button>
-                                  <input
-                                    type="text"
-                                    className="amtNum"
-                                    defaultValue="1"
-                                  />
+                                  <div className="amtNum">{selectQuantity}</div>
                                   <Button
                                     type="button"
                                     className="amtPlusBtn"
                                     sort="icon"
+                                    handleClick={() => {
+                                      setSelectQuantity(selectQuantity + 1);
+                                    }}
                                   >
                                     <img
-                                      src="https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/plus.svg"
+                                      src="https://i.postimg.cc/PrtLKgCL/plus.png"
                                       alt="minusImg"
                                     />
                                   </Button>
                                 </div>
                                 <div className="amtPriceContainer">
                                   <strong className="amtPrice">
-                                    ￦ 190,000
+                                    ￦
+                                    {cartItem.totalPrice.toLocaleString(
+                                      'ko-KR',
+                                    )}
                                   </strong>
                                 </div>
                               </div>
@@ -174,6 +152,9 @@ const CartPopUp = ({ setIsPopUp }) => {
               fontscale="large"
               color="whiteAndBlack"
               scale="cartBtn"
+              handleClick={() => {
+                setIsPopUp(false);
+              }}
             >
               취소
             </Button>
@@ -183,6 +164,10 @@ const CartPopUp = ({ setIsPopUp }) => {
               fontscale="large"
               color="blackToYellow"
               scale="cartBtn"
+              // handleClick={()=> {
+              //   //API (selectSize, selectQuantity 값 보내주기)
+              // 저장된 값을 cartList에 보내기?
+              // }}
             >
               변경하기
             </Button>

@@ -9,7 +9,7 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
   const [selectAll, setSelectAll] = useState(false);
   const [itemCheckboxes, setItemCheckboxes] = useState({});
   const [selectCartItem, setSelectCartItem] = useState();
-  const [isDelete, setIsDelete] = useState('N');
+  // const [isDelete, setIsDelete] = useState('N');
 
   useEffect(() => {
     fetch('/data/cartList.json', {

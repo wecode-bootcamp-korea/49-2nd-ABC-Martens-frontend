@@ -172,6 +172,21 @@ const Users = () => {
   //   setCustomMail(e.target.value);
   // };
 
+  fetch('http://10.58.52.231:8000/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify(),
+  })
+    .then(res => res.json())
+    .then(result => {
+      console.log(result);
+
+      // if (result.message === "LOGIN_SUCCESS") {
+      //     alert("성공이다 !");
+      // }
+    });
   return (
     <div className="UsersHighestContainer">
       <div className="userMainCotainer">

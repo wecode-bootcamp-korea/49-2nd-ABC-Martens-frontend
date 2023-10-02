@@ -9,6 +9,16 @@ const Login = () => {
     navigate('/users');
   };
 
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
+  //ID/PW값
+  const saveUserId = event => {
+    setId(event.target.value);
+  };
+  const saveUserPw = event => {
+    setPw(event.target.value);
+  };
+
   const REST_API_KEY = process.env.REACT_APP_REST_API_KEY;
   const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
   const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
@@ -27,6 +37,45 @@ const Login = () => {
     // 쿠키 설정
     document.cookie = `accessToken=${accessToken}; expires=${expiratedDate.toUTCString()}; path=/`;
   };
+  const PreservationAccessTokenFromCookie = () => {
+    const name = 'accessToken' + '=';
+    console.log(name);
+    const cookies = document.cookie.split(';');
+
+    for (let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i].trim();
+      if (cookie.startsWith(name)) {
+        return cookie.substring(name.length, cookie.length);
+      }
+      console.log(cookie);
+    }
+    return null;
+  };
+
+  const handleLogin = () => {
+    fetch('http://10.58.52.75:8000/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: JSON.stringify({
+        email: id,
+        password: pw,
+      }),
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result.message === 'LOGIN_SUCCESS') {
+          localStorage.setItem('token', result.accessToken);
+          // localStorage.setItem("nickName", result.nickname);
+          console.log('???', result);
+          navigate('/');
+        } else {
+          alert('로그인 실패');
+        }
+      });
+  };
+
   return (
     <div className="loginHighestContainer">
       <div className="mainContainer">

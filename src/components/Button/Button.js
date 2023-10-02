@@ -2,12 +2,21 @@ import React from 'react';
 import './Button.scss';
 
 const Button = props => {
-  const { children, sort, fontscale, scale, color, disabled, handleClick } =
-    props;
+  const {
+    children,
+    className,
+    sort,
+    fontscale,
+    scale,
+    color,
+    disabled,
+    handleClick,
+  } = props;
 
   return (
     <button
       type="button"
+      className={className}
       sort={sort}
       fontscale={fontscale}
       scale={scale}

@@ -41,7 +41,7 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                 </div>
                 <ul>
                   <li>
-                    <strong>1461 모노</strong>
+                    <strong>{cartItem.productName}</strong>
                   </li>
                 </ul>
               </div>
@@ -88,7 +88,7 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                           <td>
                             <div className="optionDiv">
                               <span>
-                                <b>사이즈(mm) : 260</b>
+                                <b>사이즈(mm) : {cartItem.size}</b>
                                 <a href="#!">
                                   <img
                                     src="https://i.postimg.cc/zXjzB3Xv/close-150192-1280.png"
@@ -129,7 +129,10 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                                 </div>
                                 <div className="amtPriceContainer">
                                   <strong className="amtPrice">
-                                    ￦ 190,000
+                                    ￦
+                                    {cartItem.totalPrice.toLocaleString(
+                                      'ko-KR',
+                                    )}
                                   </strong>
                                 </div>
                               </div>
@@ -149,6 +152,9 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
               fontscale="large"
               color="whiteAndBlack"
               scale="cartBtn"
+              handleClick={() => {
+                setIsPopUp(false);
+              }}
             >
               취소
             </Button>

@@ -9,6 +9,7 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
   const [selectAll, setSelectAll] = useState(false);
   const [itemCheckboxes, setItemCheckboxes] = useState({});
   const [selectCartItem, setSelectCartItem] = useState();
+  // const [isDeleted, setIsDeleted] = useState('N');
 
   useEffect(() => {
     fetch('/data/cartList.json', {
@@ -27,6 +28,11 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
       .catch(error => console.log(error))
       .then(data => {
         setCartList(data);
+        const updatedItemCheckboxes = {};
+        for (let i = 0; i < data.length; i++) {
+          updatedItemCheckboxes[data[i].productId] = false;
+        }
+        setItemCheckboxes(updatedItemCheckboxes);
       });
   }, []);
 
@@ -63,8 +69,8 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
         delete updatedItemCheckboxes[key];
       }
     }
-
     setItemCheckboxes(updatedItemCheckboxes);
+    // setIsDeleted('Y');
   };
 
   return (
@@ -88,7 +94,7 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
             fontscale="small"
             scale="middle"
             color="whiteAndBlack"
-            onClick={handleCheckItemDelete}
+            handleClick={handleCheckItemDelete}
           >
             선택 삭제
           </Button>
@@ -130,6 +136,7 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
                       className="btnDelete"
                       value={cartItem.productId}
                       title="상품삭제"
+                      // onClick={}
                     >
                       삭제
                     </button>
@@ -175,7 +182,7 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
                       <li className="itemPrice">
                         ￦
                         <span className="totalPrice">
-                          {cartItem.price.toLocaleString('ko-KR')}
+                          {cartItem.totalPrice.toLocaleString('ko-KR')}
                         </span>
                       </li>
                     </ul>

@@ -1,15 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ProductOrder.scss';
 
+const SIZES = [220, 230, 240, 250, 260, 270, 280, 290];
+
 const ProductOrder = () => {
-  const handleButtonClick = () => {
-    const linkUrl = 'localhost3000/Order';
-    window.location.href = linkUrl;
-  };
-  const handleButtonClick_1 = () => {
-    const linkUrl = 'localhost3000/Payment';
-    window.location.href = linkUrl;
-  };
+  const [selectedSize, setSelectedSize] = useState();
 
   return (
     <div className="productOrderlist">
@@ -43,35 +38,28 @@ const ProductOrder = () => {
             <div className="sizeOption">
               <div className="optionTable">
                 <div className="tableWrap">
-                  <button className="btn" type="button">
-                    220
-                  </button>
-                  <button className="btn" type="button">
-                    230
-                  </button>
-                  <button className="btn" type="button">
-                    240
-                  </button>
-                  <button className="btn" type="button">
-                    250
-                  </button>
-                  <button className="btn" type="button">
-                    260
-                  </button>
-                  <button className="btn" type="button">
-                    270
-                  </button>
-                  <button className="btn" type="button">
-                    280
-                  </button>
-                  <button className="btn" type="button">
-                    290
-                  </button>
+                  {SIZES.map(size => (
+                    <button
+                      key={size}
+                      className="btn"
+                      type="button"
+                      onClick={() => setSelectedSize(size)}
+                    >
+                      {size}
+                    </button>
+                  ))}
                 </div>
                 <div className="quantityContainer">
                   <div className="quantityTable">
                     <div className="quantityOtp">
-                      <span className="sizeInch">사이즈(mm) : </span>
+                      {selectedSize && (
+                        <span className="sizeInch">
+                          사이즈(mm) : {selectedSize}
+                          <a>
+                            <img src="images/x-cross.png" alt="x-icon"></img>
+                          </a>
+                        </span>
+                      )}
                       <div className="quanTity_1">
                         <span className="quantity_Content">수량:</span>
                       </div>
@@ -89,20 +77,16 @@ const ProductOrder = () => {
                 </div>
                 <div className="pdBtns_area1">
                   <div className="pdpBtn">
-                    <button
-                      type="button"
-                      className="cart"
-                      onClick={handleButtonClick}
-                    >
-                      장바구니
-                    </button>
-                    <button
-                      type="button"
-                      className="buy"
-                      onClick={handleButtonClick_1}
-                    >
-                      구매하기
-                    </button>
+                    <a href="/Cart">
+                      <button type="button" className="cart">
+                        장바구니
+                      </button>
+                    </a>
+                    <a href="/Payment">
+                      <button type="button" className="buy">
+                        구매하기
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>

@@ -1,10 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  max-height: 100000px;
-}
-.highestContainer {
-  position: fixed;
+.loginHighestContainer {
   top: 0;
   left: 0;
   width: 100%;
@@ -12,5 +6,204 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 10010;
   transition: opacity 0.25s;
-  border: 2px solid red;
+  padding-top: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  .mainContainer {
+    width: 100%;
+    height: 570px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    .loginNameContainer {
+      width: 1200px;
+      height: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 0px 5px;
+      .loginName {
+        font-weight: 700;
+        font-size: 30px;
+      }
+      #welcomeMent {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26px;
+        color: #828282;
+      }
+    }
+    .loginInputContainer {
+      width: 1200px;
+      height: 420px;
+      display: flex;
+      padding: 0px 90px 0px 90px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      .userLoginContainer {
+        width: 440px;
+        height: 420px;
+        display: flex;
+        flex-direction: column;
+        margin: 0px 90px 0px 0px;
+        .logintextConainer {
+          margin-bottom: 35px;
+          .Logintext {
+            font-size: 26px;
+            font-family: monospace;
+            font-weight: 1000;
+            margin-bottom: 35px;
+          }
+        }
+        .inputboxContainer {
+          width: 100%;
+          height: 120px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          .inputbox {
+            width: 440px;
+            height: 50px;
+            padding: 0px 15px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            color: #000000;
+          }
+        }
+        .idSaveContainer {
+          width: 100%;
+          height: 30px;
+          margin: 20px 0 30px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          .findButton {
+            border: 0;
+            background-color: transparent;
+            font-size: 15px;
+            font-weight: 800;
+            text-decoration: underline;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+        .buttonContainer {
+          width: 100%;
+          height: 110px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          .loginButton {
+            width: 100%;
+            height: 50px;
+            background-color: #000000;
+            color: ghostwhite;
+            font-size: 20px;
+            font-weight: 700;
+            &:hover {
+              cursor: pointer;
+            }
+            &:active {
+              border: 1px solid blue;
+            }
+          }
+          .socialLoginButton {
+            width: 100%;
+            height: 50px;
+            background-color: #ffe512;
+            border: 1px solid #ffe512;
+            color: black;
+            font-size: 20px;
+            font-weight: 700;
+            &hover {
+              cursor: pointer;
+            }
+            &:active {
+              border: 1px solid blue;
+            }
+          }
+        }
+        .userSignUpContainer {
+          margin-top: 15px;
+          display: flex;
+          justify-content: flex-end;
+          .findButton {
+            border: 0;
+            background-color: transparent;
+            font-size: 15px;
+            font-weight: 800;
+            text-decoration: underline;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .nonUserLoginContainer {
+        width: 440px;
+        height: 420px;
+        display: flex;
+        flex-direction: column;
+        .logintextConainer {
+          margin-bottom: 35px;
+          .Logintext {
+            font-size: 26px;
+            font-family: monospace;
+            font-weight: 1000;
+            margin-bottom: 35px;
+          }
+        }
+        .inputboxContainer {
+          width: 100%;
+          height: 120px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          margin-bottom: 80px;
+          .inputbox {
+            width: 440px;
+            height: 50px;
+            padding: 0px 15px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            color: #000000;
+          }
+        }
+        .buttonContainer {
+          width: 100%;
+          height: 110px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          .orderCheck {
+            width: 100%;
+            height: 50px;
+            background-color: white;
+            color: black;
+            font-size: 20px;
+            font-weight: 700;
+            &:hover {
+              cursor: pointer;
+              background-color: #000000;
+              color: white;
+            }
+            &:active {
+              border: 1px solid blue;
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.scss';
 
@@ -27,30 +27,25 @@ const Login = () => {
     window.location.href = link;
   };
 
-  const SetAccessTokenCookie = accessToken => {
-    const expiratedHours = 1;
-    const expiratedDate = new Date();
-    expiratedDate.setTime(
-      expiratedDate.getTime() + expiratedHours * 60 * 60 * 1000,
-    );
-
-    // 쿠키 설정
-    document.cookie = `accessToken=${accessToken}; expires=${expiratedDate.toUTCString()}; path=/`;
-  };
-  const PreservationAccessTokenFromCookie = () => {
-    const name = 'accessToken' + '=';
-    console.log(name);
-    const cookies = document.cookie.split(';');
-
-    for (let i = 0; i < cookies.length; i++) {
-      let cookie = cookies[i].trim();
-      if (cookie.startsWith(name)) {
-        return cookie.substring(name.length, cookie.length);
-      }
-      console.log(cookie);
-    }
-    return null;
-  };
+  const code = new URL(document.location.toString()).searchParams.get('code');
+  useEffect(() => {
+    fetch('', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+      },
+      body: code,
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        sessionStorage.setItem('accessToken', 'your-access-token');
+        navigate('/');
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []);
 
   const handleLogin = () => {
     fetch('http://10.58.52.75:8000/users/login', {

@@ -68,7 +68,7 @@ const Login = () => {
         if (result.message === 'LOGIN_SUCCESS') {
           localStorage.setItem('token', result.accessToken);
           // localStorage.setItem("nickName", result.nickname);
-          console.log('???', result);
+          // console.log('???', result);
           navigate('/');
         } else {
           alert('로그인 실패');

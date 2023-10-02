@@ -1,0 +1,382 @@
+.UsersHighestContainer {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10010;
+  transition: opacity 0.25s;
+  padding-top: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  .userMainCotainer {
+    width: 1200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    .welcomeComment {
+      width: 1056px;
+      height: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0px 5px 0px;
+      margin-bottom: 50px;
+      .headMessage {
+        font-size: 30px;
+        font-weight: 800;
+        line-height: 40px;
+      }
+      .subMessage {
+        margin: 10px 0 60px;
+        padding: 2px;
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: 400;
+        color: #828282;
+      }
+    }
+    .explanationComment {
+      width: 440px;
+      height: 172px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .message1 {
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 700;
+        padding-bottom: 5px;
+      }
+      .message2 {
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 700;
+        color: #828282;
+      }
+      .phoneCertifyButtonContainer {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        margin: 25px 0px 25px 0px;
+        .phoneCertifyButton {
+          width: 440px;
+          padding: 9px 30px;
+          min-width: 190px;
+          font-family: 'Pretendard';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 30px;
+          text-align: center;
+          background-color: black;
+          color: white;
+        }
+      }
+      .message3 {
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 26px;
+        margin-bottom: 30px;
+        color: #828282;
+      }
+    }
+    .underLine {
+      display: block;
+      margin: 40px 0;
+      border: 0;
+      width: 440px;
+      height: 2px;
+      background-color: #e1e1e1;
+    }
+    .usersInformationInputContainer {
+      width: 440px;
+      height: 1755px;
+      display: flex;
+      flex-direction: column;
+      .idPasscontainer {
+        width: 440px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 13px;
+        .inputbox {
+          width: 440px;
+          height: 50px;
+          font-size: 15px;
+          font-weight: 500;
+          padding: 12px;
+          color: #666;
+        }
+      }
+      .caution1 {
+        margin: 10px 0 20px;
+        padding: 0 15px;
+        font-size: 13px;
+        font-family: 'Pretendard';
+        color: #828282;
+      }
+      .passwordContainer {
+        width: 440px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 5px;
+        .inputbox {
+          width: 440px;
+          height: 50px;
+          font-size: 15px;
+          font-weight: 500;
+          padding: 12px;
+          color: #666;
+        }
+      }
+      .errorContainer {
+        margin-top: 0px;
+        margin-bottom: 5px;
+        .error {
+          display: flex;
+          font-weight: 800;
+          color: red;
+        }
+      }
+      .emailContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .emailInput {
+          width: 140px;
+          height: 50px;
+        }
+        .topSelectBox {
+          height: 100%;
+          width: 100%;
+          .selectBox {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            .selectedItem {
+              background-color: #f2f2f2;
+              display: flex;
+              align-items: center;
+              padding: 10px;
+              height: 100%;
+              border: 1px solid #ccc;
+            }
+          }
+          .options {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            z-index: 1;
+            li {
+              padding: 5px;
+              text-align: left;
+              cursor: pointer;
+            }
+          }
+        }
+        &:hover {
+          .options {
+            display: block;
+          }
+        }
+        .options li:hover {
+          background-color: #e0e0e0;
+        }
+        .selected {
+          background-color: #007bff;
+          color: #fff;
+        }
+      }
+      .emailWordContainer {
+        width: 440px;
+        height: 50px;
+        margin: 15px 0px;
+        .emailWatchInput {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .phoneContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10px;
+        .phoneInput {
+          width: 140px;
+          height: 50px;
+          font-size: 15px;
+          padding-left: 12px;
+        }
+      }
+      .sexContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 35px 5px 35px 5px;
+        .titleName {
+          font-size: 15px;
+          font-weight: 700;
+        }
+      }
+      .recommendUsers {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .recommendUsersInput {
+          width: 290px;
+          height: 50px;
+          padding-left: 12px;
+        }
+        .recommendUsersButton {
+          width: 140px;
+          height: 50px;
+          background-color: white;
+          color: black;
+          font-size: 16px;
+          font-weight: 700;
+          &:hover {
+            cursor: pointer;
+            border: 1px solid black;
+            background-color: black;
+            color: white;
+          }
+        }
+      }
+      .caution1 {
+        margin: 10px 0 20px;
+        padding: 0 15px;
+        font-size: 13px;
+        font-family: 'Pretendard';
+        color: #828282;
+      }
+    }
+    .signInformation {
+      width: 440px;
+      height: 976px;
+      display: flex;
+      flex-direction: column;
+      .inputContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+        .allSelect {
+          margin-right: 10px;
+        }
+        .allAgreeText {
+          font-weight: 700;
+        }
+        .cautionMessage {
+          margin-left: 5px;
+          color: red;
+          font-weight: 900;
+        }
+      }
+      .mainCompany {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        outline: none;
+        resize: none;
+        padding: 15px 10px 15px 20px;
+        font-size: 14px;
+        height: 200px;
+        line-height: 25px;
+        font-weight: 400;
+        color: #464646;
+        border: 1px solid #828282;
+        transition:
+          border-color 0.25s,
+          box-shadow 0.25s;
+        font-family: 'Pretendard';
+        overflow: hidden;
+        overflow-y: scroll;
+        .company200 {
+          position: relative;
+          min-width: 220px;
+          display: inline-block;
+          width: 100% !important;
+        }
+      }
+      .endLine {
+        display: block;
+        margin: 70px 0px 30px 0px;
+        border: 0;
+        width: 440px;
+        height: 2px;
+        background-color: #e1e1e1;
+      }
+      .serviceCompany {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        outline: none;
+        resize: none;
+        padding: 15px 10px 15px 20px;
+        font-size: 14px;
+        height: 115px;
+        line-height: 25px;
+        font-weight: 400;
+        color: #464646;
+        border: 1px solid #828282;
+        transition:
+          border-color 0.25s,
+          box-shadow 0.25s;
+        font-family: 'Pretendard';
+        overflow: hidden;
+        overflow-y: auto;
+      }
+      .serviceInput {
+        display: flex;
+        flex-direction: column;
+        .blockLabel {
+          display: block;
+          margin: 5px;
+        }
+      }
+      .userSignUpButton {
+        margin-top: 25px;
+        width: 100%;
+        height: 50px;
+        .signUpButton {
+          width: 100%;
+          height: 100%;
+          background-color: black;
+          color: white;
+          font-family: 'Pretendard';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 9px 30px;
+          &:hover {
+            background-color: #f7e600;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

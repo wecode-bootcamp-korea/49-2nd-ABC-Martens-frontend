@@ -16,7 +16,7 @@ const Button = props => {
   return (
     <button
       type="button"
-      className={className}
+      className={`button ${className}`}
       sort={sort}
       fontscale={fontscale}
       scale={scale}

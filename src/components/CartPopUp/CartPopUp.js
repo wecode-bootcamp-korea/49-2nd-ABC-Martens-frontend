@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './CartPopUp.scss';
 import Button from '../Button/Button';
+import './CartPopUp.scss';
 
 const CartPopUp = ({ setIsPopUp, cartItem }) => {
   // 백엔드에서 API호출로 사이즈 값 받아오기

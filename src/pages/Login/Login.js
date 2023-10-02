@@ -33,13 +33,13 @@ const Login = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        // 여기에 필요한 다른 헤더를 추가할 수 있습니다.
       },
       body: code,
     })
       .then(response => response.json())
       .then(data => {
         console.log(data);
+        sessionStorage.setItem('accessToken', 'your-access-token');
         navigate('/');
       })
       .catch(error => {

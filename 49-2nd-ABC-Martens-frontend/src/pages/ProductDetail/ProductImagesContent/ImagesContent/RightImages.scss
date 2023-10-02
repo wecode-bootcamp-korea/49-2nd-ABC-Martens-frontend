@@ -1,0 +1,56 @@
+.rightImages {
+  height: 700px;
+  margin-left: 0;
+  overflow: hidden;
+
+  .swiperSlide {
+    display: flex;
+    position: relative;
+    height: 100%;
+
+    .swiperSlider {
+      height: 100%;
+
+      img {
+        width: 560px;
+        height: 100%;
+        object-fit: cover;
+        vertical-align: middle;
+      }
+    }
+
+    .prev,
+    .next {
+      position: absolute;
+      top: 350px;
+      width: 30px;
+      height: 30px;
+      border: none;
+      background-color: transparent;
+      font-size: 30px;
+      color: white;
+    }
+    .prev {
+      left: 15px;
+    }
+    .next {
+      right: 15px;
+    }
+
+    .chapter {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      width: 70px;
+      height: 35px;
+      border-radius: 30px;
+      background-color: black;
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+    }
+  }
+}

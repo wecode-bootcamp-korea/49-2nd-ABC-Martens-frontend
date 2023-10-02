@@ -1,0 +1,24 @@
+[
+  {
+    "productId": 1,
+    "productName": "1461 모노",
+    "productThumbnailImage": "https://www.drmartens.co.kr/data/goods/1/2022/11/3270_temp_16684161331068list1.jpg",
+    "totalPrice": 294000,
+    "salePercentage": 30,
+    "price": 147000,
+    "size": 220,
+    "quantity": 2,
+    "productOptionId": 1
+  },
+  {
+    "productId": 2,
+    "productName": "1461 스무스",
+    "productThumbnailImage": "https://www.drmartens.co.kr/data/goods/1/2022/11/3270_temp_16684161331068list1.jpg",
+    "totalPrice": 294000,
+    "salePercentage": 30,
+    "price": 147000,
+    "size": 230,
+    "quantity": 2,
+    "productOptionId": 2
+  }
+]

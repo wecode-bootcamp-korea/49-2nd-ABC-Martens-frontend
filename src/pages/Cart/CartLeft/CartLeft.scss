@@ -1,0 +1,205 @@
+.cartLeft {
+  width: calc(100% - 430px - 20px);
+
+  .cartContents {
+    .cartCheckDiv {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+  }
+
+  .cartList {
+    .shoppingList {
+      .shoppingItemList:not(:first-child) {
+        margin-top: 15px;
+      }
+
+      .shoppingItemList {
+        border: 1px solid #e1e1e1;
+
+        .shoppingItemContent {
+          padding: 10px 0;
+          background: #f7f7f7;
+          border-bottom: 1px solid #e1e1e1;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          div {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+
+            .btnOption {
+              display: flex;
+              align-items: center;
+              border: 0 none;
+              background-color: transparent;
+              cursor: pointer;
+              font-style: normal;
+              font-weight: 600;
+              font-size: 14px;
+              line-height: 24px;
+              text-decoration-line: underline;
+              color: #000000;
+            }
+
+            .btnDelete {
+              display: flex;
+              align-items: center;
+              margin-left: 15px;
+              border: 0 none;
+              background-color: transparent;
+              cursor: pointer;
+              font-style: normal;
+              font-weight: 600;
+              font-size: 14px;
+              line-height: 24px;
+              text-decoration-line: underline;
+              color: #000000;
+            }
+          }
+        }
+
+        .itemDetail {
+          position: relative;
+
+          .itemInfo {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 15px;
+
+            .itemInfoDiv {
+              display: flex;
+              align-items: flex-start;
+
+              div {
+                margin-right: 15px;
+
+                a {
+                  .itemImg {
+                    display: block;
+                    width: 80px;
+                    height: 100px;
+                    object-fit: cover;
+                    object-position: center center;
+                  }
+                }
+              }
+
+              ul {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                li {
+                  width: 100%;
+
+                  strong {
+                    display: flex;
+                    align-items: center;
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 26px;
+                    color: #000000;
+                    padding-bottom: 2px;
+                  }
+                }
+
+                .optionArea {
+                  .optionSize {
+                    li {
+                      display: flex;
+                      align-items: center;
+
+                      .itemSizeText {
+                        display: flex;
+                        align-items: center;
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 14px;
+                        line-height: 24px;
+                        color: #000000;
+                        min-width: 50px;
+                        margin-right: 5px;
+                      }
+
+                      .itemSizeMm {
+                        display: flex;
+                        align-items: center;
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 24px;
+                        color: #464646;
+                      }
+                    }
+                  }
+
+                  .optionQuantity {
+                    div {
+                      display: flex;
+                      align-items: center;
+
+                      .itemQuantityText {
+                        display: flex;
+                        align-items: center;
+                        font-style: normal;
+                        font-weight: bold;
+                        font-size: 14px;
+                        line-height: 24px;
+                        color: #000000;
+                        min-width: 50px;
+                        margin-right: 5px;
+                      }
+
+                      .itemQuantity {
+                        display: flex;
+                        align-items: center;
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 24px;
+                        color: #464646;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .itemPriceBox {
+              margin-left: auto;
+              margin-top: auto;
+
+              .itemPrice {
+                display: flex;
+                align-items: center;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 14px;
+                line-height: 24px;
+                text-align: right;
+                color: #000000;
+
+                .totalPrice {
+                  display: flex;
+                  align-items: center;
+                  font-style: normal;
+                  font-weight: bold;
+                  font-size: 14px;
+                  line-height: 24px;
+                  text-align: right;
+                  color: #000000;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

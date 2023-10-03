@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import './CartPopUp.scss';
 
@@ -31,13 +32,13 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
             <div className="cartItemBox">
               <div className="cartItemCnt">
                 <div>
-                  <a href="#!">
+                  <Link to="{() => false}">
                     <img
                       src="https://i.postimg.cc/q7sdqxS7/boots-1.jpg"
                       alt="boots"
                       className="itemImg"
                     />
-                  </a>
+                  </Link>
                 </div>
                 <ul>
                   <li>
@@ -89,7 +90,7 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                             <div className="optionDiv">
                               <span>
                                 <b>사이즈(mm) : {selectSize}</b>
-                                <a href="{() => false}">
+                                <Link to={() => false}>
                                   <img
                                     src="https://i.postimg.cc/zXjzB3Xv/close-150192-1280.png"
                                     alt="close"
@@ -99,7 +100,7 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                                       )
                                     }
                                   />
-                                </a>
+                                </Link>
                               </span>
                               <div>
                                 <strong>수량:</strong>

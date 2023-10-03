@@ -1,41 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './CartLeft.scss';
 import Checkbox from '../../../components/CheckBox/Checkbox';
 import Button from '../../../components/Button/Button';
 import CartPopUp from '../../../components/CartPopUp/CartPopUp';
+// import { HOST } from '../../../components/Variable/Variable';
 
-const CartLeft = ({ isPopUp, setIsPopUp }) => {
-  const [cartList, setCartList] = useState([]);
-  const [selectAll, setSelectAll] = useState(false);
-  const [itemCheckboxes, setItemCheckboxes] = useState({});
-  const [selectCartItem, setSelectCartItem] = useState();
-  const [isDelete, setIsDelete] = useState('N');
-
-  useEffect(() => {
-    fetch('/data/cartList.json', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        // authorization: '토큰',
-      },
-    })
-      .then(response => {
-        if (response.ok === true) {
-          return response.json();
-        }
-        throw new Error('에러 발생!');
-      })
-      .catch(error => console.log(error))
-      .then(data => {
-        setCartList(data);
-        const updatedItemCheckboxes = {};
-        for (let i = 0; i < data.length; i++) {
-          updatedItemCheckboxes[data[i].productId] = false;
-        }
-        setItemCheckboxes(updatedItemCheckboxes);
-      });
-  }, []);
-
+const CartLeft = ({
+  cartList,
+  setCartList,
+  selectAll,
+  setSelectAll,
+  itemCheckboxes,
+  setItemCheckboxes,
+  selectCartItem,
+  setSelectCartItem,
+  isPopUp,
+  setIsPopUp,
+}) => {
   // 체크박스 전체 선택/ 취소
   const handleCheckAll = () => {
     setSelectAll(!selectAll);
@@ -61,16 +42,94 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
     setSelectAll(allItemsSelected);
   };
 
-  const handleCheckItemDelete = () => {
-    const updatedItemCheckboxes = { ...itemCheckboxes };
+  // 여러 상품 삭제하기
+  const handleCheckItemsDelete = () => {
+    // const updatedItemCheckboxes = { ...itemCheckboxes };
 
-    for (const key in updatedItemCheckboxes) {
-      if (updatedItemCheckboxes[key]) {
-        delete updatedItemCheckboxes[key];
+    // for (const key in updatedItemCheckboxes) {
+    //   if (updatedItemCheckboxes[key]) {
+    //     delete updatedItemCheckboxes[key];
+
+    //     // 기존 객체 찾기
+    //     const targetProduct = cartList.find(
+    //       item => item.productId === parseInt(key),
+    //     );
+
+    //     // 찾은 객체에 isDelete 추가
+    //     if (targetProduct) {
+    //       targetProduct.isDelete = 'Y';
+    //     }
+    //   }
+    // }
+    console.log(cartList);
+
+    for (let i = 0; i < cartList.length; i++) {
+      const deleteProductId = cartList[i].productId;
+
+      // 기존 객체 찾기
+      const targetProduct = cartList.find(
+        item => item.productId === deleteProductId,
+      );
+
+      // 찾은 객체에 isDelete 추가
+      if (targetProduct) {
+        targetProduct.isDelete = 'Y';
       }
     }
-    setItemCheckboxes(updatedItemCheckboxes);
-    setIsDelete('Y');
+
+    // HOST로 백엔드 API 가져오기 : `${HOST}/carts/${productId}`
+    fetch(``, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        // authorization: '토큰',
+      },
+      body: JSON.stringify({
+        cartList,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message === 'cart List deleted') {
+          setCartList(data);
+          alert('장바구니 상품을 삭제하였습니다.');
+          // setItemCheckboxes(updatedItemCheckboxes);
+        } else {
+          alert('에러가 발생하였습니다.');
+        }
+      });
+  };
+
+  // 단일 상품 삭제하기
+  const handleItemDelete = productId => {
+    // 기존 객체 찾기
+    const targetProduct = cartList.find(item => item.productId === productId);
+
+    // 찾은 객체에 isDelete 추가
+    if (targetProduct) {
+      targetProduct.isDelete = 'Y';
+    }
+
+    fetch(``, {
+      //`${HOST}/carts/${productId}`
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        // authorization: '토큰',
+      },
+      body: JSON.stringify({
+        cartList,
+      }),
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message === 'cart List deleted') {
+          setCartList(data);
+          alert('장바구니 상품을 삭제하였습니다.');
+        } else {
+          alert('에러가 발생하였습니다.');
+        }
+      });
   };
 
   return (
@@ -94,7 +153,7 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
             fontscale="small"
             scale="middle"
             color="whiteAndBlack"
-            handleClick={handleCheckItemDelete}
+            handleClick={handleCheckItemsDelete}
           >
             선택 삭제
           </Button>
@@ -136,7 +195,7 @@ const CartLeft = ({ isPopUp, setIsPopUp }) => {
                       className="btnDelete"
                       value={cartItem.productId}
                       title="상품삭제"
-                      onClick={handleCheckItemDelete}
+                      onClick={() => handleItemDelete(cartItem.productId)}
                     >
                       삭제
                     </button>

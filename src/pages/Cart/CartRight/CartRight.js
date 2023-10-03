@@ -1,30 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+// import { useNavigate } from 'react-router';
 import './CartRight.scss';
 import Button from '../../../components/Button/Button';
 
-const CartRight = () => {
-  const [cartList, setCartList] = useState([]);
-
-  useEffect(() => {
-    fetch('/data/cartList.json', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        // authorization: '토큰',
-      },
-    })
-      .then(response => {
-        if (response.ok === true) {
-          return response.json();
-        }
-        throw new Error('에러 발생!');
-      })
-      .catch(error => console.log(error))
-      .then(data => {
-        setCartList(data);
-      });
-  }, []);
-
+const CartRight = ({ cartList }) => {
   let sum = cartList => {
     let sum = 0;
     for (let i of cartList) {
@@ -52,6 +31,16 @@ const CartRight = () => {
   };
 
   if (!cartList) return null;
+
+  // const handleOrderBtn = () => {
+  //   if (token) {
+  //     //로그인이 되어있으면
+  //     navigate('/order');
+  //   } else {
+  //     //비로그인 상태
+  //     navigate('/login');
+  //   }
+  // };
 
   return (
     <li className="cartRight">
@@ -103,6 +92,7 @@ const CartRight = () => {
           fontscale="large"
           scale="large"
           color="blackToYellow"
+          // handleClick={handleOrderBtn}
         >
           구매하기
         </Button>

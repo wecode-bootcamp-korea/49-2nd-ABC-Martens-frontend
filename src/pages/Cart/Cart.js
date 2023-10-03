@@ -7,6 +7,11 @@ const Cart = () => {
   const [cartList, setCartList] = useState([]);
   const [itemCheckboxes, setItemCheckboxes] = useState({});
   const [isPopUp, setIsPopUp] = useState(false);
+  // const [render, setRender] = useState(true);
+
+  // const handleRender = () => {// 의존성 배열에 render를 넣고, 팝업창에서 cartList가 바뀌면 리렌더링
+  //   setRender(!render);
+  // };
 
   // cart list 불러오기
   useEffect(() => {

@@ -43,38 +43,29 @@ const CartLeft = ({
 
   // 여러 상품 삭제하기
   const handleCheckItemsDelete = () => {
-    // const updatedItemCheckboxes = { ...itemCheckboxes };
+    const updatedItemCheckboxes = { ...itemCheckboxes };
 
-    // for (const key in updatedItemCheckboxes) {
-    //   if (updatedItemCheckboxes[key]) {
-    //     delete updatedItemCheckboxes[key];
+    for (const key in updatedItemCheckboxes) {
+      if (updatedItemCheckboxes[key]) {
+        // 기존 객체 찾기
+        const targetProduct = cartList.find(
+          item => item.productId === parseInt(key),
+        );
 
-    //     // 기존 객체 찾기
-    //     const targetProduct = cartList.find(
-    //       item => item.productId === parseInt(key),
-    //     );
-
-    //     // 찾은 객체에 isDelete 추가
-    //     if (targetProduct) {
-    //       targetProduct.isDelete = 'Y';
-    //     }
-    //   }
-    // }
-    console.log(cartList);
-
-    for (let i = 0; i < cartList.length; i++) {
-      const deleteProductId = cartList[i].productId;
-
-      // 기존 객체 찾기
-      const targetProduct = cartList.find(
-        item => item.productId === deleteProductId,
-      );
-
-      // 찾은 객체에 isDelete 추가
-      if (targetProduct) {
-        targetProduct.isDelete = 'Y';
+        // 찾은 객체에 isDelete 추가
+        if (targetProduct) {
+          targetProduct.isDelete = 'Y';
+        }
       }
     }
+
+    // 삭제된 상품에 대한 체크박스 초기화
+    const updatedItemCheckboxesAfterDelete = {};
+    for (let i = 0; i < cartList.length; i++) {
+      updatedItemCheckboxesAfterDelete[cartList[i].productId] = false;
+    }
+
+    setItemCheckboxes(updatedItemCheckboxesAfterDelete);
 
     // HOST로 백엔드 API 가져오기 : `${HOST}/carts/${productId}`
     fetch(``, {
@@ -96,9 +87,7 @@ const CartLeft = ({
       .catch(error => console.log(error))
       .then(data => {
         if (data.message === 'cart List deleted') {
-          setCartList(data);
           alert('장바구니 상품을 삭제하였습니다.');
-          // setItemCheckboxes(updatedItemCheckboxes);
         }
       });
   };
@@ -112,6 +101,14 @@ const CartLeft = ({
     if (targetProduct) {
       targetProduct.isDelete = 'Y';
     }
+
+    // 삭제된 상품에 대한 체크박스 초기화
+    const updatedItemCheckboxesAfterDelete = {};
+    for (let i = 0; i < cartList.length; i++) {
+      updatedItemCheckboxesAfterDelete[cartList[i].productId] = false;
+    }
+
+    setItemCheckboxes(updatedItemCheckboxesAfterDelete);
 
     fetch(``, {
       //`${HOST}/carts/${productId}`
@@ -133,7 +130,6 @@ const CartLeft = ({
       .catch(error => console.log(error))
       .then(data => {
         if (data.message === 'cart List deleted') {
-          setCartList(data);
           alert('장바구니 상품을 삭제하였습니다.');
         }
       });

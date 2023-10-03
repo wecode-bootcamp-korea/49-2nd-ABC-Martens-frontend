@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CartLeft.scss';
 import Checkbox from '../../../components/CheckBox/Checkbox';
 import Button from '../../../components/Button/Button';
@@ -8,15 +8,14 @@ import CartPopUp from '../../../components/CartPopUp/CartPopUp';
 const CartLeft = ({
   cartList,
   setCartList,
-  selectAll,
-  setSelectAll,
   itemCheckboxes,
   setItemCheckboxes,
-  selectCartItem,
-  setSelectCartItem,
   isPopUp,
   setIsPopUp,
 }) => {
+  const [selectAll, setSelectAll] = useState(false);
+  const [selectCartItem, setSelectCartItem] = useState();
+
   // 체크박스 전체 선택/ 취소
   const handleCheckAll = () => {
     setSelectAll(!selectAll);
@@ -88,14 +87,18 @@ const CartLeft = ({
         cartList,
       }),
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        throw new Error('에러 발생!');
+      })
+      .catch(error => console.log(error))
       .then(data => {
         if (data.message === 'cart List deleted') {
           setCartList(data);
           alert('장바구니 상품을 삭제하였습니다.');
           // setItemCheckboxes(updatedItemCheckboxes);
-        } else {
-          alert('에러가 발생하였습니다.');
         }
       });
   };
@@ -121,13 +124,17 @@ const CartLeft = ({
         cartList,
       }),
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        throw new Error('에러 발생!');
+      })
+      .catch(error => console.log(error))
       .then(data => {
         if (data.message === 'cart List deleted') {
           setCartList(data);
           alert('장바구니 상품을 삭제하였습니다.');
-        } else {
-          alert('에러가 발생하였습니다.');
         }
       });
   };

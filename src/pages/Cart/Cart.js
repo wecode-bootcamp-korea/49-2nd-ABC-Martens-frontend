@@ -5,9 +5,7 @@ import CartRight from './CartRight/CartRight';
 
 const Cart = () => {
   const [cartList, setCartList] = useState([]);
-  const [selectAll, setSelectAll] = useState(false);
   const [itemCheckboxes, setItemCheckboxes] = useState({});
-  const [selectCartItem, setSelectCartItem] = useState();
   const [isPopUp, setIsPopUp] = useState(false);
 
   // cart list 불러오기
@@ -35,7 +33,7 @@ const Cart = () => {
         }
         setItemCheckboxes(updatedItemCheckboxes);
       });
-  }, [cartList]);
+  }, []);
 
   return (
     <>
@@ -48,12 +46,8 @@ const Cart = () => {
             <CartLeft
               cartList={cartList}
               setCartList={setCartList}
-              selectAll={selectAll}
-              setSelectAll={setSelectAll}
               itemCheckboxes={itemCheckboxes}
               setItemCheckboxes={setItemCheckboxes}
-              selectCartItem={selectCartItem}
-              setSelectCartItem={setSelectCartItem}
               isPopUp={isPopUp}
               setIsPopUp={setIsPopUp}
             />

@@ -26,7 +26,6 @@ const Users = () => {
     'yahoo.com',
     'hanmail.net',
   ];
-
   const handleClickMailFuction = userMail => {
     setSelectedMail(userMail);
     if (userMail === '직접입력') {
@@ -35,7 +34,6 @@ const Users = () => {
       setCustomMail(userMail);
     }
   };
-
   const handlePasswordBlur = pass => {
     const password = pass.target.value;
     setPasswordInputValue(password);
@@ -152,41 +150,98 @@ const Users = () => {
     console.log('인풋5번', input5);
   };
 
-  const handleSignUpClick = () => {
-    if (isSignUpButtonEnabled) {
-      alert('회원가입이 완료되었습니다.');
-      setTimeout(() => {
-        navigate('/');
-      }, 3000);
-    }
-    if (passwordInputValue !== confirmPasswordInputValue) {
-      alert('비밀번호를 확인해주세요.');
-    } else if (!isSignUpButtonEnabled) {
-      alert('약관에 동의해주세요.');
+  const [name, setName] = useState('');
+
+  const handleNameChange = name => {
+    setName(name.target.value);
+  };
+
+  const [year, setYear] = useState('');
+  const [month, setMonth] = useState('');
+  const [day, setDay] = useState('');
+  const [formattedDate, setFormattedDate] = useState('');
+
+  // 연도, 월, 일 입력 필드의 값이 변경될 때 실행되는 함수
+  const handleYearChange = year => {
+    const newYear = year.target.value;
+    setYear(newYear);
+    updateFormattedDate(newYear, month, day);
+  };
+
+  const handleMonthChange = month => {
+    const newMonth = month.target.value;
+    setMonth(newMonth);
+    updateFormattedDate(year, newMonth, day);
+  };
+
+  const handleDayChange = day => {
+    const newDay = day.target.value;
+    setDay(newDay);
+    updateFormattedDate(year, month, newDay);
+  };
+  const updateFormattedDate = (newYear, newMonth, newDay) => {
+    if (newYear && newMonth && newDay) {
+      const formatted = `${newYear}-${newMonth}-${newDay}`;
+      setFormattedDate(formatted);
     } else {
-      alert('입력정보를 다시 확인해주세요.');
+      setFormattedDate('');
     }
   };
-  // const handleEmailInputChange = e => {
-  //   setEmailInputValue(e.target.value);
-  //   setCustomMail(e.target.value);
-  // };
 
-  fetch('http://10.58.52.231:8000/users', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8',
-    },
-    body: JSON.stringify(),
-  })
-    .then(res => res.json())
-    .then(result => {
-      console.log(result);
+  const [selectedGender, setSelectedGender] = useState('');
 
-      // if (result.message === "LOGIN_SUCCESS") {
-      //     alert("성공이다 !");
-      // }
-    });
+  const handleGenderChange = sex => {
+    setSelectedGender(sex.target.value);
+  };
+
+  const [selectPhone, setSelectPhone] = useState('');
+  const handlePhoneNumberChannge = phoneNumber => {
+    setSelectPhone(phoneNumber.target.value);
+  };
+
+  const setSignUpClick = () => {
+    if (isSignUpButtonEnabled) {
+      if (passwordInputValue === confirmPasswordInputValue && selectAll) {
+        const userData = {
+          nickName: name,
+          email: `${customMail || selectedMail}`,
+          password: passwordInputValue,
+          birthDate: formattedDate,
+          phoneNumber: selectPhone,
+          gender: selectedGender,
+        };
+
+        // 서버로 POST 요청 보내기
+        fetch('http://10.58.52.55:8000/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8',
+          },
+          body: JSON.stringify(userData),
+        })
+          .then(res => res.json())
+          .then(result => {
+            console.log(result);
+            if (result.success) {
+              alert('회원가입이 완료되었습니다.');
+              setTimeout(() => {
+                navigate('/');
+              }, 3000);
+            } else {
+              alert('회원가입에 실패하였습니다.');
+            }
+          })
+          .catch(error => {
+            console.error('회원가입 요청 실패:', error);
+            alert('회원가입에 실패하였습니다.');
+          });
+      } else {
+        alert('약관에 동의하고 비밀번호를 확인해주세요.');
+      }
+    } else {
+      alert('약관에 동의해주세요.');
+    }
+  };
   return (
     <div className="UsersHighestContainer">
       <div className="userMainCotainer">
@@ -209,7 +264,13 @@ const Users = () => {
         <hr className="underLine" />
         <div className="usersInformationInputContainer">
           <div className="idPasscontainer">
-            <input type="text" className="inputbox" placeholder="이름" />
+            <input
+              type="text"
+              className="inputbox"
+              placeholder="이름"
+              value={name}
+              onChange={handleNameChange}
+            />
           </div>
           <div className="emailContainer">
             <input type="text" className="emailInput" placeholder="이메일" />
@@ -274,18 +335,24 @@ const Users = () => {
               type="text"
               className="phoneInput"
               placeholder="연도"
+              value={year}
+              onChange={handleYearChange}
               disabled={passwordInputValue !== confirmPasswordInputValue}
             />
             <input
               type="text"
               className="phoneInput"
               placeholder="월"
+              value={month}
+              onChange={handleMonthChange}
               disabled={passwordInputValue !== confirmPasswordInputValue}
             />
             <input
               type="text"
               className="phoneInput"
               placeholder="일"
+              value={day}
+              onChange={handleDayChange}
               disabled={passwordInputValue !== confirmPasswordInputValue}
             />
           </div>
@@ -316,9 +383,9 @@ const Users = () => {
               <input
                 type="radio"
                 name="options"
-                value="option1"
-                // checked={selectedOption === 'option1'}
-                // onChange={handleOptionChange}
+                value="M"
+                checked={selectedGender === 'M'}
+                onChange={handleGenderChange}
               />
               남성
             </label>
@@ -326,9 +393,9 @@ const Users = () => {
               <input
                 type="radio"
                 name="options"
-                value="option2"
-                // checked={selectedOption === 'option2'}
-                // onChange={handleOptionChange}
+                value="F"
+                checked={selectedGender === 'F'}
+                onChange={handleGenderChange}
               />
               여성
             </label>
@@ -336,9 +403,9 @@ const Users = () => {
               <input
                 type="radio"
                 name="options"
-                value="option2"
-                // checked={selectedOption === 'option2'}
-                // onChange={handleOptionChange}
+                value="N"
+                checked={selectedGender === 'N'}
+                onChange={handleGenderChange}
               />
               선택안함
             </label>
@@ -472,7 +539,7 @@ const Users = () => {
               <div className="userSignUpButton">
                 <button
                   className="signUpButton"
-                  onClick={handleSignUpClick}
+                  onClick={setSignUpClick}
                   disabled={
                     passwordInputValue !== confirmPasswordInputValue &&
                     isSignUpButtonEnabled
@@ -488,5 +555,4 @@ const Users = () => {
     </div>
   );
 };
-
 export default Users;

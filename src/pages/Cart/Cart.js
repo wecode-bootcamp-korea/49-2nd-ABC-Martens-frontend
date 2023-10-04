@@ -1,10 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Cart.scss';
 import CartLeft from './CartLeft/CartLeft';
 import CartRight from './CartRight/CartRight';
 
 const Cart = () => {
+  const [cartList, setCartList] = useState([]);
+  const [itemCheckboxes, setItemCheckboxes] = useState({});
   const [isPopUp, setIsPopUp] = useState(false);
+  // const [render, setRender] = useState(true);
+
+  // const handleRender = () => {// 의존성 배열에 render를 넣고, 팝업창에서 cartList가 바뀌면 리렌더링
+  //   setRender(!render);
+  // };
+
+  // cart list 불러오기.
+  useEffect(() => {
+    // HOST로 백엔드 API 가져오기 :`${HOST}/carts`
+    fetch('/data/cartList.json', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        // authorization: '토큰',
+      },
+    })
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        throw new Error('에러 발생!');
+      })
+      .catch(error => console.log(error))
+      .then(data => {
+        setCartList(data);
+        const updatedItemCheckboxes = {};
+        for (let i = 0; i < data.length; i++) {
+          updatedItemCheckboxes[data[i].productId] = false;
+        }
+        setItemCheckboxes(updatedItemCheckboxes);
+      });
+  }, []);
 
   return (
     <>
@@ -14,8 +48,15 @@ const Cart = () => {
         </div>
         <form className="cartForm" name="cartForm">
           <ul className="cartWrap">
-            <CartLeft isPopUp={isPopUp} setIsPopUp={setIsPopUp} />
-            <CartRight />
+            <CartLeft
+              cartList={cartList}
+              setCartList={setCartList}
+              itemCheckboxes={itemCheckboxes}
+              setItemCheckboxes={setItemCheckboxes}
+              isPopUp={isPopUp}
+              setIsPopUp={setIsPopUp}
+            />
+            <CartRight cartList={cartList} setCartList={setCartList} />
           </ul>
         </form>
       </div>

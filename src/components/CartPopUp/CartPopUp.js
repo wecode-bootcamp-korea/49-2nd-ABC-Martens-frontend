@@ -1,13 +1,47 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import './CartPopUp.scss';
 
-const CartPopUp = ({ setIsPopUp, cartItem }) => {
+const CartPopUp = ({ setIsPopUp, cartItem, setCartList }) => {
   // 백엔드에서 API호출로 사이즈 값 받아오기
   const sizeList = [220, 230, 240, 250, 260, 270];
 
   const [selectSize, setSelectSize] = useState(cartItem?.size);
   const [selectQuantity, setSelectQuantity] = useState(cartItem?.quantity);
+
+  const handleChangeItem = (selectSize, selectQuantity) => {
+    const updatedCartItem = {
+      ...cartItem,
+      size: selectSize,
+      quantity: selectQuantity,
+    };
+
+    fetch(``, {
+      //`${HOST}/carts/${productId}`
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // authorization: '토큰',
+      },
+      body: JSON.stringify({
+        updatedCartItem,
+      }),
+    })
+      .then(response => {
+        if (response.ok === true) {
+          return response.json();
+        }
+        throw new Error('에러 발생!');
+      })
+      .catch(error => console.log(error))
+      .then(data => {
+        if (data.message === 'cart List created') {
+          alert('장바구니 상품을 변경하였습니다.');
+          setIsPopUp(false);
+        }
+      });
+  };
 
   return (
     <div className="cartPopUp">
@@ -31,13 +65,13 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
             <div className="cartItemBox">
               <div className="cartItemCnt">
                 <div>
-                  <a href="#!">
+                  <Link to="{() => false}">
                     <img
                       src="https://i.postimg.cc/q7sdqxS7/boots-1.jpg"
                       alt="boots"
                       className="itemImg"
                     />
-                  </a>
+                  </Link>
                 </div>
                 <ul>
                   <li>
@@ -88,13 +122,18 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                           <td>
                             <div className="optionDiv">
                               <span>
-                                <b>사이즈(mm) : {cartItem.size}</b>
-                                <a href="#!">
+                                <b>사이즈(mm) : {selectSize}</b>
+                                <Link to={() => false}>
                                   <img
                                     src="https://i.postimg.cc/zXjzB3Xv/close-150192-1280.png"
                                     alt="close"
+                                    onClick={() =>
+                                      alert(
+                                        '더이상 선택된 옵션을 삭제할 수 없습니다.',
+                                      )
+                                    }
                                   />
-                                </a>
+                                </Link>
                               </span>
                               <div>
                                 <strong>수량:</strong>
@@ -130,9 +169,9 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                                 <div className="amtPriceContainer">
                                   <strong className="amtPrice">
                                     ￦
-                                    {cartItem.totalPrice.toLocaleString(
-                                      'ko-KR',
-                                    )}
+                                    {(
+                                      selectQuantity * cartItem.price
+                                    ).toLocaleString('ko-KR')}
                                   </strong>
                                 </div>
                               </div>
@@ -164,10 +203,10 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
               fontscale="large"
               color="blackToYellow"
               scale="cartBtn"
-              // handleClick={()=> {
-              //   //API (selectSize, selectQuantity 값 보내주기)
-              // 저장된 값을 cartList에 보내기?
-              // }}
+              handleClick={
+                () => handleChangeItem(selectSize, selectQuantity)
+                //API (selectSize, selectQuantity 값 보내주기)-> 저장된 값을 cartList에 보내기
+              }
             >
               변경하기
             </Button>

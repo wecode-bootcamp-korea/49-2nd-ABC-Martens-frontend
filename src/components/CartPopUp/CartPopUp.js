@@ -1,47 +1,46 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
+import { HOST, TOKEN } from '../Variable/Variable';
 import './CartPopUp.scss';
 
-const CartPopUp = ({ setIsPopUp, cartItem, setCartList }) => {
+const CartPopUp = ({ setIsPopUp, cartItem, getCartData }) => {
   // 백엔드에서 API호출로 사이즈 값 받아오기
-  const sizeList = [220, 230, 240, 250, 260, 270];
+  const sizeList = [220, 230, 240, 250, 260, 270, 280, 290];
 
   const [selectSize, setSelectSize] = useState(cartItem?.size);
   const [selectQuantity, setSelectQuantity] = useState(cartItem?.quantity);
 
-  const handleChangeItem = (selectSize, selectQuantity, color) => {
-    const updatedCartItem = {
-      ...cartItem,
-      size: selectSize,
-      quantity: selectQuantity,
-      color,
-    };
-
-    fetch(``, {
-      //`${HOST}/carts/${productId}`
-      method: 'POST',
+  const handleChangeItem = (
+    productId,
+    productOptionId,
+    selectSize,
+    selectQuantity,
+    color,
+  ) => {
+    fetch(`${HOST}/carts/${productId}`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        // authorization: '토큰',
+        authorization: TOKEN,
       },
       body: JSON.stringify({
-        updatedCartItem,
+        productOptionId: productOptionId,
+        size: selectSize,
+        quantity: selectQuantity,
+        color,
       }),
     })
       .then(response => {
-        if (response.ok === true) {
+        if (response.ok) {
+          alert('장바구니 상품을 변경하였습니다.');
+          setIsPopUp(false);
+          getCartData();
           return response.json();
         }
         throw new Error('에러 발생!');
       })
-      .catch(error => console.log(error))
-      .then(data => {
-        if (data.message === 'cart List created') {
-          alert('장바구니 상품을 변경하였습니다.');
-          setIsPopUp(false);
-        }
-      });
+      .catch(error => console.log(error));
   };
 
   return (
@@ -65,9 +64,9 @@ const CartPopUp = ({ setIsPopUp, cartItem, setCartList }) => {
             <div className="cartItemBox">
               <div className="cartItemCnt">
                 <div>
-                  <Link to="{() => false}">
+                  <Link to={`/productDetai/${cartItem.productId}`}>
                     <img
-                      src="https://i.postimg.cc/q7sdqxS7/boots-1.jpg"
+                      src={cartItem.productThumbnail}
                       alt="boots"
                       className="itemImg"
                     />
@@ -143,7 +142,9 @@ const CartPopUp = ({ setIsPopUp, cartItem, setCartList }) => {
                                     className="amtMinusBtn"
                                     sort="icon"
                                     handleClick={() => {
-                                      setSelectQuantity(selectQuantity - 1);
+                                      selectQuantity > 1
+                                        ? setSelectQuantity(selectQuantity - 1)
+                                        : alert('1개보다 적을 수 없습니다.');
                                     }}
                                   >
                                     <img
@@ -204,7 +205,13 @@ const CartPopUp = ({ setIsPopUp, cartItem, setCartList }) => {
               color="blackToYellow"
               scale="cartBtn"
               handleClick={() =>
-                handleChangeItem(selectSize, selectQuantity, cartItem.color)
+                handleChangeItem(
+                  cartItem.productId,
+                  cartItem.productOptionId,
+                  selectSize,
+                  selectQuantity,
+                  cartItem.color,
+                )
               }
             >
               변경하기

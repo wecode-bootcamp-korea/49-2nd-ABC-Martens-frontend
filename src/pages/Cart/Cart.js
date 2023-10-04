@@ -38,7 +38,7 @@ const Cart = () => {
 
   useEffect(() => {
     getCartData();
-  }, []);
+  }, [isPopUp]);
 
   return (
     <>

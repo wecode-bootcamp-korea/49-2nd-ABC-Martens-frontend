@@ -10,11 +10,12 @@ const CartPopUp = ({ setIsPopUp, cartItem, setCartList }) => {
   const [selectSize, setSelectSize] = useState(cartItem?.size);
   const [selectQuantity, setSelectQuantity] = useState(cartItem?.quantity);
 
-  const handleChangeItem = (selectSize, selectQuantity) => {
+  const handleChangeItem = (selectSize, selectQuantity, color) => {
     const updatedCartItem = {
       ...cartItem,
       size: selectSize,
       quantity: selectQuantity,
+      color,
     };
 
     fetch(``, {
@@ -59,7 +60,6 @@ const CartPopUp = ({ setIsPopUp, cartItem, setCartList }) => {
         </div>
       </div>
       <div className="popUpCnt">
-        {/*아래 div -> 기존 form이었다가 react error로 form 태그 중복떠서 div로 변경함 */}
         <div name="optionChangeForm" id="optionChangeForm">
           <div className="cartItemDiv">
             <div className="cartItemBox">
@@ -203,9 +203,8 @@ const CartPopUp = ({ setIsPopUp, cartItem, setCartList }) => {
               fontscale="large"
               color="blackToYellow"
               scale="cartBtn"
-              handleClick={
-                () => handleChangeItem(selectSize, selectQuantity)
-                //API (selectSize, selectQuantity 값 보내주기)-> 저장된 값을 cartList에 보내기
+              handleClick={() =>
+                handleChangeItem(selectSize, selectQuantity, cartItem.color)
               }
             >
               변경하기

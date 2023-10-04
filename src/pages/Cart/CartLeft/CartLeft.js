@@ -3,7 +3,7 @@ import './CartLeft.scss';
 import Checkbox from '../../../components/CheckBox/Checkbox';
 import Button from '../../../components/Button/Button';
 import CartPopUp from '../../../components/CartPopUp/CartPopUp';
-// import { HOST } from '../../../components/Variable/Variable';
+import { TOKEN, HOST } from '../../../components/Variable/Variable';
 
 const CartLeft = ({
   cartList,
@@ -14,7 +14,7 @@ const CartLeft = ({
   setIsPopUp,
 }) => {
   const [selectAll, setSelectAll] = useState(false);
-  const [selectCartItem, setSelectCartItem] = useState();
+  const [selectCartItem, setSelectCartItem] = useState([]);
 
   // 체크박스 전체 선택/ 취소
   const handleCheckAll = () => {
@@ -42,80 +42,96 @@ const CartLeft = ({
   };
 
   // 여러 상품 삭제하기
-  const handleCheckItemsDelete = () => {
-    const updatedItemCheckboxes = { ...itemCheckboxes };
+  // const handleCheckItemsDelete = () => {
+  //   const updatedItemCheckboxes = { ...itemCheckboxes };
 
-    for (const key in updatedItemCheckboxes) {
-      if (updatedItemCheckboxes[key]) {
-        // 기존 객체 찾기
-        const targetProduct = cartList.find(
-          item => item.productId === parseInt(key),
-        );
+  //   for (const key in updatedItemCheckboxes) {
+  //     if (updatedItemCheckboxes[key]) {
+  //       const targetProduct = cartList.find(
+  //         item => item.productOptionId === parseInt[key],
+  //       );
 
-        // 찾은 객체에 isDelete 추가
-        if (targetProduct) {
-          targetProduct.isDelete = 'Y';
-        }
-      }
-    }
+  //       if (targetProduct) {
+  //         targetProduct.isDeleted = 'Y';
 
-    // 삭제된 상품에 대한 체크박스 초기화
-    const updatedItemCheckboxesAfterDelete = {};
-    for (let i = 0; i < cartList.length; i++) {
-      updatedItemCheckboxesAfterDelete[cartList[i].productId] = false;
-    }
+  //         const postData = {
+  //           ...cartList[targetProduct],
+  //           isDeleted: 'Y',
+  //         };
+  //         console.log(postData);
+  //       }
+  //     }
+  //   }
 
-    setItemCheckboxes(updatedItemCheckboxesAfterDelete);
+  //   const updatedItemCheckboxesAfterDelete = {};
+  //   for (let i = 0; i < cartList.length; i++) {
+  //     updatedItemCheckboxesAfterDelete[cartList[i].productOptionId] = false;
+  //   }
 
-    // HOST로 백엔드 API 가져오기 : `${HOST}/carts/${productId}`
-    fetch(``, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        // authorization: '토큰',
-      },
-      body: JSON.stringify({
-        cartList,
-      }),
-    })
-      .then(response => {
-        if (response.ok === true) {
-          return response.json();
-        }
-        throw new Error('에러 발생!');
-      })
-      .catch(error => console.log(error))
-      .then(data => {
-        if (data.message === 'cart List deleted') {
-          alert('장바구니 상품을 삭제하였습니다.');
-        }
-      });
-  };
+  //   setItemCheckboxes(updatedItemCheckboxesAfterDelete);
+
+  //   fetch(`http://10.58.52.107:8000/carts/${1}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       authorization:
+  //         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoxfSwiaWF0IjoxNjk1NTcwOTEyLCJleHAiOjE2OTgxNjI5MTJ9.LXd5rq9hV7qwsaRweBGBGhavJasZJdndEpptccaUi0E',
+  //     },
+  //     body: JSON.stringify({
+  //       cartList,
+  //     }),
+  //   })
+  //     .then(response => {
+  //       if (response.ok === true) {
+  //         return response.json();
+  //       }
+  //       throw new Error('에러 발생!');
+  //     })
+  //     .catch(error => console.log(error))
+  //     .then(data => {
+  //       if (data.message === 'cart List deleted') {
+  //         alert('장바구니 상품을 삭제하였습니다.');
+  //       }
+  //     });
+  // };
 
   // 단일 상품 삭제하기
-  const handleItemDelete = productId => {
+  const handleItemDelete = productOption => {
     // 기존 객체 찾기
-    const targetProduct = cartList.find(item => item.productId === productId);
+    const targetProduct = cartList.find(
+      item => item.productOptionId === productOption.productOptionId,
+    );
 
-    // 찾은 객체에 isDelete 추가
+    // 찾은 객체에 isDeleted 추가
     if (targetProduct) {
-      targetProduct.isDelete = 'Y';
+      targetProduct.isDeleted = 'Y';
+
+      const postData = {
+        ...cartList[targetProduct],
+        isDeleted: 'Y',
+      };
+      console.log(postData);
     }
 
     // 삭제된 상품에 대한 체크박스 초기화
     const updatedItemCheckboxesAfterDelete = {};
     for (let i = 0; i < cartList.length; i++) {
-      updatedItemCheckboxesAfterDelete[cartList[i].productId] = false;
+      updatedItemCheckboxesAfterDelete[cartList[i].productOptionId] = false;
     }
 
     setItemCheckboxes(updatedItemCheckboxesAfterDelete);
 
-    fetch(``, {
-      //`${HOST}/carts/${productId}`
+    const [arr] = cartList.filter(
+      data => data.productOptionId === productOption.productOptionId,
+    );
+
+    console.log(arr.productId);
+
+    fetch(`${HOST}/carts/${arr.productId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        // authorization: '토큰',
+        authorization: TOKEN,
       },
       body: JSON.stringify({
         cartList,
@@ -129,12 +145,17 @@ const CartLeft = ({
       })
       .catch(error => console.log(error))
       .then(data => {
+        console.log(data);
         if (data.message === 'cart List deleted') {
           alert('장바구니 상품을 삭제하였습니다.');
         }
       });
   };
 
+  // 여러 상품 삭제하기
+  const deleteSelectItem = () => {
+    selectCartItem.forEach(item => handleItemDelete(item));
+  };
   return (
     <li className="cartLeft">
       <div className="cartContents">
@@ -156,7 +177,7 @@ const CartLeft = ({
             fontscale="small"
             scale="middle"
             color="whiteAndBlack"
-            handleClick={handleCheckItemsDelete}
+            handleClick={deleteSelectItem}
           >
             선택 삭제
           </Button>
@@ -166,16 +187,18 @@ const CartLeft = ({
         <ul className="shoppingList">
           {cartList.length > 0 &&
             cartList.map(cartItem => (
-              <li className="shoppingItemList" key={cartItem.productId}>
+              <li className="shoppingItemList" key={cartItem.productOptionId}>
                 <div className="shoppingItemContent">
                   <span className="itemCheck">
                     <Checkbox
                       type="checkbox"
-                      id={`btnSelect${cartItem.productId}`}
-                      className={`btnSelect${cartItem.productId}`}
-                      checked={itemCheckboxes[cartItem.productId] || false}
+                      id={`btnSelect${cartItem.productOptionId}`}
+                      className={`btnSelect${cartItem.productOptionId}`}
+                      checked={
+                        itemCheckboxes[cartItem.productOptionId] || false
+                      }
                       onChange={() =>
-                        handleItemCheckboxChange(cartItem.productId)
+                        handleItemCheckboxChange(cartItem.productOptionId)
                       }
                     >
                       선택
@@ -185,7 +208,7 @@ const CartLeft = ({
                     <button
                       type="button"
                       className="btnOption"
-                      id={cartItem.productId}
+                      id={cartItem.productOptionId}
                       onClick={() => {
                         setIsPopUp(true);
                         setSelectCartItem(cartItem);
@@ -196,9 +219,9 @@ const CartLeft = ({
                     <button
                       type="button"
                       className="btnDelete"
-                      value={cartItem.productId}
+                      value={cartItem.productOptionId}
                       title="상품삭제"
-                      onClick={() => handleItemDelete(cartItem.productId)}
+                      onClick={() => handleItemDelete(cartItem)}
                     >
                       삭제
                     </button>
@@ -210,7 +233,7 @@ const CartLeft = ({
                       <div>
                         <a href="#!">
                           <img
-                            src={cartItem.productThumbnailImage}
+                            src={cartItem.productThumbnail}
                             alt="제품사진"
                             className="itemImg"
                           />

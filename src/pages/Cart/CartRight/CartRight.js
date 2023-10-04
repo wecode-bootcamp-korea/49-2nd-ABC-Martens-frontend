@@ -1,9 +1,12 @@
 import React from 'react';
-// import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import './CartRight.scss';
 import Button from '../../../components/Button/Button';
+import { TOKEN } from '../../../components/Variable/Variable';
 
 const CartRight = ({ cartList }) => {
+  const navigate = useNavigate();
+
   let sum = cartList => {
     let sum = 0;
     for (let i of cartList) {
@@ -32,15 +35,15 @@ const CartRight = ({ cartList }) => {
 
   if (!cartList) return null;
 
-  // const handleOrderBtn = () => {
-  //   if (token) {
-  //     //로그인이 되어있으면
-  //     navigate('/order');
-  //   } else {
-  //     //비로그인 상태
-  //     navigate('/login');
-  //   }
-  // };
+  const handleOrderBtn = cartList => {
+    if (TOKEN) {
+      //로그인이 되어있으면
+      navigate('/order');
+    } else {
+      //비로그인 상태
+      navigate('/login');
+    }
+  };
 
   return (
     <li className="cartRight">
@@ -92,7 +95,7 @@ const CartRight = ({ cartList }) => {
           fontscale="large"
           scale="large"
           color="blackToYellow"
-          // handleClick={handleOrderBtn}
+          handleClick={handleOrderBtn(cartList)}
         >
           구매하기
         </Button>

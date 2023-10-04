@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Cart.scss';
 import CartLeft from './CartLeft/CartLeft';
 import CartRight from './CartRight/CartRight';
+import { TOKEN, HOST } from '../../components/Variable/Variable';
 
 const Cart = () => {
   const [cartList, setCartList] = useState([]);
@@ -13,14 +14,12 @@ const Cart = () => {
   //   setRender(!render);
   // };
 
-  // cart list 불러오기.
   useEffect(() => {
-    // HOST로 백엔드 API 가져오기 :`${HOST}/carts`
-    fetch('/data/cartList.json', {
+    fetch(`${HOST}/carts`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        // authorization: '토큰',
+        authorization: TOKEN,
       },
     })
       .then(response => {
@@ -30,7 +29,9 @@ const Cart = () => {
         throw new Error('에러 발생!');
       })
       .catch(error => console.log(error))
-      .then(data => {
+      .then(resData => {
+        console.log(resData);
+        const { data } = resData;
         setCartList(data);
         const updatedItemCheckboxes = {};
         for (let i = 0; i < data.length; i++) {

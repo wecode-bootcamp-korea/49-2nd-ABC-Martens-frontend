@@ -13,7 +13,7 @@ const Cart = () => {
   //   setRender(!render);
   // };
 
-  // cart list 불러오기
+  // cart list 불러오기.
   useEffect(() => {
     // HOST로 백엔드 API 가져오기 :`${HOST}/carts`
     fetch('/data/cartList.json', {

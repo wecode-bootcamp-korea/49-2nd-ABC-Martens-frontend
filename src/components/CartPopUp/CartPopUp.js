@@ -42,7 +42,6 @@ const CartPopUp = ({ setIsPopUp, cartItem, getCartData }) => {
       })
       .catch(error => console.log(error));
   };
-
   return (
     <div className="cartPopUp">
       <div className="popUpTitle">

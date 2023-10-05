@@ -159,9 +159,9 @@ const CartLeft = ({
       </div>
       <div className="cartList">
         <ul className="shoppingList">
-          {cartList.length > 0 &&
+          {cartList && cartList.length > 0 ? (
             cartList.map(cartItem => (
-              <li className="shoppingItemList" key={cartItem.productOptionId}>
+              <li className="shoppingItemList" key={cartItem.cartId}>
                 <div className="shoppingItemContent">
                   <span className="itemCheck">
                     <Checkbox
@@ -253,10 +253,36 @@ const CartLeft = ({
                   <CartPopUp
                     setIsPopUp={setIsPopUp}
                     cartItem={selectCartItem}
+                    getCartData={getCartData}
                   />
                 )}
               </li>
-            ))}
+            ))
+          ) : (
+            // 카트리스트가 없을 때
+            <li className="shoppingItemList">
+              <div className="shoppingItemContent">
+                <span className="itemCheck">
+                  <Checkbox
+                    type="checkbox"
+                    id="btnSelect"
+                    className="btnSelect"
+                  >
+                    선택
+                  </Checkbox>
+                </span>
+                <div>
+                  <button type="button" className="btnOption">
+                    옵션/수량변경
+                  </button>
+                  <button type="button" className="btnDelete">
+                    삭제
+                  </button>
+                </div>
+              </div>
+              <div className="noItem">장바구니에 담긴 상품이 없습니다.</div>
+            </li>
+          )}
         </ul>
       </div>
     </li>

@@ -1,4 +1,4 @@
-.productOrderlist {
+.productOrder {
   width: 452px;
   height: 700px;
   margin-left: 30px;
@@ -16,51 +16,53 @@
       height: 111px;
 
       .name {
-        font-size: 20px;
         width: 120px;
         height: 26px;
         margin-bottom: 5px;
-      }
-    }
-    .color {
-      width: 180px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      text-align: center;
-
-      .colorList {
-        margin-right: 5px;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 30px;
+        font-size: 20px;
+        font-weight: bold;
         color: #000000;
       }
 
-      span {
-        font-style: normal;
-        font-weight: 300;
-        font-size: 16px;
-        line-height: 30px;
-        text-transform: uppercase;
-        color: #000000;
+      .color {
+        width: 180px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        .colorList {
+          margin-right: 5px;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 30px;
+          color: #000000;
+        }
+
+        span {
+          font-style: normal;
+          font-weight: 300;
+          font-size: 16px;
+          line-height: 30px;
+          text-transform: uppercase;
+          color: #000000;
+        }
       }
     }
 
     .shoesImg {
       width: 452px;
       height: 80px;
-      margin-top: 30px;
       display: flex;
       align-items: center;
 
       .shoes {
-        margin-right: 8px;
         display: inline-block;
         width: 60px;
         height: 80px;
-        box-sizing: border-box;
+        margin-right: 8px;
+        border: 1px solid black;
       }
     }
 
@@ -81,33 +83,44 @@
         font-weight: 700;
       }
 
-      .totalPrice {
+      div {
         display: flex;
         align-items: center;
-        font-size: 13px;
-        width: 101px;
-        height: 30px;
-      }
-      .won {
-        margin-left: 10px;
-        font-size: 20px;
-        line-height: 30px;
-        height: 37px;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 30px;
-        color: #000000;
-      }
 
-      .num {
-        width: 70px;
-        height: 30px;
-        font-size: 20px;
-        line-height: 30px;
-        font-style: normal;
-        font-weight: 700;
-        color: #000000;
+        b {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 30px;
+          color: #bb172f;
+        }
+
+        s {
+          margin-left: 10px;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 30px;
+          text-decoration-line: line-through;
+          color: #828282;
+        }
+
+        span {
+          margin-left: 10px;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 30px;
+          color: #000000;
+
+          .num {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 30px;
+            color: #000000;
+          }
+        }
       }
     }
 
@@ -120,267 +133,266 @@
         width: 452px;
         height: 203px;
         margin-top: 30px;
-      }
 
-      .sizeGuidesection {
-        width: 452px;
-        height: 38px;
-        padding-bottom: 8px;
-        display: flex;
-      }
+        .sizeGuidesection {
+          width: 452px;
+          height: 38px;
+          padding-bottom: 8px;
+          display: flex;
 
-      .size {
-        width: 90px;
-        height: 30px;
-        font-size: 16px;
-        color: #000000;
-      }
+          .size {
+            width: 90px;
+            height: 30px;
+            font-size: 16px;
+            color: #000000;
+          }
 
-      .sizeList {
-        width: 90px;
-        height: 30px;
-        margin-left: auto;
-        display: flex;
-        align-items: center;
-      }
+          .sizeList {
+            width: 90px;
+            height: 30px;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
 
-      .sizeGuide {
-        width: 90px;
-        height: 30px;
-        font-size: 14px;
-        text-decoration-line: underline;
-      }
-
-      .sizeOption {
-        width: 452px;
-        height: 222px;
-        display: block;
-        margin-top: 8px;
-      }
-
-      .optionTable {
-        width: 452px;
-        height: 87px;
-        margin-bottom: 30px;
-      }
-
-      .tableWrap {
-        width: 452px;
-        height: 87px;
-        row-gap: 8px;
-        column-gap: 8px;
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        padding: 4px 14px;
-        font-size: 16px;
-        background: #ffffff;
-        border: 1px solid #e1e1e1;
-        text-align: left;
-        width: 84px;
-        height: 40px;
-        cursor: pointer;
-      }
-
-      .btn:hover {
-        background-color: #000000;
-        color: #ffd343;
-      }
-
-      .findMysize {
-        min-height: 40px;
-        line-height: 25px;
-        max-width: 480px;
-        font-family: Pretendard;
-        background-color: rgb(255, 229, 18);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        color: #000000;
-        font-size: 15px;
-        font-weight: 600;
-        text-align: center;
-      }
-    }
-    .quantityContainer {
-      width: 452px;
-      height: 104px;
-      margin-top: 30px;
-    }
-    .quantityTable {
-      width: 452px;
-      height: 104px;
-    }
-    .quantityOtp {
-      width: 452px;
-      height: 104px;
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 30px;
-
-      .sizeInch {
-        width: 452px;
-        height: 43px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 10px;
-        font-weight: 700;
-        font-size: 16px;
-        color: #000000;
-        a {
-          cursor: pointer;
-          width: 20px;
-          height: 20px;
-          background: #ffffff;
-          border: 2px #ffffff solid;
-          img {
-            width: 20px;
-            height: 20px;
+            .sizeGuide {
+              width: 90px;
+              height: 30px;
+              font-size: 14px;
+              text-decoration-line: underline;
+            }
           }
         }
-      }
-      .quanTity_1 {
-        width: 452px;
-        height: 30px;
-        display: flex;
-        justify-content: flex-start;
-      }
-      .quantity_Content {
-        width: 50px;
-        height: 30px;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 30px;
-        color: #000000;
-      }
-    }
 
-    .sizeFine {
-      min-height: 40px;
-      line-height: 25px;
-      max-width: 480px;
-      font-size: 12px;
-      font-weight: bold;
-      background-color: rgb(255, 229, 18);
-      color: rgb(0, 0, 0);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
+        .sizeOption {
+          width: 452px;
+          height: 222px;
+          display: block;
+          margin-top: 8px;
 
-      p {
-        width: 170px;
-        color: #000000;
-        font-family: Pretendard;
-        font-size: 15px;
-        line-height: 40px;
-        font-weight: 600;
-        margin: 0px;
-        text-align: center;
-      }
-    }
+          .optionTable {
+            width: 452px;
+            height: 87px;
+            margin-bottom: 30px;
 
-    .totalContainer {
-      width: 452px;
-      height: 30px;
-      margin-top: 20px;
+            .tableWrap {
+              width: 452px;
+              height: 87px;
+              row-gap: 8px;
+              column-gap: 8px;
+              display: flex;
+              align-items: flex-start;
+              justify-content: flex-start;
+              flex-wrap: wrap;
+            }
 
-      .quantity {
-        width: 35px;
-        height: 30px;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 30px;
-        color: #000000;
-      }
+            .quantityContainer {
+              width: 452px;
+              height: 104px;
+              margin-top: 30px;
 
-      .totalPrice {
-        width: 452px;
-        height: 30px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 30px;
-      }
+              .quantityTable {
+                width: 452px;
+                height: 104px;
 
-      .quanTity {
-        width: 50px;
-        height: 30px;
-        font-size: 18px;
-        color: #000000;
-        font-style: normal;
-        font-weight: 700;
-      }
+                .quantityOtp {
+                  width: 452px;
+                  height: 104px;
+                  display: flex;
+                  flex-direction: column;
+                  padding-bottom: 30px;
 
-      .totalProduct {
-        font-style: normal;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 30px;
-        color: #000000;
-      }
-    }
-  }
-  .pdBtns_area1 {
-    width: 452px;
-    height: 173px;
-    margin-top: 95px;
+                  .sizeInch {
+                    width: 452px;
+                    height: 43px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-bottom: 10px;
+                    font-weight: 700;
+                    font-size: 16px;
+                    color: #000000;
 
-    .pdpBtn {
-      width: 452px;
-      height: 50px;
-      display: flex;
-      margin-top: 30px;
-      justify-content: space-between;
+                    div {
+                      cursor: pointer;
+                      width: 20px;
+                      height: 20px;
+                      background: #ffffff;
+                      border: 2px #ffffff solid;
 
-      .cart {
-        width: 221px;
-        height: 50px;
-        background: #ffffff;
-        border: 1px #000000 solid;
-        color: #000000;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 9px 30px;
-        font-weight: 700;
-        font-size: 20px;
-        text-align: center;
-        box-sizing: border-box;
-      }
-      a {
-        text-decoration: none;
-      }
-      .buy {
-        width: 221px;
-        height: 50px;
-        background: #000000;
-        border: 1px #000000 solid;
-        color: #ffffff;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 9px 30px;
-        font-weight: 700;
-        font-size: 20px;
-        text-align: center;
-        box-sizing: border-box;
-      }
-      .cart:hover {
-        background-color: #000000;
-        color: white;
-      }
-      .buy:hover {
-        background-color: #ffd343;
-        color: #000000;
+                      img {
+                        width: 20px;
+                        height: 20px;
+                      }
+                    }
+                  }
+
+                  .quanTity_1 {
+                    width: 452px;
+                    height: 30px;
+                    display: flex;
+                    justify-content: flex-start;
+
+                    .quantity_Content {
+                      width: 50px;
+                      height: 30px;
+                      font-weight: 700;
+                      font-size: 16px;
+                      line-height: 30px;
+                      color: #000000;
+                    }
+
+                    .amtBtnDiv {
+                      display: flex;
+                      align-items: center;
+
+                      .amtNum {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 30px;
+                        height: 30px;
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 16px;
+                        text-align: center;
+                        color: #000000;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .sizeFine {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              max-width: 480px;
+              min-height: 40px;
+              margin-top: 20px;
+              line-height: 25px;
+              font-size: 12px;
+              font-weight: bold;
+              background-color: rgb(255, 229, 18);
+              color: rgb(0, 0, 0);
+              cursor: pointer;
+
+              p {
+                width: 170px;
+                color: #000000;
+                font-family: Pretendard;
+                font-size: 15px;
+                line-height: 40px;
+                font-weight: 600;
+                margin: 0px;
+                text-align: center;
+              }
+            }
+
+            .totalContainer {
+              width: 452px;
+              height: 30px;
+              margin-top: 20px;
+
+              .totalPrice {
+                width: 452px;
+                height: 30px;
+                margin-top: 30px;
+
+                .totalProduct {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  font-style: normal;
+                  font-weight: 700;
+                  font-size: 18px;
+                  line-height: 30px;
+                  color: #000000;
+
+                  b {
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 20px;
+                    line-height: 30px;
+                    color: #000000;
+
+                    span {
+                      font-style: normal;
+                      font-weight: 700;
+                      font-size: 20px;
+                      line-height: 30px;
+                      color: #000000;
+                    }
+                  }
+                }
+              }
+            }
+
+            .pdBtns_area1 {
+              width: 452px;
+              height: 173px;
+              margin-top: 12px;
+
+              .pdpBtn {
+                width: 452px;
+                height: 50px;
+                display: flex;
+                justify-content: space-between;
+
+                a {
+                  .cart {
+                    width: 221px;
+                    height: 50px;
+                    background: #ffffff;
+                    border: 1px #000000 solid;
+                    color: #000000;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 9px 30px;
+                    font-weight: 700;
+                    font-size: 20px;
+                    text-align: center;
+                    cursor: pointer;
+
+                    &:hover {
+                      background-color: #000000;
+                      color: white;
+                    }
+                  }
+                }
+
+                a {
+                  text-decoration: none;
+
+                  .buy {
+                    width: 221px;
+                    height: 50px;
+                    background: #000000;
+                    border: 1px #000000 solid;
+                    color: #ffffff;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 9px 30px;
+                    font-weight: 700;
+                    font-size: 20px;
+                    text-align: center;
+                    cursor: pointer;
+
+                    &:hover {
+                      border: none;
+                      background-color: #ffd343;
+                      color: #000000;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

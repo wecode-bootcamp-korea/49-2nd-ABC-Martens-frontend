@@ -1,0 +1,10 @@
+{
+  "productId": 1,
+  "description": "",
+  "salePercentage": "30",
+  "productName": "1461 모노",
+  "images": ["imageurl", "imageurl2", "imageurl3"],
+  "options": [230, 240, 250],
+  "originalPrice": 3200,
+  "price": 3000
+}

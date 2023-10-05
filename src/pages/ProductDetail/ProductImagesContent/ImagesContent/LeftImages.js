@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './LeftImages.scss';
 
-const LeftImages = ({ count, setCount }) => {
-  const [imageData, setImageData] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:3000/data/imageData.json')
-      .then(Response => Response.json())
-      .then(result => setImageData(result));
-  }, []);
+const LeftImages = ({ count, productInfo }) => {
+  const imageData = productInfo.detailImageSelector;
 
   return (
     <div className="leftImages">
@@ -24,9 +18,9 @@ const LeftImages = ({ count, setCount }) => {
                   indexCheck = 'imageWrapper';
                 }
                 return (
-                  <div className="swiperSlide" key={list.id}>
+                  <div className="swiperSlide" key={list.detail_image_url}>
                     <div className={indexCheck}>
-                      <img src={list.url} alt={list.alt} />
+                      <img src={list.detail_image_url} alt="상품이미지" />
                     </div>
                   </div>
                 );

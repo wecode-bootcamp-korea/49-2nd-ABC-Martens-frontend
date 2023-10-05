@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import Button from '../../../components/Button/Button';
 import './ProductOrder.scss';
 
-const ProductOrder = ({ productList }) => {
+const ProductOrder = ({ productInfo }) => {
   const [selectedSize, setSelectedSize] = useState();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
-  const newArray = productList.options.map(option => {
+  const newArray = productInfo.options.map(option => {
     return { quantity: option.quantity, size: option.size };
   });
 
@@ -15,12 +15,12 @@ const ProductOrder = ({ productList }) => {
     <div className="productOrder">
       <form className="goodform">
         <div className="listTop">
-          <strong className="name">{productList.productName}</strong>
+          <strong className="name">{productInfo.productName}</strong>
           <div className="color">
             <strong className="colorList">색상 :</strong>
             <span>
-              {productList.colorSelector[0].colorName} /
-              {productList.colorSelector[0].color_id}
+              {productInfo.colorSelector[0].colorName} /
+              {productInfo.colorSelector[0].color_id}
             </span>
           </div>
         </div>
@@ -34,14 +34,14 @@ const ProductOrder = ({ productList }) => {
         <div className="productPrice">
           <span className="productCost">상품 금액</span>
           <div>
-            <b>{productList.salesPricePercentage}%</b>
+            <b>{productInfo.salesPricePercentage}%</b>
             <s>
-              ￦ {parseInt(productList.orignialPrice).toLocaleString('ko-KR')}
+              ￦ {parseInt(productInfo.orignialPrice).toLocaleString('ko-KR')}
             </s>
             <span>
               ￦
               <span className="num">
-                {parseInt(productList.price).toLocaleString('ko-KR')}
+                {parseInt(productInfo.price).toLocaleString('ko-KR')}
               </span>
             </span>
           </div>
@@ -64,6 +64,14 @@ const ProductOrder = ({ productList }) => {
                     } else {
                       color = 'whiteToBlack';
                     }
+
+                    let displayText;
+                    if (size.quantity === 0) {
+                      displayText = `${size.size} (품절)`;
+                    } else {
+                      displayText = size.size;
+                    }
+
                     return (
                       <Button
                         key={size.size}
@@ -77,7 +85,7 @@ const ProductOrder = ({ productList }) => {
                           setSelectedSize(size.size);
                         }}
                       >
-                        {size.size}
+                        {displayText}
                       </Button>
                     );
                   })}
@@ -88,7 +96,12 @@ const ProductOrder = ({ productList }) => {
                       <div className="quantityOtp">
                         <span className="sizeInch">
                           사이즈(mm) : {selectedSize}
-                          <div onClick={() => setSelectedSize(null)}>
+                          <div
+                            onClick={() => {
+                              setSelectedSize(null);
+                              setSelectedQuantity(1);
+                            }}
+                          >
                             <img
                               src="https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/close_black.svg"
                               alt="x"
@@ -145,7 +158,7 @@ const ProductOrder = ({ productList }) => {
                         <span>
                           {selectedSize
                             ? (
-                                parseInt(productList.price) * selectedQuantity
+                                parseInt(productInfo.price) * selectedQuantity
                               ).toLocaleString('ko-KR')
                             : 0}
                         </span>
@@ -156,12 +169,20 @@ const ProductOrder = ({ productList }) => {
                 <div className="pdBtns_area1">
                   <div className="pdpBtn">
                     <Link to="/cart">
-                      <button type="button" className="cart">
+                      <button
+                        type="button"
+                        className="cart"
+                        // onClick={() => handleCart()}
+                      >
                         장바구니
                       </button>
                     </Link>
                     <Link to="/order">
-                      <button type="button" className="buy">
+                      <button
+                        type="button"
+                        className="buy"
+                        // onClick={() => handleOrder()}
+                      >
                         구매하기
                       </button>
                     </Link>

@@ -7,7 +7,7 @@ import ProductOrder from './ProductOrder/ProductOrder';
 import './ProductDetail.scss';
 
 const ProductDetail = () => {
-  const [productList, setProductList] = useState({});
+  const [productInfo, setProductInfo] = useState({});
   const params = useParams();
   const id = params.id;
 
@@ -19,11 +19,12 @@ const ProductDetail = () => {
     })
       .then(response => response.json())
       .then(data => {
-        setProductList(data);
+        setProductInfo(data);
       });
   }, [id]);
 
-  const isEmpty = Object.keys(productList).length > 0;
+  console.log(productInfo);
+  const isEmpty = Object.keys(productInfo).length > 0;
 
   if (!isEmpty) {
     return null;
@@ -34,8 +35,8 @@ const ProductDetail = () => {
         <ProductDetailHome />
         <div className="productsDiv">
           <div className="productDetailContent">
-            <ProductImagesContent productList={productList} />
-            <ProductOrder productList={productList} />
+            <ProductImagesContent productInfo={productInfo} />
+            <ProductOrder productInfo={productInfo} />
           </div>
 
           <div className="reviewContent" />

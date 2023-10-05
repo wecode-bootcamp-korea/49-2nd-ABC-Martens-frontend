@@ -3,16 +3,16 @@ import './ProductImagesContent.scss';
 import LeftImages from './ImagesContent/LeftImages';
 import RightImages from './ImagesContent/RightImages';
 
-const ProductImagesContent = ({ productList }) => {
+const ProductImagesContent = ({ productInfo }) => {
   const [count, setCount] = useState(0);
 
   return (
     <div className="productImagesContent">
-      <LeftImages count={count} setCount={setCount} productList={productList} />
+      <LeftImages count={count} setCount={setCount} productInfo={productInfo} />
       <RightImages
         count={count}
         setCount={setCount}
-        productList={productList}
+        productInfo={productInfo}
       />
     </div>
   );

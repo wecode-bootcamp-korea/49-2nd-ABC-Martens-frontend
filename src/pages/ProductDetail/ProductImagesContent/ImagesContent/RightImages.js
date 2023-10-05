@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './RightImages.scss';
 
-const RightImages = ({ count, setCount, productList }) => {
-  const [imageData, setImageData] = useState([]);
+const RightImages = ({ count, setCount, productInfo }) => {
+  const imageData = productInfo.detailImageSelector;
 
   const prevBtn = () => {
     const minusCount = count => (count > 0 ? count - 1 : null);
@@ -10,17 +10,10 @@ const RightImages = ({ count, setCount, productList }) => {
   };
 
   const nextBtn = () => {
-    const plusCount = count => (count < 10 ? count + 1 : (count = 0));
+    const plusCount = count =>
+      count < imageData.length - 1 ? count + 1 : (count = 0);
     setCount(plusCount);
   };
-
-  useEffect(() => {
-    fetch('/data/imageData.json')
-      .then(Response => Response.json())
-      .then(result => setImageData(result));
-  }, []);
-
-  // setImageData(productList.detailImageSelector);
 
   return (
     <div className="rightImages">
@@ -29,10 +22,10 @@ const RightImages = ({ count, setCount, productList }) => {
           return (
             <div
               className="swiperSlider"
-              key={list.id}
+              key={list.detail_image_url}
               style={{ transform: `translateX(${count * -560}px)` }}
             >
-              <img src={list.url} alt={list.alt} index={index} />
+              <img src={list.detail_image_url} alt="상품이미지" index={index} />
             </div>
           );
         })}

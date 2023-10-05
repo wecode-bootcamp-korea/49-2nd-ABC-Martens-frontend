@@ -27,7 +27,7 @@ const ProductOrder = ({ productInfo }) => {
         <div className="shoesImg">
           <img
             className="shoes"
-            src="https://i.postimg.cc/q7sdqxS7/boots-1.jpg"
+            src={productInfo.thumbnailImageUrl}
             alt="신발 이미지"
           />
         </div>

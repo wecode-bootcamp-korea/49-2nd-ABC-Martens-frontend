@@ -27,7 +27,7 @@ const Order = () => {
                       <a href="/productDetail" className="productLink">
                         <img
                           className="productImage"
-                          src="images/boots-1.png"
+                          src="https://www.drmartens.co.kr/goods/view?no=1354"
                           alt="1"
                         />
                       </a>
@@ -119,6 +119,18 @@ const Order = () => {
                     </div>
                   </li>
                 </ul>
+              </div>
+              <div className="deliveryInfo">
+                <h3 className="deliveryTitle">
+                  <span className="inforMation">배송지 정보</span>
+                </h3>
+                <div className="selectorInfo">
+                  <ul className="tabBtn">
+                    <li className="selection">
+                      <span className="selectInput">선택</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

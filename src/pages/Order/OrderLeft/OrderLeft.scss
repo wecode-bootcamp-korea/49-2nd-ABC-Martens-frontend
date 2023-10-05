@@ -599,4 +599,66 @@
       }
     }
   }
+  .deliveryInfo {
+    width: 100%;
+    height: 660px;
+    padding-bottom: 20px;
+
+    .deliveryTitle {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 30px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      text-transform: uppercase;
+      color: #000000;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px #e1e1e1 solid;
+
+      .inforMation {
+        margin-left: 15px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #000000;
+      }
+    }
+    .selectorInfo {
+      width: 100%;
+      height: 500px;
+      display: block;
+
+      .tabBtn {
+        width: 100%;
+        height: 50px;
+
+        .selection {
+          width: 50%;
+          height: 50px;
+
+          .selectInput {
+            width: 40px;
+            height: 30px;
+            padding-bottom: 10px;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #464646;
+            position: relative;
+            transition: color 0.25s;
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
 }

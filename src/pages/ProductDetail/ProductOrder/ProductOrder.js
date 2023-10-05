@@ -169,20 +169,12 @@ const ProductOrder = ({ productInfo }) => {
                 <div className="pdBtns_area1">
                   <div className="pdpBtn">
                     <Link to="/cart">
-                      <button
-                        type="button"
-                        className="cart"
-                        // onClick={() => handleCart()}
-                      >
+                      <button type="button" className="cart">
                         장바구니
                       </button>
                     </Link>
                     <Link to="/order">
-                      <button
-                        type="button"
-                        className="buy"
-                        // onClick={() => handleOrder()}
-                      >
+                      <button type="button" className="buy">
                         구매하기
                       </button>
                     </Link>

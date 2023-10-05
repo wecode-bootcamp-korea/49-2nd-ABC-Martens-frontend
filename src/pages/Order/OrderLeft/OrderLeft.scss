@@ -1,0 +1,602 @@
+.layoutBody {
+  max-width: 1200px;
+  height: 1883px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  box-sizing: border-box;
+
+  .orderFrame {
+    width: 1046px;
+    height: 1883px;
+    clear: both;
+    display: block;
+
+    .subpageWrap {
+      width: 1046px;
+      height: 190px;
+      display: flex;
+
+      .subContainer {
+        width: 100%;
+        position: relative;
+        padding-bottom: 10px !important;
+
+        .titleContainer {
+          width: 100%;
+          height: 120px;
+          padding: 80px 0 0;
+          margin-bottom: 50px;
+          text-align: center;
+          position: relative;
+
+          .orderTitle {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            text-transform: uppercase;
+            color: #000000;
+            margin-bottom: 60px;
+
+            .designElement {
+              width: 135px;
+              height: 40px;
+              font-weight: 700;
+              font-size: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .orderLayout {
+    width: 100%;
+    height: 1693px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 40px;
+    display: flex;
+
+    .wrapLeft {
+      width: 556px;
+      height: 100%;
+
+      .orderInfo {
+        width: 100%;
+        height: 50px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;
+        color: #000000;
+        padding-bottom: 20px;
+
+        .productInfo {
+          width: 130px;
+          height: 30px;
+          margin-left: 15px;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 20px;
+          text-align: center;
+          text-transform: uppercase;
+          color: #000000;
+        }
+      }
+    }
+  }
+
+  .product {
+    width: 100%;
+    height: 151px;
+
+    .cartContents {
+      width: 100%;
+      height: 131px;
+      border: 1px solid #e1e1e1;
+      padding-bottom: 20px;
+
+      .cartItem {
+        width: 100%;
+        height: 131px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 15px;
+
+        .itemInfo {
+          width: 200 px;
+          height: 100px;
+          display: flex;
+          align-items: flex-start;
+
+          .productContainer {
+            width: 80px;
+            height: 100px;
+            margin-right: 15px;
+
+            .productLink {
+              width: 80px;
+              height: 100px;
+              color: #444;
+              text-decoration: none;
+              border: none;
+              outline: none;
+
+              .productImage {
+                display: block;
+                width: 80px;
+                height: 100px;
+                object-fit: cover;
+                object-position: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  ul {
+    width: 101px;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    li {
+      width: 101px;
+      height: 28px;
+      list-style: none;
+
+      strong {
+        width: 101px;
+        height: 28px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+      }
+    }
+
+    .optionArea {
+      width: 101px;
+      height: 48px;
+
+      .optionSize {
+        width: 101px;
+        height: 24px;
+
+        li {
+          display: flex;
+          align-items: center;
+
+          .pdsizeName {
+            width: 75px;
+            height: 24px;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            color: #000000;
+            white-space: nowrap;
+          }
+          .sizeNumber {
+            width: 25px;
+            height: 24px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            color: #464646;
+            font-family: 'Pretendard';
+          }
+        }
+      }
+    }
+    .optionNumber {
+      width: 101px;
+      height: 24px;
+
+      .optionQuantity {
+        width: 101px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+      }
+      .quanTity {
+        width: 50px;
+        height: 24px;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+        margin-right: 5px;
+        white-space: nowrap;
+      }
+      .number {
+        width: 25px;
+        height: 24px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        color: #464646;
+        font-family: 'Pretendard';
+      }
+    }
+  }
+
+  .block2 {
+    width: 330px;
+    height: 100px;
+    margin-left: auto;
+    margin-top: auto;
+
+    .price {
+      width: 330px;
+      height: 100px;
+      font-family: 'Oswald';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      display: flex;
+      align-items: flex-end;
+      text-align: right;
+      justify-content: flex-end;
+      color: #000000;
+
+      .priceSum {
+        width: 50px;
+        height: 24px;
+        font-family: 'Oswald';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        text-align: right;
+        color: #000000;
+      }
+    }
+  }
+
+  .orderSubsection {
+    width: 556px;
+    height: 1082px;
+    border: none;
+    margin: 0;
+    position: relative;
+    z-index: 10;
+
+    .disCount {
+      width: 556px;
+      height: 50px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      text-transform: uppercase;
+      color: #000000;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px #e1e1e1 solid;
+
+      .text {
+        width: 50px;
+        height: 30px;
+        margin-left: 15px;
+        color: #000000;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        text-align: center;
+      }
+    }
+  }
+
+  .inputBox {
+    width: 556px;
+    height: 140px;
+    padding-bottom: 20px;
+
+    .inputWrap {
+      width: 556px;
+      height: 120px;
+
+      .firstSelect {
+        width: 556px;
+        height: 50px;
+      }
+      .selectBox {
+        width: 556px;
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .codeDiscount {
+          width: 375px;
+          height: 50px;
+
+          .motionCode {
+            width: 375px;
+            height: 50px;
+            background: #ffffff;
+            border: 1px solid #828282;
+            border-radius: 2px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            color: #000000;
+            padding: 0 15px;
+            outline: 0 !important;
+            transition:
+              border-color 0.25s,
+              box-shadow 0.25s;
+            font-family: 'Pretendard';
+          }
+        }
+        .btn {
+          background: #000000;
+          border: 1px #000000 solid;
+          color: #ffffff;
+          width: 171px;
+          height: 50px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 10px 30px;
+          font-family: 'Pretendard';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 20px;
+          text-align: center;
+          text-transform: uppercase;
+          box-sizing: border-box;
+          border-radius: 0 !important;
+          cursor: pointer;
+        }
+      }
+    }
+    .secondSelect {
+      width: 556px;
+      height: 50px;
+      margin-top: 20px;
+
+      .secondBox {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .inputFix {
+          width: 375px;
+          height: 50px;
+
+          em {
+            background: #ffffff;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            color: #000000;
+            line-height: calc(50px - 2px);
+            padding: 0 15px;
+            outline: 0 !important;
+            width: calc(100% - 2px);
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            box-sizing: border-box;
+          }
+
+          .couponSaletxt {
+            width: 100%;
+            height: 50px;
+            background: #ffffff;
+            border: 1px solid #828282;
+            border-radius: 2px;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            color: #000000;
+            padding: 0 15px;
+            outline: 0 !important;
+            transition:
+              border-color 0.25s,
+              box-shadow 0.25s;
+            font-family: 'Pretendard';
+          }
+        }
+        .couponSelect {
+          width: 171px;
+          height: 50px;
+          background: #000000;
+          border: 1px #000000 solid;
+          color: #ffffff;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 9px 30px;
+          font-family: 'Pretendard';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 20px;
+          text-align: center;
+          text-transform: uppercase;
+          transition:
+            background 0.25s,
+            border-color 0.25s,
+            color 0.25s;
+          box-sizing: border-box;
+          border-radius: 0 !important;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .orderTitle {
+    width: 100%;
+    height: 50px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #000000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px #e1e1e1 solid;
+
+    .orderPerson {
+      margin-left: 15px;
+      width: 100px;
+      height: 30px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #000000;
+    }
+  }
+  .orderInput {
+    width: 100%;
+    height: 140px;
+    padding-bottom: 20px;
+
+    .orderWrap {
+      width: 100%;
+      height: 120px;
+
+      .threeSelect {
+        width: 100%;
+        height: 50px;
+
+        .nameInput {
+          width: 100%;
+          height: 50px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .nameVid {
+            width: 375px;
+            height: 50px;
+            position: relative;
+            min-width: 220px;
+            display: inline-block;
+
+            .name {
+              background: #ffffff;
+              border: 1px solid #828282;
+              border-radius: 2px;
+              font-style: normal;
+              font-weight: 400;
+              font-size: 16px;
+              color: #000000;
+              height: 50px;
+              padding: 0 15px;
+              outline: 0 !important;
+              width: 100%;
+              transition:
+                border-color 0.25s,
+                box-shadow 0.25s;
+              font-family: 'Pretendard';
+            }
+          }
+          .correctionBtn {
+            width: 171px;
+            height: 50px;
+            background: #000000;
+            border: 1px #000000 solid;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 9px 30px;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            transition:
+              background 0.25s,
+              border-color 0.25s,
+              color 0.25s;
+            box-sizing: border-box;
+            border-radius: 0 !important;
+            cursor: pointer;
+          }
+        }
+      }
+      .phoneNumber {
+        width: 100%;
+        height: 50px;
+        margin-top: 20px;
+
+        .contact {
+          width: 100%;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .contactVid {
+            width: 100%;
+            height: 50px;
+            position: relative;
+            min-width: 220px;
+            display: inline-block;
+
+            .numberInput {
+              width: 100%;
+              height: 50px;
+              background: #ffffff;
+              border: 1px solid #828282;
+              border-radius: 2px;
+              font-style: normal;
+              font-weight: 400;
+              font-size: 16px;
+              color: #000000;
+
+              padding: 0 15px;
+              outline: 0 !important;
+
+              transition:
+                border-color 0.25s,
+                box-shadow 0.25s;
+              font-family: 'Pretendard';
+            }
+          }
+        }
+      }
+    }
+  }
+}

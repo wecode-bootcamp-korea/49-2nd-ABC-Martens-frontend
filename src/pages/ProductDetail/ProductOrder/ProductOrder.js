@@ -1,28 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './ProductOrder.scss';
 
+const SIZES = [220, 230, 240, 250, 260, 270, 280, 290];
+
 const ProductOrder = () => {
-  const handleButtonClick = () => {
-    const linkUrl = 'localhost3000/Order';
-    window.location.href = linkUrl;
-  };
-  const handleButtonClick_1 = () => {
-    const linkUrl = 'localhost3000/Payment';
-    window.location.href = linkUrl;
-  };
+  const [selectedSize, setSelectedSize] = useState();
+  const params = useParams();
+  const id = params.id;
+
+  useEffect(() => {
+    fetch(`http://10.58.52.241:8000/goods/detail/${id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then(data => console.log(data));
+  }, [id]);
 
   return (
     <div className="productOrderlist">
       <form className="goodform">
         <div className="listTop">
-          <storng className="name">Brown Shoes</storng>
+          <strong className="name">Brown Shoes</strong>
           <div className="color">
             <strong className="colorList">색상 :</strong>
             <span>Brown / 000000</span>
           </div>
         </div>
         <div className="shoesImg">
-          <img className="shoes" src="images/boots-1.jpg" alt="신발 이미지" />
+          <img
+            className="shoes"
+            src="https://i.postimg.cc/q7sdqxS7/boots-1.jpg"
+            alt="신발 이미지"
+          />
         </div>
         <div className="productPrice">
           <span className="productCost">상품 금액</span>
@@ -43,35 +55,31 @@ const ProductOrder = () => {
             <div className="sizeOption">
               <div className="optionTable">
                 <div className="tableWrap">
-                  <button className="btn" type="button">
-                    220
-                  </button>
-                  <button className="btn" type="button">
-                    230
-                  </button>
-                  <button className="btn" type="button">
-                    240
-                  </button>
-                  <button className="btn" type="button">
-                    250
-                  </button>
-                  <button className="btn" type="button">
-                    260
-                  </button>
-                  <button className="btn" type="button">
-                    270
-                  </button>
-                  <button className="btn" type="button">
-                    280
-                  </button>
-                  <button className="btn" type="button">
-                    290
-                  </button>
+                  {SIZES.map(size => (
+                    <button
+                      key={size}
+                      className="btn"
+                      type="button"
+                      onClick={() => setSelectedSize(size)}
+                    >
+                      {size}
+                    </button>
+                  ))}
                 </div>
                 <div className="quantityContainer">
                   <div className="quantityTable">
                     <div className="quantityOtp">
-                      <span className="sizeInch">사이즈(mm) : </span>
+                      {selectedSize && (
+                        <span className="sizeInch">
+                          사이즈(mm) : {selectedSize}
+                          <a>
+                            <img
+                              src="https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/close_black.svg"
+                              alt="x"
+                            ></img>
+                          </a>
+                        </span>
+                      )}
                       <div className="quanTity_1">
                         <span className="quantity_Content">수량:</span>
                       </div>
@@ -89,20 +97,16 @@ const ProductOrder = () => {
                 </div>
                 <div className="pdBtns_area1">
                   <div className="pdpBtn">
-                    <button
-                      type="button"
-                      className="cart"
-                      onClick={handleButtonClick}
-                    >
-                      장바구니
-                    </button>
-                    <button
-                      type="button"
-                      className="buy"
-                      onClick={handleButtonClick_1}
-                    >
-                      구매하기
-                    </button>
+                    <a href="/cart">
+                      <button type="button" className="cart">
+                        장바구니
+                      </button>
+                    </a>
+                    <a href="/order">
+                      <button type="button" className="buy">
+                        구매하기
+                      </button>
+                    </a>
                   </div>
                 </div>
               </div>

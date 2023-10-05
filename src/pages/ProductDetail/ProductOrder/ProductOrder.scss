@@ -14,6 +14,7 @@
       align-items: flex-start;
       width: 452px;
       height: 111px;
+
       .name {
         font-size: 20px;
         width: 120px;
@@ -25,6 +26,7 @@
       width: 180px;
       height: 40px;
       display: flex;
+      align-items: center;
       text-align: center;
 
       .colorList {
@@ -220,6 +222,7 @@
       display: flex;
       flex-direction: column;
       padding-bottom: 30px;
+
       .sizeInch {
         width: 452px;
         height: 43px;
@@ -230,6 +233,17 @@
         font-weight: 700;
         font-size: 16px;
         color: #000000;
+        a {
+          cursor: pointer;
+          width: 20px;
+          height: 20px;
+          background: #ffffff;
+          border: 2px #ffffff solid;
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
       }
       .quanTity_1 {
         width: 452px;
@@ -276,6 +290,7 @@
       width: 452px;
       height: 30px;
       margin-top: 20px;
+
       .quantity {
         width: 35px;
         height: 30px;
@@ -293,6 +308,7 @@
         align-items: center;
         margin-top: 30px;
       }
+
       .quanTity {
         width: 50px;
         height: 30px;
@@ -339,7 +355,9 @@
         text-align: center;
         box-sizing: border-box;
       }
-
+      a {
+        text-decoration: none;
+      }
       .buy {
         width: 221px;
         height: 50px;

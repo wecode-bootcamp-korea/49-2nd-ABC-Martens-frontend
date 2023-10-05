@@ -23,9 +23,9 @@ const Router = () => {
         <Route path="/productdetail/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
+        <Route path="/orderleft" element={<OrderLeft />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/cartpopup" element={<CartPopUp />} />
-        <Route path="/orderleft" element={<OrderLeft />} />
       </Routes>
       <Footer />
     </BrowserRouter>

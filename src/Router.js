@@ -10,6 +10,7 @@ import Cart from './pages/Cart/Cart';
 import Order from './pages/Order/Order';
 import Payment from './pages/Payment/Payment';
 import CartPopUp from './components/CartPopUp/CartPopUp';
+import OrderRight from './pages/Order/OrderRight/OrderRight';
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
         <Route path="/order" element={<Order />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/cartpopup" element={<CartPopUp />} />
+        <Route path="/orderright" element={<OrderRight />} />
       </Routes>
       <Footer />
     </BrowserRouter>

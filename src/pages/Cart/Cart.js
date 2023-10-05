@@ -1,44 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import './Cart.scss';
 import CartLeft from './CartLeft/CartLeft';
 import CartRight from './CartRight/CartRight';
+import { TOKEN, HOST } from '../../components/Variable/Variable';
+import './Cart.scss';
 
 const Cart = () => {
   const [cartList, setCartList] = useState([]);
   const [itemCheckboxes, setItemCheckboxes] = useState({});
   const [isPopUp, setIsPopUp] = useState(false);
-  // const [render, setRender] = useState(true);
 
-  // const handleRender = () => {// 의존성 배열에 render를 넣고, 팝업창에서 cartList가 바뀌면 리렌더링
-  //   setRender(!render);
-  // };
-
-  // cart list 불러오기.
-  useEffect(() => {
-    // HOST로 백엔드 API 가져오기 :`${HOST}/carts`
-    fetch('/data/cartList.json', {
+  const getCartData = () => {
+    fetch(`${HOST}/carts`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        // authorization: '토큰',
+        authorization: TOKEN,
       },
     })
       .then(response => {
-        if (response.ok === true) {
+        if (response.ok) {
           return response.json();
         }
         throw new Error('에러 발생!');
       })
       .catch(error => console.log(error))
-      .then(data => {
+      .then(resData => {
+        // 객체형태의 응답데이터를 구조분해할당으로 바꾸기
+        const { data } = resData;
         setCartList(data);
         const updatedItemCheckboxes = {};
         for (let i = 0; i < data.length; i++) {
-          updatedItemCheckboxes[data[i].productId] = false;
+          updatedItemCheckboxes[data[i].productOptionId] = false;
         }
         setItemCheckboxes(updatedItemCheckboxes);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    getCartData();
+  }, [isPopUp]);
 
   return (
     <>
@@ -50,11 +50,11 @@ const Cart = () => {
           <ul className="cartWrap">
             <CartLeft
               cartList={cartList}
-              setCartList={setCartList}
               itemCheckboxes={itemCheckboxes}
               setItemCheckboxes={setItemCheckboxes}
               isPopUp={isPopUp}
               setIsPopUp={setIsPopUp}
+              getCartData={getCartData}
             />
             <CartRight cartList={cartList} setCartList={setCartList} />
           </ul>

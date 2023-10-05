@@ -35,21 +35,21 @@ const OrderRight = () => {
     return cartTotalPrice;
   };
 
-  let cartDiscountPrice = cartList => {
-    let discountRate = 0.7;
-    let notDiscountPrice = 0;
-    let discountPrice = 0;
-    let cartDiscountTotalPrice = 0;
+  // let cartDiscountPrice = cartList => {
+  //   let discountRate = 0.7;
+  //   let notDiscountPrice = 0;
+  //   let discountPrice = 0;
+  //   let cartDiscountTotalPrice = 0;
 
-    for (let i of cartList) {
-      notDiscountPrice += (i.price / discountRate) * i.quantity;
-      discountPrice += i.price * i.quantity;
-      cartDiscountTotalPrice = notDiscountPrice - discountPrice;
-    }
+  //   for (let i of cartList) {
+  //     notDiscountPrice += (i.price / discountRate) * i.quantity;
+  //     discountPrice += i.price * i.quantity;
+  //     cartDiscountTotalPrice = notDiscountPrice - discountPrice;
+  //   }
 
-    let cartTotalPrice = cartDiscountTotalPrice.toLocaleString('ko-KR');
-    return cartTotalPrice;
-  };
+  //   let cartTotalPrice = cartDiscountTotalPrice.toLocaleString('ko-KR');
+  //   return cartTotalPrice;
+  // };
 
   if (!cartList) return null;
 
@@ -77,7 +77,7 @@ const OrderRight = () => {
                 </span>
               </b>
             </div>
-            <div>
+            {/* <div>
               <span>할인금액</span>
               <s>
                 ￦ (-)
@@ -85,7 +85,7 @@ const OrderRight = () => {
                   <span>{cartDiscountPrice(cartList)}</span>
                 </span>
               </s>
-            </div>
+            </div> */}
             <div>
               <span>총 결제 예정 금액</span>
               <strong>
@@ -97,37 +97,120 @@ const OrderRight = () => {
             </div>
           </div>
         </div>
-      </div>
-      <h3 className="agreeTitle">
-        <span className="term">약관 동의</span>
-      </h3>
-      <div className="agreeArea">
-        <div className="area">
-          <div className="allAgree">
-            <span className="checkAll">
-              <label htmlFor="allAgree">
-                <input
-                  type="checkbox"
-                  name="allAgree"
-                  id="allAgree"
-                  value="Y"
-                />
-                <span>전체 동의</span>
-              </label>
-            </span>
-          </div>
-          <div className="partAgree">
-            <ul className="agreeList">
-              <li>1</li>
-              <li>1</li>
-              <li>1</li>
-              <li>1</li>
-              <li>1</li>
-            </ul>
+        <h3 className="agreeTitle">
+          <span className="term">약관 동의</span>
+        </h3>
+        <div className="agreeArea">
+          <div className="area">
+            <div className="allAgree">
+              <span className="checkAll">
+                <label htmlFor="allAgree">
+                  <input type="checkbox" id="allAgree" value="Y" />
+                  <span>전체 동의</span>
+                </label>
+              </span>
+            </div>
+            <div className="partAgree">
+              <ul className="agreeList" id="agreeList">
+                <li>
+                  <span className="agreeChecks">
+                    <label htmlFor="agree1">
+                      <input
+                        type="checkbox"
+                        className="agreeCheck"
+                        id="agree1"
+                        value="Y"
+                      />
+                      <span>
+                        쇼핑몰 이용 약관<b>(필수)</b>
+                      </span>
+                    </label>
+                  </span>
+                  <div className="agreeView">보기</div>
+                </li>
+                <li>
+                  <span className="agreeChecks">
+                    <label htmlFor="agree2">
+                      <input
+                        type="checkbox"
+                        className="agreeCheck"
+                        id="agree2"
+                        value="Y"
+                      />
+                      <span>
+                        개인 정보 수집 및 이용<b>(필수)</b>
+                      </span>
+                    </label>
+                  </span>
+                  <div className="agreeView">보기</div>
+                </li>
+                <li>
+                  <span className="agreeChecks">
+                    <label htmlFor="agree3">
+                      <input
+                        type="checkbox"
+                        className="agreeCheck"
+                        id="agree3"
+                        value="Y"
+                      />
+                      <span>
+                        개인정보 제3자 제공 동의
+                        <b>(필수)</b>
+                      </span>
+                    </label>
+                  </span>
+                  <div className="agreeView">보기</div>
+                </li>
+                <li>
+                  <span className="agreeChecks">
+                    <label htmlFor="agree4">
+                      <input
+                        type="checkbox"
+                        className="agreeCheck"
+                        id="agree4"
+                        value="Y"
+                      />
+                      <span>
+                        <i>
+                          반품 시 결제금액에서 반품 왕복 배송비를 차감한 금액이
+                          환불되는 것에 동의합니다. 네이버페이 및 비회원으로
+                          구매 시 무료 교환 제외입니다.
+                        </i>
+                      </span>
+                    </label>
+                  </span>
+                </li>
+                <li>
+                  <span className="agreeChecks">
+                    <label htmlFor="agree5">
+                      <input
+                        type="checkbox"
+                        className="agreeCheck"
+                        id="agree5"
+                        value="Y"
+                      />
+                      <span>
+                        <i>
+                          교환/반품 시 신청 사유 동봉하여 발송해 주십시오. 내용
+                          미 동봉 시 처리가 지연될 수 있습니다.
+                        </i>
+                      </span>
+                    </label>
+                  </span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
+        <div className="payDiv">
+          <input
+            type="button"
+            className="paymentInput"
+            id="payment"
+            value="결제하기"
+          />
+        </div>
       </div>
-      <div>4</div>
     </li>
   );
 };

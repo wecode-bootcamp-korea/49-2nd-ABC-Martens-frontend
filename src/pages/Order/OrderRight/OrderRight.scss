@@ -1,6 +1,6 @@
 .orderRight {
   display: block;
-  width: 430px;
+  width: 490px;
   padding-left: 20px;
 
   .orderWrap {
@@ -38,9 +38,9 @@
             display: flex;
             align-items: center;
             font-style: normal;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 26px;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 28px;
             color: #000000;
           }
 
@@ -61,24 +61,24 @@
             }
           }
 
-          s {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: 28px;
-            color: #bb172f;
+          // s {
+          //   display: flex;
+          //   align-items: center;
+          //   text-decoration: none;
+          //   font-style: normal;
+          //   font-weight: bold;
+          //   font-size: 18px;
+          //   line-height: 28px;
+          //   color: #bb172f;
 
-            span {
-              font-style: normal;
-              font-weight: bold;
-              font-size: 18px;
-              line-height: 28px;
-              color: #bb172f;
-            }
-          }
+          //   span {
+          //     font-style: normal;
+          //     font-weight: bold;
+          //     font-size: 18px;
+          //     line-height: 28px;
+          //     color: #bb172f;
+          //   }
+          // }
 
           strong {
             display: flex;
@@ -107,73 +107,177 @@
         margin-top: 10px;
       }
     }
-  }
 
-  .agreeTitle {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin-top: 30px;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 30px;
-    text-transform: uppercase;
-    color: #000000;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    border-bottom: 1px #e1e1e1 solid;
-
-    .term {
-      margin-left: 15px;
+    .agreeTitle {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin-top: 30px;
       font-style: normal;
       font-weight: 700;
       font-size: 20px;
       line-height: 30px;
-      text-align: center;
       text-transform: uppercase;
       color: #000000;
-    }
-  }
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px #e1e1e1 solid;
 
-  .agreeArea {
-    .area {
-      div {
-        padding: 0 15px;
+      .term {
+        margin-left: 15px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 30px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #000000;
       }
+    }
+    .agreeArea {
+      .area {
+        div {
+          padding: 0 15px;
+        }
 
-      .allAgree {
-        .checkAll {
-          label {
-            display: flex;
-            justify-content: flex-start;
-            position: relative;
-            padding: 5px 0;
-            cursor: pointer;
+        .allAgree {
+          .checkAll {
+            label {
+              display: flex;
+              justify-content: flex-start;
+              position: relative;
+              padding: 5px 0;
+              cursor: pointer;
 
-            input {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 0;
-              height: 0;
-              opacity: 0;
+              input {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 0;
+                opacity: 0;
+              }
+
+              span {
+                display: flex;
+                align-items: flex-start;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 20px;
+                color: #000000;
+              }
+            }
+          }
+        }
+
+        .partAgree {
+          &div {
+            padding: 0 15px;
+          }
+
+          .agreeList {
+            margin-top: 20px;
+
+            li + li {
+              margin-top: 10px;
             }
 
-            span {
+            li {
               display: flex;
               align-items: flex-start;
-              font-style: normal;
-              font-weight: 400;
-              font-size: 16px;
-              line-height: 20px;
-              color: #000000;
+              justify-content: space-between;
+
+              .agreeChecks {
+                max-width: calc(100% - 40px);
+
+                label {
+                  display: flex;
+                  position: relative;
+                  padding: 5px 0;
+                  cursor: pointer;
+
+                  input {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 0;
+                    height: 0;
+                    opacity: 0;
+                  }
+
+                  span {
+                    display: flex;
+                    align-items: flex-start;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: #000000;
+
+                    &::before {
+                      transform: translateY(2px);
+                    }
+
+                    b {
+                      margin-left: 5px;
+                      font-style: normal;
+                      font-size: 16px;
+                      font-weight: bold;
+                      line-height: 20px;
+                      color: #000000;
+                    }
+
+                    i {
+                      font-style: normal;
+                      max-width: calc(100% - 30px);
+                      font-weight: 400;
+                      font-size: 16px;
+                      line-height: 20px;
+                      color: #000000;
+                    }
+                  }
+                }
+              }
+
+              div {
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 30px;
+                text-decoration-line: underline;
+                color: #000000;
+              }
             }
           }
         }
       }
+    }
 
-      .partAgree {
+    .payDiv {
+      margin-top: 30px;
+
+      .paymentInput {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 9px 30px;
+        border: 1px #ffe512 solid;
+        font-style: normal;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 30px;
+        text-align: center;
+        text-transform: uppercase;
+        background: #ffe512;
+        color: #000000;
+        cursor: pointer;
+
+        &:hover {
+          background: #ffd343;
+        }
       }
     }
   }

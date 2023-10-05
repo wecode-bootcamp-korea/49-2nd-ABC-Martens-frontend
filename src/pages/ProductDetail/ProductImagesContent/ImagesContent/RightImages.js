@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './RightImages.scss';
 
-const RightImages = ({ count, setCount }) => {
+const RightImages = ({ count, setCount, productList }) => {
   const [imageData, setImageData] = useState([]);
 
   const prevBtn = () => {
@@ -19,6 +19,8 @@ const RightImages = ({ count, setCount }) => {
       .then(Response => Response.json())
       .then(result => setImageData(result));
   }, []);
+
+  // setImageData(productList.detailImageSelector);
 
   return (
     <div className="rightImages">

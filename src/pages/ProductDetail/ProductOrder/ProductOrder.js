@@ -7,6 +7,10 @@ const ProductOrder = ({ productList }) => {
   const [selectedSize, setSelectedSize] = useState();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
+  const newArray = productList.options.map(option => {
+    return { quantity: option.quantity, size: option.size };
+  });
+
   return (
     <div className="productOrder">
       <form className="goodform">
@@ -14,7 +18,10 @@ const ProductOrder = ({ productList }) => {
           <strong className="name">{productList.productName}</strong>
           <div className="color">
             <strong className="colorList">색상 :</strong>
-            <span>Brown / 000000</span>
+            <span>
+              {productList.colorSelector[0].colorName} /
+              {productList.colorSelector[0].color_id}
+            </span>
           </div>
         </div>
         <div className="shoesImg">
@@ -27,9 +34,9 @@ const ProductOrder = ({ productList }) => {
         <div className="productPrice">
           <span className="productCost">상품 금액</span>
           <div>
-            <b>40%</b>
+            <b>{productList.salesPricePercentage}%</b>
             <s>
-              ￦ {parseInt(productList.originalPrice).toLocaleString('ko-KR')}
+              ￦ {parseInt(productList.orignialPrice).toLocaleString('ko-KR')}
             </s>
             <span>
               ￦
@@ -50,26 +57,27 @@ const ProductOrder = ({ productList }) => {
             <div className="sizeOption">
               <div className="optionTable">
                 <div className="tableWrap">
-                  {productList.options.map(size => {
+                  {newArray.map(size => {
                     let color;
-                    if (size === selectedSize) {
+                    if (size.size === selectedSize) {
                       color = 'yellowToBlack';
                     } else {
                       color = 'whiteToBlack';
                     }
                     return (
                       <Button
-                        key={size}
+                        key={size.size}
                         type="button"
                         className="btn"
                         fontscale="small"
                         scale="small"
                         color={color}
+                        disabled={size.quantity === 0}
                         handleClick={() => {
-                          setSelectedSize(size);
+                          setSelectedSize(size.size);
                         }}
                       >
-                        {size}
+                        {size.size}
                       </Button>
                     );
                   })}
@@ -135,9 +143,11 @@ const ProductOrder = ({ productList }) => {
                       <b>
                         ￦
                         <span>
-                          {(
-                            parseInt(productList.price) * selectedQuantity
-                          ).toLocaleString('ko-KR')}
+                          {selectedSize
+                            ? (
+                                parseInt(productList.price) * selectedQuantity
+                              ).toLocaleString('ko-KR')
+                            : 0}
                         </span>
                       </b>
                     </span>

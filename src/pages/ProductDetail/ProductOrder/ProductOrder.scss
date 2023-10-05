@@ -261,16 +261,17 @@
             }
 
             .sizeFine {
-              min-height: 40px;
-              line-height: 25px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
               max-width: 480px;
+              min-height: 40px;
+              margin-top: 20px;
+              line-height: 25px;
               font-size: 12px;
               font-weight: bold;
               background-color: rgb(255, 229, 18);
               color: rgb(0, 0, 0);
-              display: flex;
-              align-items: center;
-              justify-content: center;
               cursor: pointer;
 
               p {

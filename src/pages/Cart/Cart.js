@@ -5,7 +5,7 @@ import { TOKEN, HOST } from '../../components/Variable/Variable';
 import './Cart.scss';
 
 const Cart = () => {
-  const [cartList, setCartList] = useState([]);
+  const [cartList, setCartList] = useState();
   const [itemCheckboxes, setItemCheckboxes] = useState({});
   const [isPopUp, setIsPopUp] = useState(false);
 
@@ -19,6 +19,8 @@ const Cart = () => {
     })
       .then(response => {
         if (response.ok) {
+          return response.json();
+        } else if (response.status === 400) {
           return response.json();
         }
         throw new Error('에러 발생!');
@@ -38,7 +40,7 @@ const Cart = () => {
 
   useEffect(() => {
     getCartData();
-  }, [isPopUp]);
+  }, []);
 
   return (
     <>

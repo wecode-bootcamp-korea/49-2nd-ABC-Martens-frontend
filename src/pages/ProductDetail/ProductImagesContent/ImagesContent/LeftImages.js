@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './LeftImages.scss';
 
-const LeftImages = ({ count, setCount }) => {
+const LeftImages = ({ count, productList }) => {
   const [imageData, setImageData] = useState([]);
 
   useEffect(() => {

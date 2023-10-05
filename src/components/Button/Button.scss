@@ -110,4 +110,11 @@
       background: black;
     }
   }
+
+  &:disabled {
+    background-color: #f7f7f7;
+    border: 1px solid #e1e1e1;
+    pointer-events: none;
+    color: #999999;
+  }
 }

@@ -1,57 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import './CartRight.scss';
+import React from 'react';
+import { useNavigate } from 'react-router';
 import Button from '../../../components/Button/Button';
+import { TOKEN } from '../../../components/Variable/Variable';
+import './CartRight.scss';
 
-const CartRight = () => {
-  const [cartList, setCartList] = useState([]);
-
-  useEffect(() => {
-    fetch('/data/cartList.json', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        // authorization: '토큰',
-      },
-    })
-      .then(response => {
-        if (response.ok === true) {
-          return response.json();
-        }
-        throw new Error('에러 발생!');
-      })
-      .catch(error => console.log(error))
-      .then(data => {
-        setCartList(data);
-      });
-  }, []);
+const CartRight = ({ cartList }) => {
+  const navigate = useNavigate();
 
   let sum = cartList => {
     let sum = 0;
     for (let i of cartList) {
-      sum += i.totalPrice;
+      sum += parseInt(i.totalPrice);
     }
 
     let cartTotalPrice = sum.toLocaleString('ko-KR');
     return cartTotalPrice;
   };
 
-  let cartDiscountPrice = cartList => {
-    let discountRate = 0.7;
-    let notDiscountPrice = 0;
-    let discountPrice = 0;
-    let cartDiscountTotalPrice = 0;
-
-    for (let i of cartList) {
-      notDiscountPrice += (i.price / discountRate) * i.quantity;
-      discountPrice += i.price * i.quantity;
-      cartDiscountTotalPrice = notDiscountPrice - discountPrice;
-    }
-
-    let cartTotalPrice = cartDiscountTotalPrice.toLocaleString('ko-KR');
-    return cartTotalPrice;
-  };
-
   if (!cartList) return null;
+
+  const handleOrderBtn = cartList => {
+    if (TOKEN) {
+      //로그인이 되어있으면
+      navigate('/order');
+    } else {
+      //비로그인 상태
+      navigate('/login');
+    }
+  };
 
   return (
     <li className="cartRight">
@@ -78,15 +54,6 @@ const CartRight = () => {
               </b>
             </div>
             <div>
-              <span>총 할인</span>
-              <s>
-                ￦
-                <span className="sumPrice">
-                  <span>{cartDiscountPrice(cartList)}</span>
-                </span>
-              </s>
-            </div>
-            <div>
               <span>총 결제금액</span>
               <strong>
                 ￦
@@ -103,6 +70,7 @@ const CartRight = () => {
           fontscale="large"
           scale="large"
           color="blackToYellow"
+          handleClick={() => handleOrderBtn(cartList)}
         >
           구매하기
         </Button>

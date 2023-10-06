@@ -1,14 +1,47 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
+import { HOST, TOKEN } from '../Variable/Variable';
 import './CartPopUp.scss';
 
-const CartPopUp = ({ setIsPopUp, cartItem }) => {
+const CartPopUp = ({ setIsPopUp, cartItem, getCartData }) => {
   // 백엔드에서 API호출로 사이즈 값 받아오기
-  const sizeList = [220, 230, 240, 250, 260, 270];
+  const sizeList = [220, 230, 240, 250, 260, 270, 280, 290];
 
   const [selectSize, setSelectSize] = useState(cartItem?.size);
   const [selectQuantity, setSelectQuantity] = useState(cartItem?.quantity);
 
+  const handleChangeItem = (
+    productId,
+    productOptionId,
+    selectSize,
+    selectQuantity,
+    color,
+  ) => {
+    fetch(`${HOST}/carts/${productId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: TOKEN,
+      },
+      body: JSON.stringify({
+        productOptionId: productOptionId,
+        size: selectSize,
+        quantity: selectQuantity,
+        color,
+      }),
+    })
+      .then(response => {
+        if (response.ok) {
+          alert('장바구니 상품을 변경하였습니다.');
+          setIsPopUp(false);
+          getCartData();
+          return response.json();
+        }
+        throw new Error('에러 발생!');
+      })
+      .catch(error => console.log(error));
+  };
   return (
     <div className="cartPopUp">
       <div className="popUpTitle">
@@ -25,19 +58,18 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
         </div>
       </div>
       <div className="popUpCnt">
-        {/*아래 div -> 기존 form이었다가 react error로 form 태그 중복떠서 div로 변경함 */}
         <div name="optionChangeForm" id="optionChangeForm">
           <div className="cartItemDiv">
             <div className="cartItemBox">
               <div className="cartItemCnt">
                 <div>
-                  <a href="#!">
+                  <Link to={`/productDetai/${cartItem.productId}`}>
                     <img
-                      src="https://i.postimg.cc/q7sdqxS7/boots-1.jpg"
+                      src={cartItem.productThumbnail}
                       alt="boots"
                       className="itemImg"
                     />
-                  </a>
+                  </Link>
                 </div>
                 <ul>
                   <li>
@@ -88,13 +120,18 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                           <td>
                             <div className="optionDiv">
                               <span>
-                                <b>사이즈(mm) : {cartItem.size}</b>
-                                <a href="#!">
+                                <b>사이즈(mm) : {selectSize}</b>
+                                <Link to={() => false}>
                                   <img
                                     src="https://i.postimg.cc/zXjzB3Xv/close-150192-1280.png"
                                     alt="close"
+                                    onClick={() =>
+                                      alert(
+                                        '더이상 선택된 옵션을 삭제할 수 없습니다.',
+                                      )
+                                    }
                                   />
-                                </a>
+                                </Link>
                               </span>
                               <div>
                                 <strong>수량:</strong>
@@ -104,7 +141,9 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                                     className="amtMinusBtn"
                                     sort="icon"
                                     handleClick={() => {
-                                      setSelectQuantity(selectQuantity - 1);
+                                      selectQuantity > 1
+                                        ? setSelectQuantity(selectQuantity - 1)
+                                        : alert('1개보다 적을 수 없습니다.');
                                     }}
                                   >
                                     <img
@@ -130,9 +169,9 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
                                 <div className="amtPriceContainer">
                                   <strong className="amtPrice">
                                     ￦
-                                    {cartItem.totalPrice.toLocaleString(
-                                      'ko-KR',
-                                    )}
+                                    {(
+                                      selectQuantity * cartItem.price
+                                    ).toLocaleString('ko-KR')}
                                   </strong>
                                 </div>
                               </div>
@@ -164,10 +203,15 @@ const CartPopUp = ({ setIsPopUp, cartItem }) => {
               fontscale="large"
               color="blackToYellow"
               scale="cartBtn"
-              // handleClick={()=> {
-              //   //API (selectSize, selectQuantity 값 보내주기)
-              // 저장된 값을 cartList에 보내기?
-              // }}
+              handleClick={() =>
+                handleChangeItem(
+                  cartItem.productId,
+                  cartItem.productOptionId,
+                  selectSize,
+                  selectQuantity,
+                  cartItem.color,
+                )
+              }
             >
               변경하기
             </Button>

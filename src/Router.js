@@ -8,8 +8,11 @@ import ProductList from './pages/ProductList/ProductList';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Cart from './pages/Cart/Cart';
 import Order from './pages/Order/Order';
+import OrderLeft from './pages/Order/OrderLeft/OrderLeft';
 import Payment from './pages/Payment/Payment';
 import CartPopUp from './components/CartPopUp/CartPopUp';
+import OrderRight from './pages/Order/OrderRight/OrderRight';
+
 const Router = () => {
   return (
     <BrowserRouter>
@@ -21,8 +24,10 @@ const Router = () => {
         <Route path="/productdetail/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
+        <Route path="/orderleft" element={<OrderLeft />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/cartpopup" element={<CartPopUp />} />
+        <Route path="/orderright" element={<OrderRight />} />
       </Routes>
       <Footer />
     </BrowserRouter>

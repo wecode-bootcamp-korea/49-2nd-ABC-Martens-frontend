@@ -23,7 +23,6 @@ const ProductDetail = () => {
       });
   }, [id]);
 
-  console.log(productInfo);
   const isEmpty = Object.keys(productInfo).length > 0;
 
   if (!isEmpty) {

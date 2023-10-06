@@ -1,11 +1,52 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../../components/Button/Button';
+// import { HOST, TOKEN } from '../../../components/Variable/Variable';
 import './ProductOrder.scss';
 
 const ProductOrder = ({ productInfo }) => {
   const [selectedSize, setSelectedSize] = useState();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
+
+  // const [itemList, setItemList] = useState([]);
+
+  // const navigate = useNavigate();
+  // const totalPrice = (parseInt(productInfo.price) * selectedQuantity).toString;
+
+  // const handleCart = () => {
+  //   const item = {
+  //     productId: productInfo.productId,
+  //     productName: productInfo.productName,
+  //     productThumbnail: productInfo.thumbnailImageUrl,
+  //     totalPrice: totalPrice,
+  //     salePercentage: productInfo.salesPricePercentage,
+  //     price: productInfo.price,
+  //     size: selectedSize,
+  //     color: productInfo.colorSelector[0].colorName,
+  //     quantity: selectedQuantity,
+  //   };
+  //   setItemList([...itemList, item]);
+
+  //   fetch(`${HOST}/carts/${productInfo.productId}`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       authorization: TOKEN,
+  //     },
+  //     body: JSON.stringify({
+  //       itemList,
+  //     }),
+  //   })
+  //     .then(response => {
+  //       if (response.ok) {
+  //         alert('장바구니에 상품을 담았습니다.');
+  //         navigate('/cart');
+  //         return response.json();
+  //       }
+  //       throw new Error('에러 발생!');
+  //     })
+  //     .catch(error => console.log(error));
+  // };
 
   const newArray = productInfo.options.map(option => {
     return { quantity: option.quantity, size: option.size };
@@ -169,7 +210,11 @@ const ProductOrder = ({ productInfo }) => {
                 <div className="pdBtns_area1">
                   <div className="pdpBtn">
                     <Link to="/cart">
-                      <button type="button" className="cart">
+                      <button
+                        type="button"
+                        className="cart"
+                        // onClick={() => handleCart()}
+                      >
                         장바구니
                       </button>
                     </Link>

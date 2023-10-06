@@ -34,6 +34,7 @@ const Users = () => {
       setCustomMail(userMail);
     }
   };
+
   const handlePasswordBlur = pass => {
     const password = pass.target.value;
     setPasswordInputValue(password);
@@ -159,33 +160,21 @@ const Users = () => {
   const [year, setYear] = useState('');
   const [month, setMonth] = useState('');
   const [day, setDay] = useState('');
-  const [formattedDate, setFormattedDate] = useState('');
 
   // 연도, 월, 일 입력 필드의 값이 변경될 때 실행되는 함수
   const handleYearChange = year => {
     const newYear = year.target.value;
     setYear(newYear);
-    updateFormattedDate(newYear, month, day);
   };
 
   const handleMonthChange = month => {
     const newMonth = month.target.value;
     setMonth(newMonth);
-    updateFormattedDate(year, newMonth, day);
   };
 
   const handleDayChange = day => {
     const newDay = day.target.value;
     setDay(newDay);
-    updateFormattedDate(year, month, newDay);
-  };
-  const updateFormattedDate = (newYear, newMonth, newDay) => {
-    if (newYear && newMonth && newDay) {
-      const formatted = `${newYear}-${newMonth}-${newDay}`;
-      setFormattedDate(formatted);
-    } else {
-      setFormattedDate('');
-    }
   };
 
   const [selectedGender, setSelectedGender] = useState('');
@@ -194,25 +183,40 @@ const Users = () => {
     setSelectedGender(sex.target.value);
   };
 
-  const [selectPhone, setSelectPhone] = useState('');
-  const handlePhoneNumberChannge = phoneNumber => {
-    setSelectPhone(phoneNumber.target.value);
+  const [first, setFirst] = useState('');
+  const [second, setSecond] = useState('');
+  const [third, setThrid] = useState('');
+
+  const handleFirstChange = first => {
+    const newFirst = first.target.value;
+    setFirst(newFirst);
+  };
+
+  const handleSecondChange = second => {
+    const newSecond = second.target.value;
+    setSecond(newSecond);
+  };
+
+  const handleThirdChange = third => {
+    const newThird = third.target.value;
+    setThrid(newThird);
   };
 
   const setSignUpClick = () => {
     if (isSignUpButtonEnabled) {
       if (passwordInputValue === confirmPasswordInputValue && selectAll) {
         const userData = {
-          nickName: name,
-          email: `${customMail || selectedMail}`,
+          nickname: name,
           password: passwordInputValue,
-          birthDate: formattedDate,
-          phoneNumber: selectPhone,
+          birthDate: `${year}${month}${day}`,
+          email: `aegis1009@naver.com`,
+          phoneNumber: `${first}-${second}-${third}`,
           gender: selectedGender,
         };
+        console.log(userData);
 
         // 서버로 POST 요청 보내기
-        fetch('http://10.58.52.55:8000/users', {
+        fetch('http://10.58.52.133:8000/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
@@ -221,14 +225,12 @@ const Users = () => {
         })
           .then(res => res.json())
           .then(result => {
-            console.log(result);
-            if (result.success) {
+            console.log('추추', result);
+            if (result.message === '회원가입이 완료되었습니다') {
               alert('회원가입이 완료되었습니다.');
               setTimeout(() => {
                 navigate('/');
               }, 3000);
-            } else {
-              alert('회원가입에 실패하였습니다.');
             }
           })
           .catch(error => {
@@ -361,6 +363,8 @@ const Users = () => {
               type="text"
               className="phoneInput"
               maxLength={3}
+              value={first}
+              onChange={handleFirstChange}
               placeholder="휴대폰"
               disabled={passwordInputValue !== confirmPasswordInputValue}
             />
@@ -368,12 +372,16 @@ const Users = () => {
               type="text"
               className="phoneInput"
               maxLength={4}
+              value={second}
+              onChange={handleSecondChange}
               disabled={passwordInputValue !== confirmPasswordInputValue}
             />
             <input
               type="text"
               className="phoneInput"
               maxLength={4}
+              value={third}
+              onChange={handleThirdChange}
               disabled={passwordInputValue !== confirmPasswordInputValue}
             />
           </div>

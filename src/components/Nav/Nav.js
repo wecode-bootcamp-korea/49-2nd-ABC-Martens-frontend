@@ -1,7 +1,27 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { commodityItem } from '../NavName/NavName';
 import './Nav.scss';
 
 const Nav = () => {
+  const navigate = useNavigate();
+  const handleNavigate = destination => {
+    navigate(`/?category_id=${destination}`);
+  };
+  const commodityTradingItem = [
+    '여성',
+    '남성',
+    '키즈',
+    'SALE',
+    '액세서리',
+    'COLLABRATIONS',
+    'COLLECTION',
+    'HOW TO',
+    'NEW IN',
+    'BEST',
+    'EVENT',
+  ];
+
   return (
     <div id="headContainer">
       <div className="firstHeader">
@@ -22,17 +42,13 @@ const Nav = () => {
 
         <nav className="categoriList">
           <ul className="List">
-            <li className="List1">여성</li>
-            <li className="List2">남성</li>
-            <li className="List3">키즈</li>
-            <li className="List4">액세서리</li>
-            <li className="List5">SALE</li>
-            <li className="List6">COLLABRATIONS</li>
-            <li className="List7">COLLECTION</li>
-            <li className="List8">HOW TO</li>
-            <li className="List9">NEW IN</li>
-            <li className="List10">BEST</li>
-            <li className="List11">EVENT</li>
+            {commodityTradingItem.map((option, index) => (
+              <li key={index} className={`List${index + 1}`}>
+                <Link to={`/?category_id=${Object.keys(commodityItem)[index]}`}>
+                  {option}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <div className="centerBar">

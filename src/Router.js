@@ -10,16 +10,15 @@ import Cart from './pages/Cart/Cart';
 import Order from './pages/Order/Order';
 import Payment from './pages/Payment/Payment';
 import CartPopUp from './components/CartPopUp/CartPopUp';
-
 const Router = () => {
   return (
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<ProductList />} />
+        <Route path="/" element={<ProductList />} component={ProductList} />
         <Route path="/users" element={<Users />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/productdetail" element={<ProductDetail />} />
+        <Route path="/productdetail/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={<Order />} />
         <Route path="/payment" element={<Payment />} />

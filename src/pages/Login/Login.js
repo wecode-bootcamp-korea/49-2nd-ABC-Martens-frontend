@@ -49,7 +49,7 @@ const Login = () => {
   }, []);
 
   const handleLogin = () => {
-    fetch('http://10.58.52.133:8000/login', {
+    fetch('http://10.58.52.241:8000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

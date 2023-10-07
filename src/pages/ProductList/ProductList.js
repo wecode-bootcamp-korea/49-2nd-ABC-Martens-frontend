@@ -12,6 +12,7 @@ const sortingMappings = {
   판매량순: 'sale',
 };
 
+//usetSate
 const ProductList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [backendData, setBackendData] = useState([]);
@@ -68,7 +69,7 @@ const ProductList = () => {
           </h1>
           <div className="IntroducecommentDiv">
             <p className="shopComment">
-              부츠, 슈즈, 샌들 등 닥터마틴의{' '}
+              부츠, 슈즈, 샌들 등 닥터마틴의
               {Object.values(commodityItem)[category - 1]}용 신발들을 한 번에
               모아서 구경하세요.
             </p>

@@ -26,6 +26,7 @@ const ProductList = () => {
   const sort_by = searchParams.get('sort_by');
   const sub_category = searchParams.get('sub_category_id');
   const offset = Number(searchParams.get('offset') || 0);
+  const exampleVariable = '1';
 
   const currentSort = sortingMappings[sort_by];
 
@@ -37,6 +38,7 @@ const ProductList = () => {
 
   // 페이지네이션 관련 상태
   const pageCount = Math.ceil(totalCounts / itemsPerPage);
+  console.log(exampleVariable, pageCount);
 
   // 페이지 변경 핸들러
   const handlePageChange = pageNumber => {

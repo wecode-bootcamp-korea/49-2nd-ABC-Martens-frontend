@@ -5,9 +5,7 @@ import './Nav.scss';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const handleNavigate = destination => {
-    navigate(`/?category_id=${destination}`);
-  };
+
   const commodityTradingItem = [
     '여성',
     '남성',
@@ -38,7 +36,11 @@ const Nav = () => {
         </span>
       </div>
       <div className="twoHeader">
-        <img className="logoNav" src="/images/DrMartens.png" alt="닥터마틴" />
+        <img
+          className="logoNav"
+          src="`${process.env.PUBLIC_URL}/images/1000.jpg`"
+          alt="닥터마틴"
+        />
 
         <nav className="categoriList">
           <ul className="List">

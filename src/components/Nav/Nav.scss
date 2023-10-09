@@ -102,15 +102,16 @@
       padding-top: 0;
       width: 774px;
       height: 40px;
+      .List {
+        display: flex;
+        align-items: center;
+        font-size: 13px;
+        color: palevioletred;
+        width: 774px;
+        height: 40px;
+      }
     }
-    .List {
-      display: flex;
-      align-items: center;
-      font-size: 13px;
-      color: white;
-      width: 774px;
-      height: 40px;
-    }
+ 
     Li {
       position: relative;
       display: flex;
@@ -125,6 +126,7 @@
       width: 48px;
       height: 40px;
       font-size: 13px;
+      color: chocolate;
     }
     .List4 {
       width: 75px;

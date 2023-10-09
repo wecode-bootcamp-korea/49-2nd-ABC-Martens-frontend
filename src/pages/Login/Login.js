@@ -12,6 +12,7 @@ const Login = () => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   //ID/PW값
+
   const saveUserId = event => {
     setId(event.target.value);
   };
@@ -48,7 +49,7 @@ const Login = () => {
   }, []);
 
   const handleLogin = () => {
-    fetch('http://10.58.52.75:8000/users/login', {
+    fetch('http://10.58.52.241:8000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8',
@@ -60,16 +61,23 @@ const Login = () => {
     })
       .then(res => res.json())
       .then(result => {
-        if (result.message === 'LOGIN_SUCCESS') {
-          localStorage.setItem('token', result.accessToken);
+        console.log('성공');
+        if (result.message === '로그인 성공하였습니다') {
+          alert('로그인에 성공했습니다.');
+          window.sessionStorage.setItem('token', result.accessToken);
           // localStorage.setItem("nickName", result.nickname);
           // console.log('???', result);
-          navigate('/');
-        } else {
+          setTimeout(() => {
+            navigate('/');
+          }, 4000);
+        } else if (result.message !== '로그인 성공하였습니다') {
           alert('로그인 실패');
         }
       });
   };
+
+  console.log(id);
+  console.log(pw);
 
   return (
     <div className="loginHighestContainer">
@@ -86,11 +94,17 @@ const Login = () => {
               <span className="Logintext">회원 로그인</span>
             </div>
             <div className="inputboxContainer">
-              <input type="text" className="inputbox" placeholder="아이디" />
+              <input
+                type="text"
+                className="inputbox"
+                placeholder="아이디"
+                onChange={saveUserId}
+              />
               <input
                 type="password"
                 className="inputbox"
                 placeholder="비밀번호"
+                onChange={saveUserPw}
               />
             </div>
             <div className="idSaveContainer">
@@ -100,7 +114,9 @@ const Login = () => {
               <button className="findButton">아이디/비밀번호 찾기</button>
             </div>
             <div className="buttonContainer">
-              <button className="loginButton">로그인</button>
+              <button className="loginButton" onClick={handleLogin}>
+                로그인
+              </button>
               <button className="socialLoginButton" onClick={loginHandler}>
                 카카오로 1초 회원가입/로그인
               </button>

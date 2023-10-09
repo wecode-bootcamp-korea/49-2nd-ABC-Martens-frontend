@@ -1,0 +1,321 @@
+.ListHighestContainer {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 10010;
+    transition: opacity 0.25s;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    .ListMainContainer {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .IntroMainContainer{
+            width: 1250px;
+            height: 204px;
+            background-color: #F7F7F7;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .titleName{
+                font-size: 30px;
+                color: black;
+                padding-left: 15px;
+                margin: 0px 0px 15px;
+            }
+            .IntroducecommentDiv{
+                margin-top: 10px;
+                .shopComment{
+                    padding-left: 15px;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: black;
+                }
+            }
+            .selectProductBox{
+                display: flex;
+                flex-direction: row;
+                .buttonDiv{
+                    padding-left: 12px;
+                    .allWatchButton{
+                        display: flex;
+                        border: 1px #FFE512 solid;
+                        background-color: #FFE512;
+                        padding: 3px 9px 5px 9px;
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 16px;
+                        line-height: 30px;
+                        text-align: center;
+                        text-transform: uppercase;
+                        color: #000000;
+                        transition: border 0.25s, background-color 0.25s;
+                        &:hover{
+                            border: 1px solid black;
+                            background-color: #FFD909;
+                        }
+                    }
+                    .bootsButton{
+                        display: flex;
+                        border: 1px #FFE512 solid;
+                        background-color: #FFE512;
+                        padding: 3px 9px 5px 9px;
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 16px;
+                        line-height: 30px;
+                        text-align: center;
+                        text-transform: uppercase;
+                        color: #000000;
+                        transition: border 0.25s, background-color 0.25s;
+                        &:hover{
+                            border: 1px solid black;
+                            background-color: #FFD909;
+                        }
+                    }
+                    .shoesButton{
+                        display: flex;
+                        border: 1px #FFE512 solid;
+                        background-color: #FFE512;
+                        padding: 3px 9px 5px 9px;
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 16px;
+                        line-height: 30px;
+                        text-align: center;
+                        text-transform: uppercase;
+                        color: #000000;
+                        transition: border 0.25s, background-color 0.25s;
+                        &:hover{
+                            border: 1px solid black;
+                            background-color: #FFD909;
+                        }
+                    }
+                    .sandleButton{
+                        display: flex;
+                        border: 1px #FFE512 solid;
+                        background-color: #FFE512;
+                        padding: 3px 9px 5px 9px;
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 16px;
+                        line-height: 30px;
+                        text-align: center;
+                        text-transform: uppercase;
+                        color: #000000;
+                        transition: border 0.25s, background-color 0.25s;
+                        &:hover{
+                            border: 1px solid black;
+                            background-color: #FFD909;
+                        }
+                    }
+                }
+            }
+        }
+        .NavigateContainer{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 1250px;
+            height: 82px;
+            background-color: white;
+            padding: 20px;
+            .customSelect{
+                margin-left: 850px;
+                .alignmentSelect{
+                    width: 140px;
+                    height: 40px;
+                }
+            }
+        }
+        .liner{
+            width: 100%;
+            height: 20px;
+            .separateLine{
+                display: block;
+                // margin: 40px 0;
+                border: 0;
+                width: 100%;
+                height: 2px;
+                background-color: #e1e1e1;
+            }
+        }
+        // .pageContainer {
+        //     width: 100%;
+        //     height: 1000px;
+        //     border: 1px solid fuchsia;
+        //     display: flex;
+        //     flex-direction: row;
+        //     justify-content: space-between;
+            
+        //     .shopImageDiv {
+        //         width: calc(33.33% - 10px);
+        //         height: 33%;
+        //         box-sizing: border-box;
+        //         border: 1px solid #ccc;
+        //         padding: 10px;
+        //         display: flex;
+        //         flex-direction: column;
+        //         align-items: center;
+        //         justify-content: center;
+        //     }
+          
+        //     .dmkPrdItm__img {
+        //       width: calc(33.33% - 10px); // 가로 3줄로 정렬
+        //       height: 33%; // 세로 4줄로 정렬
+        //       box-sizing: border-box;
+        //       border: 1px solid #ccc;
+        //       padding: 10px;
+        //       display: flex;
+        //       flex-direction: column;
+        //       align-items: center;
+        //       justify-content: center;
+          
+        //       a {
+        //         text-decoration: none;
+        //       }
+          
+        //       img {
+        //         max-width: 100%;
+        //         max-height: 100%;
+        //       }
+        //     }
+          
+        //     .pagination {
+        //       margin-top: auto;
+          
+        //       ul {
+        //         list-style: none;
+        //         display: flex;
+        //         gap: 10px;
+          
+        //         li {
+        //           button {
+        //             background-color: #007bff;
+        //             color: white;
+        //             border: none;
+        //             padding: 5px 10px;
+        //             cursor: pointer;
+          
+        //             &:hover {
+        //               background-color: #0056b3;
+        //             }
+        //           }
+        //         }
+        //       }
+        //     }
+        //   }
+        .pageContainer {
+            width: 1250px;
+            height: auto; // 높이 자동 조절
+            display: flex;
+            flex-direction: column;
+            // flex-wrap: wrap; // flex 요소를 줄 바꿈합니다.
+            justify-content: space-between; // 가로로 고루 배치
+            align-content: center; // 세로로 고루 배치
+            align-items: center; // 세로 정렬로 변경
+            margin: 0 auto; // 페이지 중앙에 위치하도록 가로 중앙 정렬
+            .shopImageDiv {
+            //   width: calc(33.33% - 20px); // 가로 3개로 정렬, 여백 고려하여 크기 조절
+            //   height: calc(25% - 20px); // 세로 4개로 정렬, 여백 고려하여 크기 조절
+                width: 1250px;
+                height: 100%;
+              box-sizing: border-box;
+              border: 1px solid #ccc;
+              padding: 10px;
+              margin-top: 10px;
+              display: flex;
+              flex-wrap: wrap; // 내부 flex 요소를 줄 바꿈합니다.
+              justify-content: space-between; // 내부 요소를 가로로 고루 배치합니다.
+              align-content: space-between; // 내부 요소를 세로로 고루 배치합니다.
+              align-items: flex-start; // 내부 요소를 세로 정렬로 변경합니다.
+          
+              a {
+                text-decoration: none;
+              }
+          
+              img {
+                max-width: 100%;
+                max-height: 100%;
+              }
+          
+              .dmkPrdItm__img {
+                width: calc(33.33% - 20px); // 가로 3개로 정렬, 여백 고려하여 크기 조절
+                height: calc(33.33% - 20px); // 세로 4개로 정렬, 여백 고려하여 크기 조절
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                padding: 10px;
+                margin-top: 5px;
+                display: flex;
+                flex-direction: column; // 세로로 배치
+                align-items: center;
+                justify-content: center;
+          
+                a {
+                  text-decoration: none;
+                }
+          
+                img {
+                  max-width: 100%;
+                  max-height: 100%;
+                }
+                .productDiv{
+                    .productInformation{
+                        color: #000000;
+                        font-size: medium;
+                        font-weight: bold;
+                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    }
+                }
+              }
+            }
+            .pagination{
+                width: 100%;
+                height: 40px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    
+                
+                    li {
+                      margin: 0;
+                      padding: 5px;
+                
+                      button {
+                        border: none;
+                        background-color: black;
+                        color: white;
+                        cursor: pointer;
+                        font-size: 18px;
+                
+                        &.active {
+                          // 활성화된 페이지 버튼 스타일
+                          color: white;
+                          background-color: blue;
+                        }
+            }
+          }
+    }
+}
+}
+}
+}

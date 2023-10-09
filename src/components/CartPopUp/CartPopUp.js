@@ -63,7 +63,7 @@ const CartPopUp = ({ setIsPopUp, cartItem, getCartData }) => {
             <div className="cartItemBox">
               <div className="cartItemCnt">
                 <div>
-                  <Link to={`/productDetai/${cartItem.productId}`}>
+                  <Link to={`/productDetail/${cartItem.productId}`}>
                     <img
                       src={cartItem.productThumbnail}
                       alt="boots"

@@ -38,7 +38,7 @@ const Nav = () => {
       <div className="twoHeader">
         <img
           className="logoNav"
-          src="`${process.env.PUBLIC_URL}/images/1000.jpg`"
+          src={`${process.env.PUBLIC_URL}/images/1000.jpg`}
           alt="닥터마틴"
         />
 

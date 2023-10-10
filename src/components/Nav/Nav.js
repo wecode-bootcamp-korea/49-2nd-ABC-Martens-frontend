@@ -38,7 +38,7 @@ const Nav = () => {
       <div className="twoHeader">
         <img
           className="logoNav"
-          src="`${process.env.PUBLIC_URL}/images/1000.jpg`"
+          src={`${process.env.PUBLIC_URL}/images/1000.jpg`}
           alt="닥터마틴"
         />
 
@@ -65,7 +65,7 @@ const Nav = () => {
                 alt="장바구니"
               />
             </a>
-            <a>
+            <a href="#!">
               <img
                 className="eyesProduct"
                 src="https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/Icons_recently.svg"
@@ -73,12 +73,7 @@ const Nav = () => {
               />
             </a>
             <a href="/login">
-              <img
-                className="pageback"
-                src="/images/user.png"
-                title="사람 아이콘"
-                alt="페이지"
-              />
+              <img className="pageback" src="/images/user.png" alt="페이지" />
             </a>
           </div>
         </div>

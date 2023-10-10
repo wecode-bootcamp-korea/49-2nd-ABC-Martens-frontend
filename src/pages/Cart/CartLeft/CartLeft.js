@@ -27,10 +27,10 @@ const CartLeft = ({
   };
 
   // 체크박스 개별 선택/ 취소
-  const handleItemCheckboxChange = productOptionId => {
+  const handleItemCheckboxChange = cartId => {
     const updatedItemCheckboxes = {
       ...itemCheckboxes,
-      [productOptionId]: !itemCheckboxes[productOptionId],
+      [cartId]: !itemCheckboxes[cartId],
     };
     setItemCheckboxes(updatedItemCheckboxes);
 
@@ -48,7 +48,7 @@ const CartLeft = ({
     for (const key in itemCheckboxes) {
       if (itemCheckboxes[key]) {
         const targetProduct = cartList.find(
-          item => item.productOptionId === parseInt(key),
+          item => item.cartId === parseInt(key),
         );
 
         const {
@@ -91,10 +91,10 @@ const CartLeft = ({
   };
 
   // 단일 상품 삭제하기
-  const handleItemDelete = productOption => {
+  const handleItemDelete = cartItem => {
     // 기존 객체 찾기
     const targetProduct = cartList.find(
-      item => item.productOptionId === productOption.productOptionId,
+      item => item.cartId === cartItem.cartId,
     );
 
     // 찾은 객체에 isDeleted 추가
@@ -102,9 +102,7 @@ const CartLeft = ({
       targetProduct.isDeleted = 'Y';
     }
 
-    const [arr] = cartList.filter(
-      data => data.productOptionId === productOption.productOptionId,
-    );
+    const [arr] = cartList.filter(data => data.cartId === cartItem.cartId);
 
     fetch(`${HOST}/carts/${arr.productId}`, {
       method: 'PATCH',
@@ -159,7 +157,8 @@ const CartLeft = ({
       </div>
       <div className="cartList">
         <ul className="shoppingList">
-          {cartList && cartList.length > 0 ? (
+          {cartList &&
+            cartList.length > 0 &&
             cartList.map(cartItem => (
               <li className="shoppingItemList" key={cartItem.cartId}>
                 <div className="shoppingItemContent">
@@ -168,12 +167,8 @@ const CartLeft = ({
                       type="checkbox"
                       id={`btnSelect${cartItem.productOptionId}`}
                       className={`btnSelect${cartItem.productOptionId}`}
-                      checked={
-                        itemCheckboxes[cartItem.productOptionId] || false
-                      }
-                      onChange={() =>
-                        handleItemCheckboxChange(cartItem.productOptionId)
-                      }
+                      checked={itemCheckboxes[cartItem.cartId] || false}
+                      onChange={() => handleItemCheckboxChange(cartItem.cartId)}
                     >
                       선택
                     </Checkbox>
@@ -182,7 +177,7 @@ const CartLeft = ({
                     <button
                       type="button"
                       className="btnOption"
-                      id={cartItem.productOptionId}
+                      id={cartItem.cartId}
                       onClick={() => {
                         setIsPopUp(true);
                         setSelectCartItem(cartItem);
@@ -193,7 +188,7 @@ const CartLeft = ({
                     <button
                       type="button"
                       className="btnDelete"
-                      value={cartItem.productOptionId}
+                      value={cartItem.cartId}
                       title="상품삭제"
                       onClick={() => handleItemDelete(cartItem)}
                     >
@@ -257,8 +252,8 @@ const CartLeft = ({
                   />
                 )}
               </li>
-            ))
-          ) : (
+            ))}
+          {!cartList && (
             // 카트리스트가 없을 때
             <li className="shoppingItemList">
               <div className="shoppingItemContent">

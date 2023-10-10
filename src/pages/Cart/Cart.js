@@ -32,7 +32,7 @@ const Cart = () => {
         setCartList(data);
         const updatedItemCheckboxes = {};
         for (let i = 0; i < data.length; i++) {
-          updatedItemCheckboxes[data[i].productOptionId] = false;
+          updatedItemCheckboxes[data[i].cartId] = false;
         }
         setItemCheckboxes(updatedItemCheckboxes);
       });

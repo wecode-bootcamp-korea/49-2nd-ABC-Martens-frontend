@@ -18,13 +18,13 @@ span {
     }
 
     input[type='checkbox']:checked + span::before {
-      background: url('https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/Checkbox_onn.svg')
-        no-repeat;
+      background: url('../../../public/images/checkbox.png') no-repeat;
+      background-size: cover;
     }
 
     input[type='checkbox'] + span::before {
-      background: url('https://www.drmartens.co.kr/data/skin/responsive_ver1_default_gl/images/newbird/Checkbox_off.svg')
-        no-repeat;
+      background: url('../../../public/images/빈checkbox.png') no-repeat;
+      background-size: cover;
     }
 
     span {
